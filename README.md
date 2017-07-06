@@ -14,6 +14,7 @@ Java, JavaScript, Python, C, D
 # Also have experience with
 
 * CI & CD Systems: Managing [Go](https://www.gocd.org/) and [Jenkins](https://jenkins.io/), writing plugins for both
+* Performacne testing with JMeter and Gatling
 * Working with MySQL, MongoDB
 * Gerrit
 * Docker
