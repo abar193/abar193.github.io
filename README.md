@@ -1,10 +1,31 @@
-# abar193.github.io
-Some webpages?
+# Current status
 
-### Testing how it works
+I'm a computer science student at [TU Berlin](www.tu-berlin.de/) and junior in "Service Automation & Continious Integration" team at [here.com](https://wego.here.com/)
 
-Lalalal ![img](/img/tulogo.png)
+# Languages and relevant technologies
 
-# La
-## La
-### La
+Java, JavaScript, Python, C, D
+
+* Java: nio, Spring
+* JavaScript: Angular.js, jQuery, highcharts, node.js
+* Python: flask
+* C, D: writing simple utility programs
+
+# Also have experience with
+
+* CI & CD Systems: Managing [Go](https://www.gocd.org/) and [Jenkins](https://jenkins.io/), writing plugins for both systems
+* Working with MySQL, MongoDB
+* Gerrit
+* Docker
+* Amazon AWS (ec2, DynamoDB, s3)
+* [Testdroid device cloud](https://cloud.testdroid.com/)
+
+# Hackatons
+
+Raisin hackaton 2016
+Here Mapathon 2015 ([photo - second from left](/img/here_mapathon.jpg))
+
+# Misc
+
+[Codewars profile](https://www.codewars.com/users/abar/)
+![Me](/img/cv_me_ph.jpg)
