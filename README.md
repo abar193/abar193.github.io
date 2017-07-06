@@ -24,7 +24,7 @@ Java, JavaScript, Python, C, D
 
 Raisin hackaton 2016
 
-Here Mapathon 2015 ([photo - second from left](/img/here_mapathon.jpg))
+Here Mapathon 2015 ([photo](/img/here_mapathon.jpg))
 
 # Misc
 
