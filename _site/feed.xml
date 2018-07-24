@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-24T03:03:43+02:00</updated><id>/</id><title type="html">mrabar.me</title><subtitle>This website originally served as a simple CV page, but sometimes  (typically: when I'm looking for a job) I'm writing some small blog posts related to my work. I hope they can be useful. </subtitle><entry><title type="html">Running manual Cucumber tests in Java</title><link href="/cucumber/2018/07/06/manual-cucumber.html" rel="alternate" type="text/html" title="Running manual Cucumber tests in Java" /><published>2018-07-06T00:00:00+02:00</published><updated>2018-07-06T00:00:00+02:00</updated><id>/cucumber/2018/07/06/manual-cucumber</id><content type="html" xml:base="/cucumber/2018/07/06/manual-cucumber.html">&lt;h1 id=&quot;running-manual-cucumber-tests-in-java&quot;&gt;Running manual Cucumber tests in Java&lt;/h1&gt;
+
+&lt;p&gt;In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.&lt;/p&gt;
+
+&lt;p&gt;There can be a number of ways for running manual Cucumber tests, for Ruby there’s even whole &lt;a href=&quot;https://cukehub.com/&quot;&gt;CukeHub&lt;/a&gt; to run and organize manual tests, but my research yielded no results on how to do manual testing in Java.&lt;/p&gt;
+
+&lt;p&gt;So, let’s implement it our self.&lt;/p&gt;
+
+&lt;h2 id=&quot;used-example&quot;&gt;Used example&lt;/h2&gt;
+
+&lt;p&gt;I picked some simple &lt;a href=&quot;https://github.com/pavradev/cucumber-demo&quot;&gt;demo for ATM&lt;/a&gt;. It had some outdated dependencies, but could serve as a good starting point.&lt;/p&gt;
+
+&lt;h2 id=&quot;defining-feature&quot;&gt;Defining feature&lt;/h2&gt;
+
+&lt;p&gt;Let’s take one of scenarios in feature file and add the desired functionality&lt;/p&gt;
+
+&lt;h6 id=&quot;srctestresourcesatmwithdrawfeature&quot;&gt;src/test/resources/atm/withdraw.feature&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    @manual
+    Scenario: Manual test 1
+        Given I have 50 SEK on my account
+        When I withdraw -1 SEK
+        Then I get 0 SEK from the ATM
+        And error message about incorrect amount is displayed
+        And evaluate manually
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users’ final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with ‘@manual’ tag.&lt;/p&gt;
+
+&lt;p&gt;Now to define this step&lt;/p&gt;
+
+&lt;h6 id=&quot;srctestjavaatmwithdrawstepsjava&quot;&gt;src/test/java/atm/WithdrawSteps.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nd&quot;&gt;@Then&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;^evaluate manually$&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;evaluate_manually&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Throwable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Mark feature as [p]assed or [f]ailed?&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Scanner&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextLine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;f&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Unknown input: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextLine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assertThat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;User marked test as failed&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Keep asking user to provide his assessment until he finally gives up and gives us what we want — either “p” or “f”. Then throw an exception if input isn’t “p”. With such simple code nothing can go wrong, right?&lt;/p&gt;
+
+&lt;p&gt;Wrong.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-with-maven&quot;&gt;Problem with Maven&lt;/h2&gt;
+
+&lt;p&gt;If you run your Cucumber tests with ‘mvn clean test’ (the way every Cucumber tutorial suggests) then you get but one problem.
+Maven blocks System input, preventing our Scanner from giving us any input – no matter how hard user smashes his “enter” key, our app just won’t receive a single line of input and will stay soft locked.&lt;/p&gt;
+
+&lt;p&gt;To work around this problem and get an easy-to-use solution we need 2 components. One is ‘exec-maven-plugin’, which allows us to execute custom java code bypassing mvn test restrictions, and second is &lt;a href=&quot;https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt&quot;&gt;cucumber.api.cli.Main usage info&lt;/a&gt;. All we need to do is add exec-maven-plugin, specify ‘mainClass’ as ‘cucumber.api.cli.Main’, define ‘classpathScope’ as ‘test’ and provide in arguments path to our feature and glue code files, and Cucumber plugins.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+
+&lt;h6 id=&quot;pomxml&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.codehaus.mojo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;exec-maven-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.6.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;java&lt;span class=&quot;nt&quot;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!--&amp;lt;phase&amp;gt;test&amp;lt;/phase&amp;gt;--&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;mainClass&amp;gt;&lt;/span&gt;cucumber.api.cli.Main&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mainClass&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;classpathScope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/classpathScope&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;arguments&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Specify the location of .feature files --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;classpath:atm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Specify the location of gluecode classes - in our case that's WithdrawSteps --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;--glue&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;classpath:atm&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Define plugins - first one ensures that console output is colorful,
+                    second one gives location for report file --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;--plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;pretty&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;-p&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;json:target/cucumber/manual.json&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Cucumber Tag expression.  --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;--tags&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;argument&amp;gt;&lt;/span&gt;@manual&lt;span class=&quot;nt&quot;&gt;&amp;lt;/argument&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/arguments&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I find it best to annotate Runner class to prevent manual tests from being executed with automated:&lt;/p&gt;
+
+&lt;h6 id=&quot;srctestjavaatmruncukestestjava&quot;&gt;src/test/java/atm/RunCukesTest.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cucumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@CucumberOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plugin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pretty&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;json:target/cucumber/cucumber.json&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;not @manual&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RunCukesTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;running&quot;&gt;Running&lt;/h2&gt;
+
+&lt;p&gt;Now we can run automated tests with &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test&lt;/code&gt; and manual with &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn test-compile exec:java&lt;/code&gt;. 
+With current configuration it will provide 2 json report files which can be merged in several ways, depending on how you store your results.&lt;/p&gt;
+
+&lt;p&gt;If you prefer to have results in html format, you can merge reports by copying one report.js file starting from second line and excluding last into penultimate line of another report.js.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Complete example for this post can be found &lt;a href=&quot;https://github.com/abar193/cucumber-demo&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="java" /><category term="cucumber" /><category term="manual" /><summary type="html">Running manual Cucumber tests in Java</summary></entry></feed>
