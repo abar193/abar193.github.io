@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mr. Abar</title>
+    <link>https://mrabar.me/</link>
+    <description>Recent content on Mr. Abar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="https://mrabar.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>https://mrabar.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mrabar.me/about/</guid>
+      <description>I&amp;rsquo;m a writing my Bachelor thesis at TU Berlin while working as a software engineer at Swedbank Latvia.
+Would like to think of myself that I take every task on my work seriously and prefer difficult assignments, requiring root cause analysis and deep system understanding to a quick &amp;ldquo;move that button and get a praise for it&amp;rdquo; tasks, but it&amp;rsquo;s better to ask my colleagues about it. Have interest in Quality Assurance and Machine Learning, on my current work I have to deal with lots of business-logic.</description>
+    </item>
+    
+    <item>
+      <title>Hackatons</title>
+      <link>https://mrabar.me/hackatons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mrabar.me/hackatons/</guid>
+      <description>Hackatons I&amp;rsquo;ve participated in so far. Won no awards, but had lots of fun nevertheless.
+ BeautyThon 2018 - Color Extracting App Contentful hackaton 2016 Raisin hackaton 2016 Here Mapathon 2015 (photo)  </description>
+    </item>
+    
+  </channel>
+</rss>
