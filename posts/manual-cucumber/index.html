@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Anton B.">
+    <meta name="description" content="Simplifying stuff for business needs">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Running manual Cucumber tests in Java"/>
+<meta name="twitter:description" content="How to run manual Cucumber tests in Java"/>
+
+    <meta property="og:title" content="Running manual Cucumber tests in Java" />
+<meta property="og:description" content="How to run manual Cucumber tests in Java" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mrabar.me/posts/manual-cucumber/" />
+<meta property="article:published_time" content="2018-07-06T10:00:00&#43;03:00"/>
+<meta property="article:modified_time" content="2018-07-06T10:00:00&#43;03:00"/>
+
+
+    
+      <base href="https://mrabar.me/posts/manual-cucumber/">
+    
+    <title>
+  Running manual Cucumber tests in Java · Mr. Abar
+</title>
+
+    
+      <link rel="canonical" href="https://mrabar.me/posts/manual-cucumber/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mrabar.me/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mrabar.me/css/custom.css">
+    
+
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.54.0" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mrabar.me/">
+      Mr. Abar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/pdf/anton_bardishev_cv.pdf">CV</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/hackatons/">Hackatons</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Running manual Cucumber tests in Java</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2018-07-06T10:00:00&#43;03:00'>
+                July 6, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="https://mrabar.me/categories/guides/">guides</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://mrabar.me/tags/java/">java</a>
+      <span class="separator">•</span>
+    <a href="https://mrabar.me/tags/cucumber/">cucumber</a>
+      <span class="separator">•</span>
+    <a href="https://mrabar.me/tags/manual/">manual</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+
+<p>In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.</p>
+
+<p>There can be a number of ways for running manual Cucumber tests, for Ruby there&rsquo;s even whole <a href="https://cukehub.com/">CukeHub</a> to run and organize manual tests, but my research yielded no results on how to do manual testing in Java.</p>
+
+<p>So, let&rsquo;s implement it our self.</p>
+
+<h2 id="used-example">Used example</h2>
+
+<p>I picked some simple <a href="https://github.com/pavradev/cucumber-demo">demo for ATM</a>. It had some outdated dependencies, but could serve as a good starting point.</p>
+
+<h2 id="defining-feature">Defining feature</h2>
+
+<p>Let&rsquo;s take one of scenarios in feature file and add the desired functionality</p>
+
+<h6 id="src-test-resources-atm-withdraw-feature">src/test/resources/atm/withdraw.feature</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    @manual
+    Scenario: Manual test 1
+        Given I have 50 SEK on my account
+        When I withdraw -1 SEK
+        Then I get 0 SEK from the ATM
+        And error message about incorrect amount is displayed
+        And evaluate manually</pre></div>
+<p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users&rsquo; final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
+
+<p>Now to define this step</p>
+
+<h6 id="src-test-java-atm-withdrawsteps-java">src/test/java/atm/WithdrawSteps.java</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
+    <span style="font-weight:bold">public</span> <span style="">void</span> evaluate_manually() <span style="font-weight:bold">throws</span> Throwable {
+        System.out.println(<span style="font-style:italic">&#34;Mark feature as [p]assed or [f]ailed?&#34;</span>);
+        Scanner sc = <span style="font-weight:bold">new</span> Scanner(System.in);
+        String s = sc.nextLine();
+        <span style="font-weight:bold">while</span> (!s.equals(<span style="font-style:italic">&#34;f&#34;</span>) &amp;&amp; !s.equals(<span style="font-style:italic">&#34;p&#34;</span>)) {
+            System.out.println(<span style="font-style:italic">&#34;Unknown input: &#34;</span> + s);
+            s = sc.nextLine();
+        }
+        assertThat(<span style="font-style:italic">&#34;User marked test as failed&#34;</span>, s, is(<span style="font-style:italic">&#34;p&#34;</span>));
+    }</code></pre></div>
+<p>Keep asking user to provide his assessment until he finally gives up and gives us what we want — either &ldquo;p&rdquo; or &ldquo;f&rdquo;. Then throw an exception if input isn&rsquo;t &ldquo;p&rdquo;. With such simple code nothing can go wrong, right?</p>
+
+<p>Wrong.</p>
+
+<h2 id="problem-with-maven">Problem with Maven</h2>
+
+<p>If you run your Cucumber tests with &lsquo;mvn clean test&rsquo; (the way every Cucumber tutorial suggests) then you get but one problem.
+Maven blocks System input, preventing our Scanner from giving us any input &ndash; no matter how hard user smashes his &ldquo;enter&rdquo; key, our app just won&rsquo;t receive a single line of input and will stay soft locked.</p>
+
+<p>To work around this problem and get an easy-to-use solution we need 2 components. One is &lsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &lsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
+
+<h2 id="result">Result</h2>
+
+<h6 id="pom-xml">pom.xml</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
+        <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
+        <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
+        <span style="font-weight:bold">&lt;executions&gt;</span>
+            <span style="font-weight:bold">&lt;execution&gt;</span>
+                <span style="font-weight:bold">&lt;goals&gt;</span>
+                    <span style="font-weight:bold">&lt;goal&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
+                <span style="font-weight:bold">&lt;/goals&gt;</span>
+                <span style="font-style:italic">&lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&gt;</span>
+                <span style="font-style:italic">&lt;!--&lt;phase&gt;test&lt;/phase&gt;--&gt;</span>
+            <span style="font-weight:bold">&lt;/execution&gt;</span>
+        <span style="font-weight:bold">&lt;/executions&gt;</span>
+        <span style="font-weight:bold">&lt;configuration&gt;</span>
+            <span style="font-weight:bold">&lt;mainClass&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
+            <span style="font-weight:bold">&lt;classpathScope&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
+            <span style="font-weight:bold">&lt;arguments&gt;</span>
+                <span style="font-style:italic">&lt;!-- Specify the location of .feature files --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Specify the location of gluecode classes - in our case that&#39;s WithdrawSteps --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Define plugins - first one ensures that console output is colorful,
+</span><span style="font-style:italic">                    second one gives location for report file --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Cucumber Tag expression.  --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
+            <span style="font-weight:bold">&lt;/arguments&gt;</span>
+        <span style="font-weight:bold">&lt;/configuration&gt;</span>
+    <span style="font-weight:bold">&lt;/plugin&gt;</span> </code></pre></div>
+<p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
+
+<h6 id="src-test-java-atm-runcukestest-java">src/test/java/atm/RunCukesTest.java</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@RunWith(Cucumber.class)
+@CucumberOptions(plugin = {<span style="font-style:italic">&#34;pretty&#34;</span>, <span style="font-style:italic">&#34;json:target/cucumber/cucumber.json&#34;</span>},
+        tags = {<span style="font-style:italic">&#34;not @manual&#34;</span>})
+<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">RunCukesTest</span> {
+}</code></pre></div>
+<h2 id="running">Running</h2>
+
+<p>Now we can run automated tests with <code>mvn test</code> and manual with <code>mvn test-compile exec:java</code>.
+With current configuration it will provide 2 json report files which can be merged in several ways, depending on how you store your results.</p>
+
+<p>If you prefer to have results in html format, you can merge reports by copying one report.js file starting from second line and excluding last into penultimate line of another report.js.</p>
+
+<h2 id="example">Example</h2>
+
+<p>Complete example for this post can be found <a href="https://github.com/abar193/cucumber-demo">here</a>.</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Simplifying stuff for business needs</p>
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

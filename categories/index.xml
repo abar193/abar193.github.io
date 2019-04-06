@@ -10,5 +10,14 @@
 	<atom:link href="https://mrabar.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Guides</title>
+      <link>https://mrabar.me/categories/guides/</link>
+      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
+      
+      <guid>https://mrabar.me/categories/guides/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

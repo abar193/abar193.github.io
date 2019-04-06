@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manual on Mr. Abar</title>
+    <link>https://mrabar.me/tags/manual/</link>
+    <description>Recent content in Manual on Mr. Abar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate>
+    
+	<atom:link href="https://mrabar.me/tags/manual/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Running manual Cucumber tests in Java</title>
+      <link>https://mrabar.me/posts/manual-cucumber/</link>
+      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
+      
+      <guid>https://mrabar.me/posts/manual-cucumber/</guid>
+      <description>In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.
+There can be a number of ways for running manual Cucumber tests, for Ruby there&amp;rsquo;s even whole CukeHub to run and organize manual tests, but my research yielded no results on how to do manual testing in Java.
+So, let&amp;rsquo;s implement it our self.</description>
+    </item>
+    
+  </channel>
+</rss>

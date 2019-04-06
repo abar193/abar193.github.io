@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate>
     
 	<atom:link href="https://mrabar.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cucumber</title>
+      <link>https://mrabar.me/tags/cucumber/</link>
+      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
+      
+      <guid>https://mrabar.me/tags/cucumber/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://mrabar.me/tags/java/</link>
+      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
+      
+      <guid>https://mrabar.me/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Manual</title>
+      <link>https://mrabar.me/tags/manual/</link>
+      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
+      
+      <guid>https://mrabar.me/tags/manual/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
