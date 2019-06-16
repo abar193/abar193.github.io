@@ -3,43 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mrabar.me/posts/manual-cucumber/</loc>
-    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/about/</loc>
-  </url>
-  
-  <url>
     <loc>https://mrabar.me/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/tags/cucumber/</loc>
-    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/categories/guides/</loc>
-    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/hackatons/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/tags/java/</loc>
-    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/tags/manual/</loc>
     <lastmod>2018-07-06T10:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
@@ -57,9 +21,46 @@
   </url>
   
   <url>
+    <loc>https://mrabar.me/posts/manual-cucumber/</loc>
+    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mrabar.me/tags/</loc>
     <lastmod>2018-07-06T10:00:00+03:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/tags/cucumber/</loc>
+    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/categories/guides/</loc>
+    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/tags/java/</loc>
+    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/tags/manual/</loc>
+    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/events/</loc>
   </url>
   
 </urlset>

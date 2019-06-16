@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cucumber on Mr. Abar</title>
+    <title>cucumber on Mr. Abar</title>
     <link>https://mrabar.me/tags/cucumber/</link>
-    <description>Recent content in Cucumber on Mr. Abar</description>
+    <description>Recent content in cucumber on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate>

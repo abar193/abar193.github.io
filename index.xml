@@ -33,13 +33,15 @@ Would like to think of myself that I take every task on my work seriously and pr
     </item>
     
     <item>
-      <title>Hackatons</title>
-      <link>https://mrabar.me/hackatons/</link>
+      <title>Events</title>
+      <link>https://mrabar.me/events/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://mrabar.me/hackatons/</guid>
-      <description>Hackatons I&amp;rsquo;ve participated in so far. Won no awards, but had lots of fun nevertheless.
- BeautyThon 2018 - Color Extracting App Contentful hackaton 2016 Raisin hackaton 2016 Here Mapathon 2015 (photo)  </description>
+      <guid>https://mrabar.me/events/</guid>
+      <description>Nordic Testing Days 2019 Full-day tutorial: Efficient Selenium Infrastructure with Selenoid.
+The most insightful tutorial for me. Was lead by a really cool specialist, who works daily with Highload in testing infrastructure. Unfortunately, the tutorial went slowly and didn&amp;rsquo;t cover all the topics presenter hoped to cover, because of the low preparation level from participants.
+Honorable mentions:
+Resilience Testing: Let the chaos begin! Presenters went over basics of Gattling and introduced a Chaos Monkey.</description>
     </item>
     
   </channel>
