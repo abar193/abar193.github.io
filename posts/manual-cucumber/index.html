@@ -17,8 +17,8 @@
 <meta property="og:description" content="How to run manual Cucumber tests in Java" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/manual-cucumber/" />
-<meta property="article:published_time" content="2018-07-06T10:00:00&#43;03:00"/>
-<meta property="article:modified_time" content="2018-07-06T10:00:00&#43;03:00"/>
+<meta property="article:published_time" content="2018-07-06T10:00:00+03:00" />
+<meta property="article:modified_time" content="2018-07-06T10:00:00+03:00" />
 
 
     
@@ -53,7 +53,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.63.2" />
   </head>
 
   <body class=" ">
@@ -128,35 +128,24 @@
       </header>
 
       <div>
-        
-
-<p>In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.</p>
-
+        <p>In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.</p>
 <p>There can be a number of ways for running manual Cucumber tests, for Ruby there&rsquo;s even whole <a href="https://cukehub.com/">CukeHub</a> to run and organize manual tests, but my research yielded no results on how to do manual testing in Java.</p>
-
 <p>So, let&rsquo;s implement it our self.</p>
-
 <h2 id="used-example">Used example</h2>
-
 <p>I picked some simple <a href="https://github.com/pavradev/cucumber-demo">demo for ATM</a>. It had some outdated dependencies, but could serve as a good starting point.</p>
-
 <h2 id="defining-feature">Defining feature</h2>
-
 <p>Let&rsquo;s take one of scenarios in feature file and add the desired functionality</p>
-
-<h6 id="src-test-resources-atm-withdraw-feature">src/test/resources/atm/withdraw.feature</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    @manual
+<h6 id="srctestresourcesatmwithdrawfeature">src/test/resources/atm/withdraw.feature</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    @manual
     Scenario: Manual test 1
         Given I have 50 SEK on my account
         When I withdraw -1 SEK
         Then I get 0 SEK from the ATM
         And error message about incorrect amount is displayed
-        And evaluate manually</pre></div>
-<p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users&rsquo; final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
-
+        And evaluate manually
+</code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users&rsquo; final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
 <p>Now to define this step</p>
-
-<h6 id="src-test-java-atm-withdrawsteps-java">src/test/java/atm/WithdrawSteps.java</h6>
+<h6 id="srctestjavaatmwithdrawstepsjava">src/test/java/atm/WithdrawSteps.java</h6>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
     <span style="font-weight:bold">public</span> <span style="">void</span> evaluate_manually() <span style="font-weight:bold">throws</span> Throwable {
         System.out.println(<span style="font-style:italic">&#34;Mark feature as [p]assed or [f]ailed?&#34;</span>);
@@ -167,72 +156,61 @@
             s = sc.nextLine();
         }
         assertThat(<span style="font-style:italic">&#34;User marked test as failed&#34;</span>, s, is(<span style="font-style:italic">&#34;p&#34;</span>));
-    }</code></pre></div>
-<p>Keep asking user to provide his assessment until he finally gives up and gives us what we want — either &ldquo;p&rdquo; or &ldquo;f&rdquo;. Then throw an exception if input isn&rsquo;t &ldquo;p&rdquo;. With such simple code nothing can go wrong, right?</p>
-
+    }
+</code></pre></div><p>Keep asking user to provide his assessment until he finally gives up and gives us what we want — either &ldquo;p&rdquo; or &ldquo;f&rdquo;. Then throw an exception if input isn&rsquo;t &ldquo;p&rdquo;. With such simple code nothing can go wrong, right?</p>
 <p>Wrong.</p>
-
 <h2 id="problem-with-maven">Problem with Maven</h2>
-
 <p>If you run your Cucumber tests with &lsquo;mvn clean test&rsquo; (the way every Cucumber tutorial suggests) then you get but one problem.
 Maven blocks System input, preventing our Scanner from giving us any input &ndash; no matter how hard user smashes his &ldquo;enter&rdquo; key, our app just won&rsquo;t receive a single line of input and will stay soft locked.</p>
-
 <p>To work around this problem and get an easy-to-use solution we need 2 components. One is &lsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &lsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
-
 <h2 id="result">Result</h2>
-
-<h6 id="pom-xml">pom.xml</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
-        <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
-        <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-        <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
-        <span style="font-weight:bold">&lt;executions&gt;</span>
-            <span style="font-weight:bold">&lt;execution&gt;</span>
-                <span style="font-weight:bold">&lt;goals&gt;</span>
-                    <span style="font-weight:bold">&lt;goal&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
+<h6 id="pomxml">pom.xml</h6>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin</span><span style="font-weight:bold">&gt;</span>
+        <span style="font-weight:bold">&lt;groupId</span><span style="font-weight:bold">&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
+        <span style="font-weight:bold">&lt;artifactId</span><span style="font-weight:bold">&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="font-weight:bold">&lt;version</span><span style="font-weight:bold">&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
+        <span style="font-weight:bold">&lt;executions</span><span style="font-weight:bold">&gt;</span>
+            <span style="font-weight:bold">&lt;execution</span><span style="font-weight:bold">&gt;</span>
+                <span style="font-weight:bold">&lt;goals</span><span style="font-weight:bold">&gt;</span>
+                    <span style="font-weight:bold">&lt;goal</span><span style="font-weight:bold">&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
                 <span style="font-weight:bold">&lt;/goals&gt;</span>
-                <span style="font-style:italic">&lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&gt;</span>
-                <span style="font-style:italic">&lt;!--&lt;phase&gt;test&lt;/phase&gt;--&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Uncomment the following line if you want to run manual tests with mvn test command </span><span style="font-style:italic">--&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic">&lt;phase&gt;test&lt;/phase&gt;</span><span style="font-style:italic">--&gt;</span>
             <span style="font-weight:bold">&lt;/execution&gt;</span>
         <span style="font-weight:bold">&lt;/executions&gt;</span>
-        <span style="font-weight:bold">&lt;configuration&gt;</span>
-            <span style="font-weight:bold">&lt;mainClass&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
-            <span style="font-weight:bold">&lt;classpathScope&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
-            <span style="font-weight:bold">&lt;arguments&gt;</span>
-                <span style="font-style:italic">&lt;!-- Specify the location of .feature files --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Specify the location of gluecode classes - in our case that&#39;s WithdrawSteps --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Define plugins - first one ensures that console output is colorful,
-</span><span style="font-style:italic">                    second one gives location for report file --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Cucumber Tag expression.  --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
+        <span style="font-weight:bold">&lt;configuration</span><span style="font-weight:bold">&gt;</span>
+            <span style="font-weight:bold">&lt;mainClass</span><span style="font-weight:bold">&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
+            <span style="font-weight:bold">&lt;classpathScope</span><span style="font-weight:bold">&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
+            <span style="font-weight:bold">&lt;arguments</span><span style="font-weight:bold">&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Specify the location of .feature files </span><span style="font-style:italic">--&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Specify the location of gluecode classes </span><span style="font-style:italic">-</span><span style="font-style:italic"> in our case that&#39;s WithdrawSteps </span><span style="font-style:italic">--&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Define plugins </span><span style="font-style:italic">-</span><span style="font-style:italic"> first one ensures that console output is colorful,
+</span><span style="font-style:italic">                    second one gives location for report file </span><span style="font-style:italic">--&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Cucumber Tag expression.  </span><span style="font-style:italic">--&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
             <span style="font-weight:bold">&lt;/arguments&gt;</span>
         <span style="font-weight:bold">&lt;/configuration&gt;</span>
-    <span style="font-weight:bold">&lt;/plugin&gt;</span> </code></pre></div>
-<p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
-
-<h6 id="src-test-java-atm-runcukestest-java">src/test/java/atm/RunCukesTest.java</h6>
+    <span style="font-weight:bold">&lt;/plugin&gt;</span> 
+</code></pre></div><p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
+<h6 id="srctestjavaatmruncukestestjava">src/test/java/atm/RunCukesTest.java</h6>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@RunWith(Cucumber.class)
 @CucumberOptions(plugin = {<span style="font-style:italic">&#34;pretty&#34;</span>, <span style="font-style:italic">&#34;json:target/cucumber/cucumber.json&#34;</span>},
         tags = {<span style="font-style:italic">&#34;not @manual&#34;</span>})
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">RunCukesTest</span> {
-}</code></pre></div>
-<h2 id="running">Running</h2>
-
+}
+</code></pre></div><h2 id="running">Running</h2>
 <p>Now we can run automated tests with <code>mvn test</code> and manual with <code>mvn test-compile exec:java</code>.
 With current configuration it will provide 2 json report files which can be merged in several ways, depending on how you store your results.</p>
-
 <p>If you prefer to have results in html format, you can merge reports by copying one report.js file starting from second line and excluding last into penultimate line of another report.js.</p>
-
 <h2 id="example">Example</h2>
-
 <p>Complete example for this post can be found <a href="https://github.com/abar193/cucumber-demo">here</a>.</p>
 
       </div>
@@ -255,7 +233,7 @@ With current configuration it will provide 2 json report files which can be merg
     
       <p>Simplifying stuff for business needs</p>
     
-     © 2019
+     © 2020
     
        · 
       Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
