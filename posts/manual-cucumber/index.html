@@ -53,7 +53,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.63.2" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class=" ">
@@ -165,37 +165,37 @@ Maven blocks System input, preventing our Scanner from giving us any input &ndas
 <p>To work around this problem and get an easy-to-use solution we need 2 components. One is &lsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &lsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
 <h2 id="result">Result</h2>
 <h6 id="pomxml">pom.xml</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin</span><span style="font-weight:bold">&gt;</span>
-        <span style="font-weight:bold">&lt;groupId</span><span style="font-weight:bold">&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
-        <span style="font-weight:bold">&lt;artifactId</span><span style="font-weight:bold">&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-        <span style="font-weight:bold">&lt;version</span><span style="font-weight:bold">&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
-        <span style="font-weight:bold">&lt;executions</span><span style="font-weight:bold">&gt;</span>
-            <span style="font-weight:bold">&lt;execution</span><span style="font-weight:bold">&gt;</span>
-                <span style="font-weight:bold">&lt;goals</span><span style="font-weight:bold">&gt;</span>
-                    <span style="font-weight:bold">&lt;goal</span><span style="font-weight:bold">&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
+        <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
+        <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
+        <span style="font-weight:bold">&lt;executions&gt;</span>
+            <span style="font-weight:bold">&lt;execution&gt;</span>
+                <span style="font-weight:bold">&lt;goals&gt;</span>
+                    <span style="font-weight:bold">&lt;goal&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
                 <span style="font-weight:bold">&lt;/goals&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Uncomment the following line if you want to run manual tests with mvn test command </span><span style="font-style:italic">--&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic">&lt;phase&gt;test&lt;/phase&gt;</span><span style="font-style:italic">--&gt;</span>
+                <span style="font-style:italic">&lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&gt;</span>
+                <span style="font-style:italic">&lt;!--&lt;phase&gt;test&lt;/phase&gt;--&gt;</span>
             <span style="font-weight:bold">&lt;/execution&gt;</span>
         <span style="font-weight:bold">&lt;/executions&gt;</span>
-        <span style="font-weight:bold">&lt;configuration</span><span style="font-weight:bold">&gt;</span>
-            <span style="font-weight:bold">&lt;mainClass</span><span style="font-weight:bold">&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
-            <span style="font-weight:bold">&lt;classpathScope</span><span style="font-weight:bold">&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
-            <span style="font-weight:bold">&lt;arguments</span><span style="font-weight:bold">&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Specify the location of .feature files </span><span style="font-style:italic">--&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Specify the location of gluecode classes </span><span style="font-style:italic">-</span><span style="font-style:italic"> in our case that&#39;s WithdrawSteps </span><span style="font-style:italic">--&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Define plugins </span><span style="font-style:italic">-</span><span style="font-style:italic"> first one ensures that console output is colorful,
-</span><span style="font-style:italic">                    second one gives location for report file </span><span style="font-style:italic">--&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!--</span><span style="font-style:italic"> Cucumber Tag expression.  </span><span style="font-style:italic">--&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument</span><span style="font-weight:bold">&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
+        <span style="font-weight:bold">&lt;configuration&gt;</span>
+            <span style="font-weight:bold">&lt;mainClass&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
+            <span style="font-weight:bold">&lt;classpathScope&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
+            <span style="font-weight:bold">&lt;arguments&gt;</span>
+                <span style="font-style:italic">&lt;!-- Specify the location of .feature files --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Specify the location of gluecode classes - in our case that&#39;s WithdrawSteps --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Define plugins - first one ensures that console output is colorful,
+</span><span style="font-style:italic">                    second one gives location for report file --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-style:italic">&lt;!-- Cucumber Tag expression.  --&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
+                <span style="font-weight:bold">&lt;argument&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
             <span style="font-weight:bold">&lt;/arguments&gt;</span>
         <span style="font-weight:bold">&lt;/configuration&gt;</span>
     <span style="font-weight:bold">&lt;/plugin&gt;</span> 
