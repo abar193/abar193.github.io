@@ -53,7 +53,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.78.1" />
   </head>
 
   <body class=" ">
@@ -86,6 +86,24 @@
         
       
       
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="https://mrabar.me/ru/">RU</a>
+            </li>
+          
+        
+      
     </ul>
   </section>
 </nav>
@@ -98,13 +116,14 @@
       <header>
         <div class="post-title">
           <h1 class="title">Running manual Cucumber tests in Java</h1>
+          <h4 style="margin: 1rem 0;">How to run manual Cucumber tests in Java</h2>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
               <i class="fas fa-calendar"></i>
               <time datetime='2018-07-06T10:00:00&#43;03:00'>
-                July 6, 2018
+                6 July, 2018
               </time>
             </span>
             <span class="reading-time">
@@ -143,7 +162,7 @@
         Then I get 0 SEK from the ATM
         And error message about incorrect amount is displayed
         And evaluate manually
-</code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users&rsquo; final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
+</code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users' final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
 <p>Now to define this step</p>
 <h6 id="srctestjavaatmwithdrawstepsjava">src/test/java/atm/WithdrawSteps.java</h6>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)

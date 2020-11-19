@@ -6,11 +6,7 @@
     <description>Recent content on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate>
-    
-	<atom:link href="https://mrabar.me/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate><atom:link href="https://mrabar.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running manual Cucumber tests in Java</title>
       <link>https://mrabar.me/posts/manual-cucumber/</link>
@@ -28,7 +24,7 @@ So, let&amp;rsquo;s implement it our self.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://mrabar.me/about/</guid>
-      <description>I&amp;rsquo;m writing my Bachelor thesis at TU Berlin while working as a software engineer at Swedbank Latvia.
+      <description>Have a Bachelor degree from TU Berlin, now working as a software engineer and scrum master at Swedbank Latvia.
 I would like to think of myself that I take every task on my work seriously and prefer difficult assignments, requiring root cause analysis and deep system understanding to a quick &amp;ldquo;move that button and get praise for it&amp;rdquo; tasks, but it&amp;rsquo;s better to ask my colleagues about it. Have an interest in Quality Assurance and Machine Learning, on my current work I have to deal with lots of domain-logic heavy applications.</description>
     </item>
     

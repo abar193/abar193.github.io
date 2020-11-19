@@ -6,11 +6,7 @@
     <description>Recent content in manual on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate>
-    
-	<atom:link href="https://mrabar.me/tags/manual/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Jul 2018 10:00:00 +0300</lastBuildDate><atom:link href="https://mrabar.me/tags/manual/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running manual Cucumber tests in Java</title>
       <link>https://mrabar.me/posts/manual-cucumber/</link>
