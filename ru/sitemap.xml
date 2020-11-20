@@ -3,6 +3,156 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mrabar.me/ru/tags/backend/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/backend/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/backend/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/categories/blog/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/blog/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/categories/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/database/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/database/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/learning-path/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/learning-path/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/learning-path/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/linux/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/linux/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/linux/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/posts/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/posts/certifications/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/certifications/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/certifications/"
+                />
+  </url>
+  
+  <url>
     <loc>https://mrabar.me/ru/about/</loc>
     <xhtml:link
                 rel="alternate"
@@ -17,20 +167,6 @@
   </url>
   
   <url>
-    <loc>https://mrabar.me/ru/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/categories/"
-                />
-  </url>
-  
-  <url>
     <loc>https://mrabar.me/ru/events/</loc>
     <xhtml:link
                 rel="alternate"
@@ -41,34 +177,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://mrabar.me/ru/events/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/"
                 />
   </url>
   

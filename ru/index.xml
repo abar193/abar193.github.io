@@ -5,7 +5,17 @@
     <link>https://mrabar.me/ru/</link>
     <description>Recent content on Mr. Abar (ru)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://mrabar.me/ru/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Wed, 04 Nov 2020 22:48:46 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Сертификации</title>
+      <link>https://mrabar.me/ru/posts/certifications/</link>
+      <pubDate>Wed, 04 Nov 2020 22:48:46 +0200</pubDate>
+      
+      <guid>https://mrabar.me/ru/posts/certifications/</guid>
+      <description>IT - это та сфера, где учиться нужно постоянно. У меня уже, вроде как, есть какой-никакой опыт, но мне постоянно кажется что нужно знать и уметь больше. Последнее время — это выливается уже в совсем какое-то нездоровое состояние, когда я пытаюсь одновременно делать - и учить, всё подряд, и не успеваю при этом ничего. Что бы успокоиться и упорядочить свои мысли — хочу попробовать посмотреть, какие навыки вообще сейчас котируются, и смогу ли я получить хоть какой-то сертификат.</description>
+    </item>
+    
     <item>
       <title>About Me</title>
       <link>https://mrabar.me/ru/about/</link>
