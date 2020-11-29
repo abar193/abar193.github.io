@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 22:48:46 +0200</lastBuildDate><atom:link href="https://mrabar.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Nov 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java</title>
+      <link>https://mrabar.me/tags/java/</link>
+      <pubDate>Sun, 29 Nov 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microservices</title>
+      <link>https://mrabar.me/tags/microservices/</link>
+      <pubDate>Sun, 29 Nov 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/tags/microservices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>https://mrabar.me/tags/spring/</link>
+      <pubDate>Sun, 29 Nov 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/tags/spring/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>backend</title>
       <link>https://mrabar.me/tags/backend/</link>
@@ -49,15 +76,6 @@
       <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
       
       <guid>https://mrabar.me/tags/cucumber/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>https://mrabar.me/tags/java/</link>
-      <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
-      
-      <guid>https://mrabar.me/tags/java/</guid>
       <description></description>
     </item>
     

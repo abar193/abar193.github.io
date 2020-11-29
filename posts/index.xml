@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 22:48:46 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Nov 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Joker 2020. Days 1 &amp; 2.</title>
+      <link>https://mrabar.me/posts/joker-2020-1/</link>
+      <pubDate>Sun, 29 Nov 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/posts/joker-2020-1/</guid>
+      <description>Spring: Your next Java microframework Presented by Alexey Nesterov. First time presented in the Russian language.
+Using Spring as micro-framework. Microframework: often is specifically designed for building the APIs for another service or application. In microframeworks, people typically seek ease of development, speed, simplicity, cloud-readiness (cloud-native).
+Spring easy.
+(&amp;hellip;to develop)
+Autoconfigs, profiles, etc. No Livereload? There is livereload for Spring! Spring Boot Dev Tools: livereload, works even remotely + tons of other features.</description>
+    </item>
+    
     <item>
       <title>Certifications</title>
       <link>https://mrabar.me/posts/certifications/</link>
