@@ -6,7 +6,20 @@
     <description>Recent content in conferences on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 29 Nov 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/categories/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Dec 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/categories/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Joker 2020. Days 3 &amp; 4.</title>
+      <link>https://mrabar.me/posts/joker-2020-2/</link>
+      <pubDate>Sun, 06 Dec 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/posts/joker-2020-2/</guid>
+      <description>Hidden pearls for high-performance-persistence in Java Presented by Sven Ruppert - DevSecOps from JFrog.
+Presentation was pre-recorder, but the questions were live.
+Why and what: Inside of JVM, for different areas - from embedded, to terabyte-big document storage systems, but scaling and tuning ways of storing data.
+You can&amp;rsquo;t get rid of the persistence layer, but there are three solutions as the beginning of making optimization.
+JOOQ: a tool for mapping SQL to Java DSL - SQL style, generated from the DB schema.</description>
+    </item>
+    
     <item>
       <title>Joker 2020. Days 1 &amp; 2.</title>
       <link>https://mrabar.me/posts/joker-2020-1/</link>
