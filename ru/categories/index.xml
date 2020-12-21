@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Mr. Abar (ru)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 22:48:46 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Dec 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>conferences</title>
+      <link>https://mrabar.me/ru/categories/conferences/</link>
+      <pubDate>Mon, 21 Dec 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/ru/categories/conferences/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>blog</title>
       <link>https://mrabar.me/ru/categories/blog/</link>

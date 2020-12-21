@@ -6,7 +6,17 @@
     <description>Recent content on Mr. Abar (ru)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2020 22:48:46 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Dec 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Joker 2020.</title>
+      <link>https://mrabar.me/ru/posts/joker-2020/</link>
+      <pubDate>Mon, 21 Dec 2020 16:41:04 +0200</pubDate>
+      
+      <guid>https://mrabar.me/ru/posts/joker-2020/</guid>
+      <description>Это - перевод моих англоязычных заметок с этого же сайта, который я выложил на Хабр. Мой первый пост туда зашел нормально, я получил пару замечаний, даже от оригинального автора одного из докладов, откорректировал пост с учётом замечаний. Это - копия финальной версии, на случай если Хабр упадёт, а мой блог - нет.
+ Вот и прошла конференция Joker 2020 для Java senior-ов. Для меня эта конференция стала особенной сразу по нескольким причинам - это первая &amp;ldquo;серьёзная&amp;rdquo; техническая конференция на которую я попал (в качестве зрителя), это моя первая онлайн-конференция, и это первая конференция, билет на которую я купил сам, а не за счёт работодателя.</description>
+    </item>
+    
     <item>
       <title>Сертификации</title>
       <link>https://mrabar.me/ru/posts/certifications/</link>

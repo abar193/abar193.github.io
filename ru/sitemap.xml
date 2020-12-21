@@ -3,6 +3,131 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mrabar.me/ru/categories/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/categories/conferences/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/conferences/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/conferences/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/java/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/java/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/java/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/posts/joker-2020/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/microservices/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/microservices/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/microservices/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/posts/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/spring/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/spring/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/spring/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://mrabar.me/ru/tags/</loc>
+    <lastmod>2020-12-21T16:41:04+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>https://mrabar.me/ru/tags/backend/</loc>
     <lastmod>2020-11-04T22:48:46+02:00</lastmod>
     <xhtml:link
@@ -29,21 +154,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://mrabar.me/ru/categories/blog/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/categories/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/categories/"
                 />
   </url>
   
@@ -89,51 +199,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://mrabar.me/ru/tags/linux/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/posts/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/posts/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://mrabar.me/ru/tags/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/"
                 />
   </url>
   
