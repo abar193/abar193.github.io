@@ -6,13 +6,112 @@
     <description>Recent content in Tags on Mr. Abar (ru)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 21 Dec 2020 16:41:04 +0200</lastBuildDate><atom:link href="https://mrabar.me/ru/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Apr 2021 23:14:53 +0300</lastBuildDate><atom:link href="https://mrabar.me/ru/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>graalvm</title>
+      <link>https://mrabar.me/ru/tags/graalvm/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/graalvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helidon</title>
+      <link>https://mrabar.me/ru/tags/helidon/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/helidon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jakartaee</title>
+      <link>https://mrabar.me/ru/tags/jakartaee/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/jakartaee/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>java</title>
       <link>https://mrabar.me/ru/tags/java/</link>
-      <pubDate>Mon, 21 Dec 2020 16:41:04 +0200</pubDate>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
       
       <guid>https://mrabar.me/ru/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jni</title>
+      <link>https://mrabar.me/ru/tags/jni/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/jni/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jvm</title>
+      <link>https://mrabar.me/ru/tags/jvm/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kotlin</title>
+      <link>https://mrabar.me/ru/tags/kotlin/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>micronaut</title>
+      <link>https://mrabar.me/ru/tags/micronaut/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/micronaut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microprofile</title>
+      <link>https://mrabar.me/ru/tags/microprofile/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/microprofile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openshift</title>
+      <link>https://mrabar.me/ru/tags/openshift/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>https://mrabar.me/ru/tags/performance/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>https://mrabar.me/ru/tags/spring/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/tags/spring/</guid>
       <description></description>
     </item>
     
@@ -22,15 +121,6 @@
       <pubDate>Mon, 21 Dec 2020 16:41:04 +0200</pubDate>
       
       <guid>https://mrabar.me/ru/tags/microservices/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring</title>
-      <link>https://mrabar.me/ru/tags/spring/</link>
-      <pubDate>Mon, 21 Dec 2020 16:41:04 +0200</pubDate>
-      
-      <guid>https://mrabar.me/ru/tags/spring/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>openshift on Mr. Abar (ru)</title>
+    <link>https://mrabar.me/ru/tags/openshift/</link>
+    <description>Recent content in openshift on Mr. Abar (ru)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 25 Apr 2021 23:14:53 +0300</lastBuildDate><atom:link href="https://mrabar.me/ru/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPoint и Joker</title>
+      <link>https://mrabar.me/ru/posts/habr02/</link>
+      <pubDate>Sun, 25 Apr 2021 23:14:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/ru/posts/habr02/</guid>
+      <description>Вступление Статья была написана в кооперации с jugru.org и опубликована на хабре. Копирую статью сюда, что бы держать все свои тексты в одном месте.
+Ушедший 2020 год, как мы все знаем, выдался тихим и спокойным, даже вспомнить нечего. Дом-работа, тихие будни, уютные посиделки — ничего интересного. Разбавить скуку нам помогли онлайн-конференции, и я как джавист поучаствовал в JPoint и Joker.
+Ранее уже публиковал свои конспекты некоторых докладов Joker. Однако теперь были открыты все видеозаписи 2020-го, так что любой читатель может лично увидеть доклады, а организаторы позвали меня написать, какие из них привлекли меня больше всего.</description>
+    </item>
+    
+  </channel>
+</rss>
