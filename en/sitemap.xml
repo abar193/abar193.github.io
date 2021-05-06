@@ -2,6 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mrabar.me/posts/microstream_hackaton/</loc>
+    <lastmod>2021-05-06T21:43:51+03:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/</loc>
+    <lastmod>2021-05-06T21:43:51+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/posts/</loc>
+    <lastmod>2021-05-06T21:43:51+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+  </url><url>
     <loc>https://mrabar.me/categories/</loc>
     <lastmod>2021-05-04T21:37:53+03:00</lastmod>
     <xhtml:link
@@ -13,19 +42,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://mrabar.me/categories/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/</loc>
-    <lastmod>2021-05-04T21:37:53+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
                 />
   </url><url>
     <loc>https://mrabar.me/tags/random/</loc>
@@ -65,19 +81,6 @@
   </url><url>
     <loc>https://mrabar.me/posts/jpoint-2020/</loc>
     <lastmod>2021-01-30T17:49:51+02:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/posts/</loc>
-    <lastmod>2021-01-30T17:49:51+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/posts/"
-                />
   </url><url>
     <loc>https://mrabar.me/tags/java/</loc>
     <lastmod>2020-12-06T16:41:04+02:00</lastmod>
