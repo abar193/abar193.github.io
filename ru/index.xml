@@ -37,31 +37,5 @@
       <description>IT - это та сфера, где учиться нужно постоянно. У меня уже, вроде как, есть какой-никакой опыт, но мне постоянно кажется что нужно знать и уметь больше. Последнее время — это выливается уже в совсем какое-то нездоровое состояние, когда я пытаюсь одновременно делать - и учить, всё подряд, и не успеваю при этом ничего. Что бы успокоиться и упорядочить свои мысли — хочу попробовать посмотреть, какие навыки вообще сейчас котируются, и смогу ли я получить хоть какой-то сертификат.</description>
     </item>
     
-    <item>
-      <title>About Me</title>
-      <link>https://mrabar.me/ru/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mrabar.me/ru/about/</guid>
-      <description>Бакалвр информатики ТУ Берлина, работаю инженером-программистом и скрам мастером в Сведбанке.
-PDF версию моего CV можно найти на английской версии сайта, но поскольку любой рекрутер всё-равно попросит выслать её отдельным письмом (а потом ещё и продублировать несколько раз в их системах), то смысла переводить документ я не вижу.
- Programming Languages (sorted by experience):
-Java, Kotlin, JavaScript, Python, C, Haskell
-Backend:
- Java: Spring, Java EE Python: Flask Node.Js  Frontend:</description>
-    </item>
-    
-    <item>
-      <title>Events</title>
-      <link>https://mrabar.me/ru/events/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mrabar.me/ru/events/</guid>
-      <description>Nordic Testing Days 2019 Full-day tutorial: Efficient Selenium Infrastructure with Selenoid.
-The most insightful tutorial for me. Was lead by a really cool specialist, who works daily with Highload in testing infrastructure. Unfortunately, the tutorial went slowly and didn&amp;rsquo;t cover all the topics presenter hoped to cover, because of the low preparation level from participants.
-Honorable mentions:
-Resilience Testing: Let the chaos begin! Presenters went over basics of Gattling and introduced a Chaos Monkey.</description>
-    </item>
-    
   </channel>
 </rss>

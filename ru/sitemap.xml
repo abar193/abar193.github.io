@@ -219,29 +219,5 @@
                 hreflang="ru"
                 href="https://mrabar.me/ru/posts/certifications/"
                 />
-  </url><url>
-    <loc>https://mrabar.me/ru/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/about/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/ru/events/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/events/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/events/"
-                />
   </url>
 </urlset>

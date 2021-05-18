@@ -205,6 +205,9 @@
                 href="https://mrabar.me/tags/linux/"
                 />
   </url><url>
+    <loc>https://mrabar.me/posts/ntd19/</loc>
+    <lastmod>2019-06-10T12:32:37+03:00</lastmod>
+  </url><url>
     <loc>https://mrabar.me/tags/cucumber/</loc>
     <lastmod>2018-07-06T10:00:00+03:00</lastmod>
   </url><url>
@@ -216,29 +219,5 @@
   </url><url>
     <loc>https://mrabar.me/posts/manual-cucumber/</loc>
     <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/about/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/events/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/events/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/events/"
-                />
   </url>
 </urlset>

@@ -22,7 +22,7 @@
       <pubDate>Tue, 04 May 2021 21:37:53 +0300</pubDate>
       
       <guid>https://mrabar.me/links/</guid>
-      <description> https://berthub.eu/articles/posts/how-tech-loses-out/  </description>
+      <description> https://berthub.eu/articles/posts/how-tech-loses-out/ https://www.joelonsoftware.com/2002/01/06/fire-and-motion/  </description>
     </item>
     
     <item>
@@ -74,6 +74,17 @@ Autoconfigs, profiles, etc. No Livereload? There is livereload for Spring! Sprin
     </item>
     
     <item>
+      <title>Nordic Testing Days 2019</title>
+      <link>https://mrabar.me/posts/ntd19/</link>
+      <pubDate>Mon, 10 Jun 2019 12:32:37 +0300</pubDate>
+      
+      <guid>https://mrabar.me/posts/ntd19/</guid>
+      <description>Full-day tutorial Efficient Selenium Infrastructure with Selenoid.
+The most insightful tutorial for me. Was lead by a really cool specialist, who works daily with Highload in testing infrastructure. Unfortunately, the tutorial went slowly and didn&amp;rsquo;t cover all the topics presenter hoped to cover, because of the low preparation level from participants.
+Honorable mentions: Resilience Testing: Let the chaos begin! Presenters went over basics of Gattling and introduced a Chaos Monkey. Once again, the audience wasn&amp;rsquo;t prepared for it, and we were stuck in the first step with setting up VMs and launching Gatling scenarios.</description>
+    </item>
+    
+    <item>
       <title>Running manual Cucumber tests in Java</title>
       <link>https://mrabar.me/posts/manual-cucumber/</link>
       <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
@@ -82,28 +93,6 @@ Autoconfigs, profiles, etc. No Livereload? There is livereload for Spring! Sprin
       <description>In theory, it would be nice to have everything automated. In reality, it might be the case that for some reasons you have to run and manually verify test results.
 There can be a number of ways for running manual Cucumber tests, for Ruby there&amp;rsquo;s even whole CukeHub to run and organize manual tests, but my research yielded no results on how to do manual testing in Java.
 So, let&amp;rsquo;s implement it our self.</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://mrabar.me/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mrabar.me/about/</guid>
-      <description>Have a Bachelor degree from TU Berlin, now working as a software engineer and scrum master at Swedbank Latvia.
-I would like to think of myself that I take every task on my work seriously and prefer difficult assignments, requiring root cause analysis and deep system understanding to a quick &amp;ldquo;move that button and get praise for it&amp;rdquo; tasks, but it&amp;rsquo;s better to ask my colleagues about it. Have an interest in Quality Assurance and Machine Learning, on my current work I have to deal with lots of domain-logic heavy applications.</description>
-    </item>
-    
-    <item>
-      <title>Events</title>
-      <link>https://mrabar.me/events/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mrabar.me/events/</guid>
-      <description>Nordic Testing Days 2019 Full-day tutorial: Efficient Selenium Infrastructure with Selenoid.
-The most insightful tutorial for me. Was lead by a really cool specialist, who works daily with Highload in testing infrastructure. Unfortunately, the tutorial went slowly and didn&amp;rsquo;t cover all the topics presenter hoped to cover, because of the low preparation level from participants.
-Honorable mentions:
-Resilience Testing: Let the chaos begin! Presenters went over basics of Gattling and introduced a Chaos Monkey.</description>
     </item>
     
   </channel>

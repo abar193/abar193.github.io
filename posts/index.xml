@@ -65,6 +65,17 @@ Autoconfigs, profiles, etc. No Livereload? There is livereload for Spring! Sprin
     </item>
     
     <item>
+      <title>Nordic Testing Days 2019</title>
+      <link>https://mrabar.me/posts/ntd19/</link>
+      <pubDate>Mon, 10 Jun 2019 12:32:37 +0300</pubDate>
+      
+      <guid>https://mrabar.me/posts/ntd19/</guid>
+      <description>Full-day tutorial Efficient Selenium Infrastructure with Selenoid.
+The most insightful tutorial for me. Was lead by a really cool specialist, who works daily with Highload in testing infrastructure. Unfortunately, the tutorial went slowly and didn&amp;rsquo;t cover all the topics presenter hoped to cover, because of the low preparation level from participants.
+Honorable mentions: Resilience Testing: Let the chaos begin! Presenters went over basics of Gattling and introduced a Chaos Monkey. Once again, the audience wasn&amp;rsquo;t prepared for it, and we were stuck in the first step with setting up VMs and launching Gatling scenarios.</description>
+    </item>
+    
+    <item>
       <title>Running manual Cucumber tests in Java</title>
       <link>https://mrabar.me/posts/manual-cucumber/</link>
       <pubDate>Fri, 06 Jul 2018 10:00:00 +0300</pubDate>
