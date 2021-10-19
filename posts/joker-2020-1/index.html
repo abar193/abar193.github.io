@@ -17,8 +17,8 @@
 <meta property="og:description" content="My synopsis" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/joker-2020-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-29T16:41:04&#43;02:00" />
-<meta property="article:modified_time" content="2020-11-29T16:41:04&#43;02:00" />
+<meta property="article:published_time" content="2020-11-29T16:41:04+02:00" />
+<meta property="article:modified_time" content="2020-11-29T16:41:04+02:00" />
 
 
 
@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.88.1" />
   </head>
 
   <body class=" ">
@@ -190,7 +190,7 @@
 <p><strong>Spring simple.</strong></p>
 <p>&ldquo;Easy&rdquo; = Spring &ldquo;magic&rdquo;, &ldquo;Simple&rdquo; = transparent.</p>
 <p>You can &ldquo;simplify&rdquo; spring boot, but it might get harder in work.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Component scanning -&gt; Functional beans
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Component scanning -&gt; Functional beans
 Route mapping -&gt; Functional routing
 Generated queries -&gt; @Query / go away from JPA
 Autoconfigurations -&gt; Manual import
@@ -260,7 +260,7 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <li>Internal audit, reduce number of licenses, pay the bills.</li>
 </ol>
 <p>Server license for commercial use: $25 per processor (1-99 instances), might be lower, depending on the amount.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&#34;Usage&#34; = fact of installed JDK/JRE on your production servers.
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&#34;Usage&#34; = fact of installed JDK/JRE on your production servers.
 </code></pre></div><p>(Even if you don&rsquo;t run a single Java app on it yet)</p>
 <p><strong>Given:</strong> You have a server with 2 processor sockets, with x2 Intel Xeon E5-2680 v4 installed. Each processor has 14 physical cores, hyper-threading is on - for each physical core you have 2 logical cores.</p>
 <p><strong>Question:</strong> How many licenses &ldquo;per processor&rdquo; do you need?</p>
@@ -273,7 +273,7 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <p>First &ldquo;fat&rdquo; JARs: <a href="https://en.wikipedia.org/wiki/Matryoshka_doll">1890, Moscow by Vasily Zvyozdochkin</a>.</p>
 <p>In Spring Boot since v1.0.</p>
 <p>&ldquo;Fat&rdquo; JAR:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">JVM: call `java -jar fat.jar` 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">JVM: call `java -jar fat.jar` 
   ↳ JarLauncher: `org.springframework.boot.loader`, in Manifest as Main-Class, &#34;marks&#34; whole archive by entry positions (1)
     ↳ Entry point - class with main(), in Manifest as Start-Class 
       ↳ LaunchedUrl-ClassLoader (subclass of URLClassLoader, attached to main thread, called for every class (2)) 
@@ -320,7 +320,7 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <p>Docker builds images from ordered layers - each next layer is a diff from the previous one, is described by hash, hashes match =&gt; do nothing.
 Hashes not match - rebuild this and every next layer. Spring Boot from v2.3 offers new mode <code>-Djarmode=layertools</code> =&gt; allows writing &ldquo;fat&rdquo; archive as <em>thin</em> layers, works with Maven/Gradle plugins. Reads created file in <code>/BOOT-INF/layers.idx</code>.</p>
 <p>Running <code>java -Djarmode=layertools -jar fat.jar list</code> displays list of layers. By default (?) they go in such order: dependencies, spring-boot-loader, snapshot-dependencies, generated, application. Gradle DSL (in Spring Boot 2.3 - have to turn it on, in 2.4 - on by default):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">bootJar {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">bootJar {
   archiveFileName = <span style="font-style:italic">&#39;fat.jar&#39;</span>
   manifest { ... }
   layered {
@@ -340,7 +340,7 @@ Hashes not match - rebuild this and every next layer. Spring Boot from v2.3 offe
 }
 </code></pre></div><p>↳ creates layers.idx file</p>
 <p>Dockerfile-layers:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="font-weight:bold">FROM</span><span style="font-style:italic"> .../openjdk-alpine:11 as builder</span><span style="">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="font-weight:bold">FROM</span><span style="font-style:italic"> .../openjdk-alpine:11 as builder</span><span style="">
 </span><span style=""></span><span style="font-weight:bold">WORKDIR</span><span style="font-style:italic"> application</span><span style="">
 </span><span style=""></span><span style="font-weight:bold">COPY</span> fat.jar fat.jar<span style="">
 </span><span style=""></span><span style="font-weight:bold">RUN</span> java -Djarmode=layertools -jar fat.jar extract<span style="">

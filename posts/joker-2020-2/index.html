@@ -17,8 +17,8 @@
 <meta property="og:description" content="My synopsis, part 2" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/joker-2020-2/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-06T16:41:04&#43;02:00" />
-<meta property="article:modified_time" content="2020-12-06T16:41:04&#43;02:00" />
+<meta property="article:published_time" content="2020-12-06T16:41:04+02:00" />
+<meta property="article:modified_time" content="2020-12-06T16:41:04+02:00" />
 
 
 
@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.88.1" />
   </head>
 
   <body class=" ">
@@ -223,7 +223,7 @@ Was tested in Java 14</p>
 <p>Custom <code>IllegalStateException</code> - By adding it into a classpath before system libraries - the compiler now thinks they are checked exceptions. Could be substituted with code analyser.</p>
 <p>Lambda friendly ClassValue - associate a piece of data with a class =&gt; that data is retired when class is unloaded.</p>
 <p>Treating checked exceptions as unchecked:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException retrow(Throwable throwable) <span style="font-weight:bold">throws</span> T { <span style="font-weight:bold">throw</span> (T) throwable;} (Jvm.rethrow());
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException retrow(Throwable throwable) <span style="font-weight:bold">throws</span> T { <span style="font-weight:bold">throw</span> (T) throwable;} (Jvm.rethrow());
 
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException rethrow(Throwable t) <span style="font-weight:bold">throws</span> T {
     <span style="font-weight:bold">throw</span> (T) t;
@@ -276,7 +276,7 @@ Was tested in Java 14</p>
 <p>Learn more about <code>spring.factories</code>.</p>
 <h2 id="reusing-oldlegacy-beans-in-a-new-spring-boot-application">Reusing old/legacy &ldquo;beans&rdquo; in a new Spring Boot application</h2>
 <p>(using Reflections library that extends java.reflection)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar 
 
 registerBeanDefinition() {
       Reflections scanner = <span style="font-weight:bold">new</span> Reflections(<span style="font-style:italic">&#34;com.legacy.package&#34;</span>);
@@ -297,9 +297,9 @@ registerBeanDefinition() {
 <dd>Never use switch! &ldquo;What&rsquo;s 235 switch cases, when you already had 234 cases?&rdquo; -&gt; &ldquo;Instead of digging shitty code, write as if you are already a senior dev!&rdquo;</dd>
 </dl>
 <p>Option 1: Rename bean ids (bad example)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map; <span style="font-style:italic">// String = bean id
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map; <span style="font-style:italic">// String = bean id
 </span></code></pre></div><p>Option 2: add some key information to interface</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">interface</span> <span style="font-weight:bold">SomethingInterface</span> { String myType(); <span style="">void</span> doWork(); }
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">interface</span> <span style="font-weight:bold">SomethingInterface</span> { String myType(); <span style="">void</span> doWork(); }
 
 
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">Controller</span> {
@@ -324,14 +324,14 @@ registerBeanDefinition() {
 <hr>
 <p>Don&rsquo;t use AspectJ for business logic - you will be hated by everyone! You can still use AspectJ on a framework level, for example - to send warning notifications, every time ClassCastException happens.</p>
 <p>Static approach:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Aspect <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Aspect <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> {
   @AfterThrowing(pointcut = <span style="font-style:italic">&#34;execution(*..*.*(..))&#34;</span>, throwing = <span style="font-style:italic">&#34;ex&#34;</span>)
   <span style="font-weight:bold">public</span> <span style="">void</span> handleException(ClassCastException ex) {
     System.out.println(<span style="font-style:italic">&#34;Something broke again!&#34;</span>);
   }
 }
 </code></pre></div><p>Dynamic approach:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> <span style="font-weight:bold">implements</span> MethodInterceptor {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> <span style="font-weight:bold">implements</span> MethodInterceptor {
   <span style="font-weight:bold">public</span> Object invoke(MethodInvocation methodInvocation) <span style="font-weight:bold">throws</span> Throwable {
     <span style="font-weight:bold">try</span> {
       <span style="font-weight:bold">return</span> methodInvocation.proceed()

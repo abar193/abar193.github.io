@@ -17,8 +17,8 @@
 <meta property="og:description" content="Пост на Хабр." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/ru/posts/joker-2020/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-21T16:41:04&#43;02:00" />
-<meta property="article:modified_time" content="2020-12-21T16:41:04&#43;02:00" /><meta property="og:site_name" content="Mr. Abar (ru)" />
+<meta property="article:published_time" content="2020-12-21T16:41:04+02:00" />
+<meta property="article:modified_time" content="2020-12-21T16:41:04+02:00" /><meta property="og:site_name" content="Mr. Abar (ru)" />
 
 
 
@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.88.1" />
   </head>
 
   <body class=" ">
@@ -246,9 +246,9 @@ Spring вешает собственный наследник URLClassLoader-а 
 </ul>
 <p>Использование &ldquo;fat&rdquo; JAR-а может потенциально поломать такие утилиты как <code>jshell</code>, <code>jdeps</code>, <code>jmint</code>, а так же пакет <code>java.util.logging</code> со всеми наследниками. Что бы это починить, постарайтесь не использовать ClassLoader.getSystemClassLoader(), или просто распаковывайте &ldquo;fat&rdquo; JAR перед использованием. Однако, даже со всеми этими недостатками fat &ldquo;JAR&rdquo; может помочь в миграции с application server&rsquo;а на Спринг бут.</p>
 <p><strong>Поддержка докера</strong> с версии Spring Boot 2.3 (опционально - и с 2.4 - по умолчанию) в fat JAR добавился новый режим <code>-Djarmode=layertools</code>, позволяющий собирать артефакт <a href="https://spring.io/blog/2020/08/14/creating-efficient-docker-images-with-spring-boot-2-3">по слоям</a>, и это работает как с Maven, так и с Gradle плагинами. Посмотреть слои можно командой</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">java -Djarmode=layertools -jar fat.jar list
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">java -Djarmode=layertools -jar fat.jar list
 </code></pre></div><p>По умолчанию идут в таком порядке: зависимости, загрузчик спринг бута, snapshot зависимости, сгенерированный код, код приложения. Что именно попадёт в какой слой - можно <a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#packaging-layered-jars">менять и настраивать</a>. Далее, распакованный по слоям артефакт можно упаковать в докер вручную, с помощью докерфайла как-то так:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM .../openjdk-alpine:11 as builder
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM .../openjdk-alpine:11 as builder
 WORKDIR application
 COPY fat.jar fat.jar
 RUN java -Djarmode=layertools -jar fat.jar extract
@@ -290,7 +290,7 @@ ENTRYPOINT [&#34;java&#34;, &#34;org.springframework.boot.loader.JarLauncher&#34
 <p><a href="https://github.com/OpenHFT/Chronicle-Map"><strong>Chronicle Map</strong></a> - быстрое key-value хранилище разработанное для высоко нагруженных многопоточных приложений, не ограничено размерами RAM-а, и может сохранять данные на диск.</p>
 <p><a href="https://github.com/JetBrains/xodus"><strong>XODUS</strong></a> транзакционная schema-less встроенная БД, разработанная в JetBrains. Все изменения пишутся в иммутабельный лог.</p>
 <p><a href="http://www.mapdb.org/"><strong>MapDB</strong></a> совмещает движок БД и коллекции Java. Позволяет использовать словари, списки, для хранения данных либо вне сборщика мусора, либо на диске.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">DB db = DBMaker.fileDB(<span style="font-style:italic">&#34;/some/file&#34;</span>).encryptionEnable(<span style="font-style:italic">&#34;password&#34;</span>).make();
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">DB db = DBMaker.fileDB(<span style="font-style:italic">&#34;/some/file&#34;</span>).encryptionEnable(<span style="font-style:italic">&#34;password&#34;</span>).make();
 ConcurrentNavigatableMap&lt;Integer, String&gt; map = db.treeMap(...); 
 </code></pre></div><p>Можно использовать для получения многоуровневого кеша с истечением срока хранения, для хранения не влезающих в RAM данных диске, для последовательных бекапов, для фильтрации и обработки данных. Всё это достигается за счёт того, что типы хранилищ можно совмещать: например завести словарь вне GC, пишущий часть данных на диск.</p>
 <p><a href="https://microstream.one/"><strong>Microstream</strong></a> - проект, реализовавший собственную сериализацию для объектов, и хорошо умеющий работать с графами. В бесплатной версии не работает с Oracle БД, и не даёт параллельное чтение/запись. Стартовый класс - EmbeddedStorageManager, в нём можно задать корень графа, сохранить на диск. Позволяет хранить модели как есть, или в виде коллекций. Позволяет работать только с частями графов, но даже зацикленные графы для них не проблема. Могут быть проблемы с наследованиями.</p>
@@ -306,7 +306,7 @@ ConcurrentNavigatableMap&lt;Integer, String&gt; map = db.treeMap(...);
 <p>Далее, по паттернам. Для использования паттерна Chain of Responsibility в спринге можно инжектить списки. <code>@Autowired List&lt;Handler&gt; handlers;</code>заинжектит все компоненты, имплементирующие интерфейс <code>Hangler</code> - таким образом не надо будет их биндить по одному. Порядок будет произвольный, если нужен порядок, или какой-то особый список - то надо будет использовать BeanPostProcessor и собирать список самостоятельно из ApplicationContext.</p>
 <p>Можно использовать Intrpspector.decapitalize() для получения имени бинов из имени класса.</p>
 <p>Интересный пример того, как можно взять какой-либо старый фреймворк (например, из либы, которую нам нельзя менять) и заставить работать все старые легаси-компоненты в спринге. Делается это так с использованием <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/ImportBeanDefinitionRegistrar.html">ImportBeanDefinitionRegistrar</a></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar {
 <span style="font-style:italic">// ...
 </span><span style="font-style:italic"></span>registerBeanDefinition() {
       Reflections scanner = <span style="font-weight:bold">new</span> Reflections(<span style="font-style:italic">&#34;com.legacy.package&#34;</span>);
@@ -324,9 +324,9 @@ ConcurrentNavigatableMap&lt;Integer, String&gt; map = db.treeMap(...);
 </code></pre></div><p>Начать использовать этот регистрар можно в классе с аннотацией <code>@Configuration @Import(LegacyBeanDefinitionRegistrar.class)</code>.</p>
 <p>Далее, разобрали несколько вариантов того, как работать с паттерном Strategy &amp; Command. Например, если мы хотим, что бы от клиента приходил запрос о том, как именно обрабатывать его запрос. Тут возникает соблазн начать использовать switch, но это опасный путь - сперва у тебя 5 кейсов, потом 6, там и 7-ой добавить вроде не страшно, потом вдруг 10 - но рефакторить уже сложно и какая разница, почему бы не добавить 11? После чего всё превращается в &ldquo;ну да, у нас 234 кейсов, но рефакторить сложно, так что какая разница, что 235 добавим?&rdquo;. Чтоб избежать этой порочной практики, лучше сразу начинать писать как профессионалы.</p>
 <p>Спринг позволяет сделать код, который вызывает нужный обработчик в зависимости от какой-нибудь строки несколькими методами.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Handler&gt; map; <span style="font-style:italic">// key = bean id, Handler - @Bean
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Handler&gt; map; <span style="font-style:italic">// key = bean id, Handler - @Bean
 </span></code></pre></div><p>Тут ключ - это айди бина, имя класса - может быть полезно, но не всегда применимо. Обойти это можно добавив какой-нибудь myType() метод в общий интерфейс, и собирая словарь в конструкторе, как в следующем примере.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">interface</span> <span style="font-weight:bold">HandlerInterface</span> { String myType(); <span style="">void</span> doWork(); }
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">interface</span> <span style="font-weight:bold">HandlerInterface</span> { String myType(); <span style="">void</span> doWork(); }
 <span style="font-style:italic">/// --
 </span><span style="font-style:italic"></span>
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">Controller</span> {
@@ -340,7 +340,7 @@ ConcurrentNavigatableMap&lt;Integer, String&gt; map = db.treeMap(...);
 </span><span style="font-style:italic"></span>}
 </code></pre></div><p>Ну и последний вариант - создать словарь как <code>@Bean</code>, использовать тот же метод группировки, что и в предыдущем.</p>
 <p>Далее был интересный вариант того, как сделать так, что бы бины регистрировались на лету. Было показано несколько деталей, мне самым интересным показалось вот что: <code>@Autowired</code> можно вешать на любой метод, не обязательно сеттеры. Таким образом можно писать компоненты, которые при создании будут идти и регистрироваться у контроллера (например, из прошлого примера), добавив всего лишь один метод в общий интерфейс:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Autowired <span style="font-weight:bold">default</span> <span style="">void</span> regMe(Controller c) {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Autowired <span style="font-weight:bold">default</span> <span style="">void</span> regMe(Controller c) {
   c.register(<span style="font-weight:bold">this</span>.getType, <span style="font-weight:bold">this</span>); 
 }
 </code></pre></div><p>Под конец было упомянуто, что AspectJ лучше не использовать на бизнес-логике - вас все будут ненавидеть. Но это не означает, что AspectJ бесполезен! С его помощью можно отлавливать, например, когда бросаются исключения определенного типа - и либо логгировать их особым способом, либо высылать е-мейл админу &ldquo;эта штука опять сломалась&rdquo;.</p>

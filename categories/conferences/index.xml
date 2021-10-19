@@ -6,7 +6,20 @@
     <description>Recent content in conferences on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Jan 2021 17:49:51 +0200</lastBuildDate><atom:link href="https://mrabar.me/categories/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 09:30:25 +0300</lastBuildDate><atom:link href="https://mrabar.me/categories/conferences/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IT_ONE: Java and Big Data Meet Up</title>
+      <link>https://mrabar.me/posts/it_one_2021/</link>
+      <pubDate>Sat, 04 Sep 2021 09:30:25 +0300</pubDate>
+      
+      <guid>https://mrabar.me/posts/it_one_2021/</guid>
+      <description>My synopsis + English translation for IT_One Meet Up - a free online meetup for Java and Big Data.
+Overview of big data storage tech. Pros-, Cons-, how to use. By Maksim Stacenko
+Topics:
+ Describing technologies, highlighting how to save date engineer time by choosing not the most popular solutions Share experience from PoC works on big data Saving on hardware
+ Your data storage is a product: do you store test data only, do you use it in production, does it working 24/7 (especially with the new remote work approach), do you remember the legal consequences of neglecting data safety and consistency?</description>
+    </item>
+    
     <item>
       <title>JPoint 2020</title>
       <link>https://mrabar.me/posts/jpoint-2020/</link>

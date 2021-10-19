@@ -17,8 +17,8 @@
 <meta property="og:description" content="How to run manual Cucumber tests in Java" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/manual-cucumber/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-07-06T10:00:00&#43;03:00" />
-<meta property="article:modified_time" content="2018-07-06T10:00:00&#43;03:00" />
+<meta property="article:published_time" content="2018-07-06T10:00:00+03:00" />
+<meta property="article:modified_time" content="2018-07-06T10:00:00+03:00" />
 
 
 
@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.88.1" />
   </head>
 
   <body class=" ">
@@ -168,7 +168,7 @@
 <h2 id="defining-feature">Defining feature</h2>
 <p>Let&rsquo;s take one of scenarios in feature file and add the desired functionality</p>
 <h6 id="srctestresourcesatmwithdrawfeature">src/test/resources/atm/withdraw.feature</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    @manual
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    @manual
     Scenario: Manual test 1
         Given I have 50 SEK on my account
         When I withdraw -1 SEK
@@ -178,7 +178,7 @@
 </code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users' final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
 <p>Now to define this step</p>
 <h6 id="srctestjavaatmwithdrawstepsjava">src/test/java/atm/WithdrawSteps.java</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
     <span style="font-weight:bold">public</span> <span style="">void</span> evaluate_manually() <span style="font-weight:bold">throws</span> Throwable {
         System.out.println(<span style="font-style:italic">&#34;Mark feature as [p]assed or [f]ailed?&#34;</span>);
         Scanner sc = <span style="font-weight:bold">new</span> Scanner(System.in);
@@ -197,7 +197,7 @@ Maven blocks System input, preventing our Scanner from giving us any input &ndas
 <p>To work around this problem and get an easy-to-use solution we need 2 components. One is &lsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &lsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
 <h2 id="result">Result</h2>
 <h6 id="pomxml">pom.xml</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
         <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
         <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
         <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
@@ -233,7 +233,7 @@ Maven blocks System input, preventing our Scanner from giving us any input &ndas
     <span style="font-weight:bold">&lt;/plugin&gt;</span> 
 </code></pre></div><p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
 <h6 id="srctestjavaatmruncukestestjava">src/test/java/atm/RunCukesTest.java</h6>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@RunWith(Cucumber.class)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@RunWith(Cucumber.class)
 @CucumberOptions(plugin = {<span style="font-style:italic">&#34;pretty&#34;</span>, <span style="font-style:italic">&#34;json:target/cucumber/cucumber.json&#34;</span>},
         tags = {<span style="font-style:italic">&#34;not @manual&#34;</span>})
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">RunCukesTest</span> {

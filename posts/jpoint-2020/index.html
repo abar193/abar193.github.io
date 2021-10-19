@@ -17,8 +17,8 @@
 <meta property="og:description" content="Interesting outtakes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/jpoint-2020/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-30T17:49:51&#43;02:00" />
-<meta property="article:modified_time" content="2021-01-30T17:49:51&#43;02:00" />
+<meta property="article:published_time" content="2021-01-30T17:49:51+02:00" />
+<meta property="article:modified_time" content="2021-01-30T17:49:51+02:00" />
 
 
 
@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="generator" content="Hugo 0.88.1" />
   </head>
 
   <body class=" ">
@@ -160,7 +160,7 @@
 <p><a href="https://start.microprofile.io/">MicroProfile Starter</a>.</p>
 <p>Markdown Renderer?</p>
 <p>Demo 1:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@MicroShedTest <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">X</span> {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@MicroShedTest <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">X</span> {
 
   @Container
   <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> ApplicationContainer app = <span style="font-weight:bold">new</span> ApplicationContainer().withAppContextRoot(<span style="font-style:italic">&#34;/&#34;</span>).withReadinessPath(<span style="font-style:italic">&#34;/health/ready&#34;</span>);
@@ -211,14 +211,14 @@
 <li>How GC should perform?</li>
 </ol>
 <p>JNI - Java Native Interface - unified interface for all native interfaces.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
 <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">JavaToNative</span> {
   <span style="font-weight:bold">static</span> <span style="font-weight:bold">native</span> <span style="">void</span> goThere(Callback andBackAgain);
 }
 
 </code></pre></div><p><code>javac JavaToNative.java -h .</code> =&gt; <code>JavaToNative.h</code> =&gt; <code>JNIEXPORT void JNICALL Java_JavaToNative_goThere(JNIEnv *, jclass, jobject);</code></p>
 <p>JNIEnv - pointer towards JNINativeInterface(214 functions). Useful include: NewObject, GetObjectClass, CallObjectMethod, CallStaticObjectMethod, GetObjectField, SetObjectField, Call<!-- raw HTML omitted -->Method, CallStatic<!-- raw HTML omitted -->Method, Get<!-- raw HTML omitted -->Field, Throw, ThrowNew.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> method() {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> method() {
   printf(<span style="font-style:italic">&#34;Ok</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>);
   jclass cls = (*env)-&gt;GetObjectClass(env, andBackAgain);
   jmethodId method = (*env) -&gt; GetMethodID(env, cls, <span style="font-style:italic">&#34;call&#34;</span>, <span style="font-style:italic">&#34;()V&#34;</span>);

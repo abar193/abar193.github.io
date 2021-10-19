@@ -6,22 +6,40 @@
     <description>Recent content in Tags on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 04 May 2021 21:37:53 +0300</lastBuildDate><atom:link href="https://mrabar.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 09:30:25 +0300</lastBuildDate><atom:link href="https://mrabar.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>random</title>
-      <link>https://mrabar.me/tags/random/</link>
-      <pubDate>Tue, 04 May 2021 21:37:53 +0300</pubDate>
+      <title>batches</title>
+      <link>https://mrabar.me/tags/batches/</link>
+      <pubDate>Sat, 04 Sep 2021 09:30:25 +0300</pubDate>
       
-      <guid>https://mrabar.me/tags/random/</guid>
+      <guid>https://mrabar.me/tags/batches/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>big data</title>
+      <link>https://mrabar.me/tags/big-data/</link>
+      <pubDate>Sat, 04 Sep 2021 09:30:25 +0300</pubDate>
+      
+      <guid>https://mrabar.me/tags/big-data/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
       <link>https://mrabar.me/tags/java/</link>
-      <pubDate>Sun, 06 Dec 2020 16:41:04 +0200</pubDate>
+      <pubDate>Sat, 04 Sep 2021 09:30:25 +0300</pubDate>
       
       <guid>https://mrabar.me/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>random</title>
+      <link>https://mrabar.me/tags/random/</link>
+      <pubDate>Tue, 04 May 2021 21:37:53 +0300</pubDate>
+      
+      <guid>https://mrabar.me/tags/random/</guid>
       <description></description>
     </item>
     
