@@ -1,0 +1,33 @@
+@startuml
+scale 450 width
+hide empty description
+[*] --> IndexPage
+IndexPage : Greet participant,\nprovide links to test system and survey
+
+IndexPage -d-> Survey : StartSurvey
+
+state Survey {
+  state "H" as H<<history>>
+  [*] --> InitSurvey
+  state InitSurvey
+  InitSurvey : Framework = random(3)\nQuestion = 0
+  InitSurvey --> Question
+  Question -r-> SaveResponse
+  SaveResponse:Log response in a logfile
+  state fork_state <<fork>>
+  SaveResponse --> fork_state <<fork>>
+  fork_state --> Next : next / [Question < MAX_QUESTIONS]
+  fork_state --> Previous: prev / [Question > 0]
+  fork_state -r-> Over: next / [Question >= MAX_QUESTIONS]
+  Over : "Save TermSheet table Nr. 0"
+  state join_state <<join>>
+  Next --> join_state
+  Previous --> join_state
+  join_state --> Question
+
+  Over -r-> [*]
+}
+Survey --> ThankYouPage
+@enduml
+
+
