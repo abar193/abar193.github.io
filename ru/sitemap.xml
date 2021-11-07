@@ -155,19 +155,6 @@
                 href="https://mrabar.me/ru/tags/backend/"
                 />
   </url><url>
-    <loc>https://mrabar.me/ru/categories/blog/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/categories/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/categories/blog/"
-                />
-  </url><url>
     <loc>https://mrabar.me/ru/tags/database/</loc>
     <lastmod>2020-11-04T22:48:46+02:00</lastmod>
     <xhtml:link
@@ -205,6 +192,19 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://mrabar.me/ru/tags/linux/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/ru/categories/thoughts/</loc>
+    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/thoughts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/thoughts/"
                 />
   </url><url>
     <loc>https://mrabar.me/ru/posts/certifications/</loc>
