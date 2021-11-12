@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Anton B.">
+    <meta name="description" content="Simplifying stuff for business needs">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Legacy migration: custom request handling in Spring Web"/>
+<meta name="twitter:description" content="Using annotation-based Spring configuration"/>
+
+    <meta property="og:title" content="Legacy migration: custom request handling in Spring Web" />
+<meta property="og:description" content="Using annotation-based Spring configuration" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mrabar.me/posts/legacy_handling/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-31T21:10:13+02:00" />
+<meta property="article:modified_time" content="2021-10-31T21:10:13+02:00" />
+
+
+
+    
+      <base href="https://mrabar.me/posts/legacy_handling/">
+    
+    <title>
+  Legacy migration: custom request handling in Spring Web · Mr. Abar
+</title>
+
+    
+      <link rel="canonical" href="https://mrabar.me/posts/legacy_handling/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mrabar.me/css/coder.min.9a2d333aad4567e8ef8e306e20158ba9df502e8e10a001367c1a6375cd20eb5f.css" integrity="sha256-mi0zOq1FZ&#43;jvjjBuIBWLqd9QLo4QoAE2fBpjdc0g618=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mrabar.me/css/custom.css">
+    
+
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.88.1" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mrabar.me/">
+      Mr. Abar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/pdf/anton_bardishev_cv.pdf">CV</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/bachelor">Bachelor</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/posts/">Blog</a>
+          </li>
+        
+      
+      
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="https://mrabar.me/ru/">RU</a>
+            </li>
+          
+        
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Legacy migration: custom request handling in Spring Web</h1>
+          <h4 style="margin: 1rem 0;">Using annotation-based Spring configuration</h4>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2021-10-31T21:10:13&#43;02:00'>
+                31 October, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a class="categories" href="https://mrabar.me/categories/guides/">guides</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a class="tags" href="https://mrabar.me/tags/java/">java</a>
+      <span class="separator">•</span>
+    <a class="tags" href="https://mrabar.me/tags/spring/">spring</a></div>
+
+
+          
+
+        </div>
+      </header>
+      <aside>
+        <h1 class="title">Table of Contents</h1>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#handlermapping">HandlerMapping</a></li>
+    <li><a href="#delegatingwebmvcconfiguration">DelegatingWebMvcConfiguration</a></li>
+    <li><a href="#ps">P.S.</a></li>
+  </ul>
+</nav>
+      </aside>
+      <div>
+        <h1 id="intro">Intro</h1>
+<p>If one day you woke up with the feeling, that the standard Spring Web handlers are lacking functionality and you want to extend it yourself, then look no further. This article is for you, and I hope it will be helpful.</p>
+<h1 id="example">Example</h1>
+<p>Consider the scenario: you have an old legacy project full of heavy domain logic and questionable technical solutions. Logic is grouped by so called <code>modules</code>, each <code>module</code> may have one or several <code>action</code>. On a frontend, client submits form by clicking one of several submit buttons - this initiates a <code>POST</code> request. Each form has a hidden field <code>moduleId</code> which determines which module has to handle that request. Which action needs to be triggered is determined as follows: each field from the request is checked against registered actions of module; if a name of a field equals to the action name - then we trigger that action, otherwise, <code>default</code> action is taken.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">UserModule(id=&#34;service.user.module&#34;)
+&gt; default
+&gt; register
+&gt; forgotPassword
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">form</span> method=<span style="font-style:italic">&#34;POST&#34;</span> action=<span style="font-style:italic">&#34;/&#34;</span>&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;hidden&#34;</span> name=<span style="font-style:italic">&#34;moduleId&#34;</span> value=<span style="font-style:italic">&#34;service.user.module&#34;</span>/&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;text&#34;</span> name=<span style="font-style:italic">&#34;login&#34;</span>/&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;password&#34;</span> name=<span style="font-style:italic">&#34;password&#34;</span>/&gt;
+  &lt;<span style="font-weight:bold">br</span>/&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;submit&#34;</span> name=<span style="font-style:italic">&#34;default&#34;</span> value=<span style="font-style:italic">&#34;Login&#34;</span>/&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;submit&#34;</span> name=<span style="font-style:italic">&#34;register&#34;</span> value=<span style="font-style:italic">&#34;Register&#34;</span>/&gt;
+  &lt;<span style="font-weight:bold">input</span> type=<span style="font-style:italic">&#34;submit&#34;</span> name=<span style="font-style:italic">&#34;forgotPassword&#34;</span> value=<span style="font-style:italic">&#34;Forgot password?&#34;</span>/&gt;
+&lt;/<span style="font-weight:bold">form</span>&gt;
+</code></pre></div><p>Upon clicking one of the buttons, following request may be sent:</p>
+<ul>
+<li>Method: <code>POST</code> URL: <code>/</code> Form data: <code>moduleId=service.user.module&amp;username=&amp;password=&amp;default=Login</code></li>
+<li>Method: <code>POST</code> URL: <code>/</code> Form data: <code>moduleId=service.user.module&amp;username=&amp;password=&amp;register=Register</code></li>
+<li>Method: <code>POST</code> URL: <code>/</code> Form data: <code>moduleId=service.user.module&amp;username=&amp;password=&amp;forgotPassword=Forgot+password%3F</code></li>
+</ul>
+<p>We want to migrate this functionality to Spring, which means that we need a custom type of <code>Controller</code>, which would be identified by <code>moduleId</code>, rather than a <code>RequestMapping</code>, and have handling methods identified as <code>action</code>s.</p>
+<p><em>One note - the legacy framework wasn&rsquo;t permitting sending forms with field names being equal to a possible action within a module. You can&rsquo;t name action &ldquo;login&rdquo; in the above example, as  This is a limitation we inherit and don&rsquo;t care about, as our goal is to migrate old functionality to a new service for future transformation, not to extend and develop it</em></p>
+<h1 id="implementation">Implementation</h1>
+<p>Let&rsquo;s begin with a boring part and create our annotations that we we will use to annotate controllers and actions.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-style:italic">// LegacyModule.java
+</span><span style="font-style:italic"></span>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+<span style="font-weight:bold">public</span> @interface LegacyModule {
+  String moduleId();
+}
+<span style="font-style:italic">// LegacyAction.java
+</span><span style="font-style:italic"></span>@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+<span style="font-weight:bold">public</span> @interface LegacyAction {
+  String value() <span style="font-weight:bold">default</span> <span style="font-style:italic">&#34;&#34;</span>; <span style="font-style:italic">// Use annotated method name if not set
+</span><span style="font-style:italic"></span>}
+
+</code></pre></div><h1 id="handlermapping">HandlerMapping</h1>
+<p>Now, we need to implement a handler. Base interface is <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerMapping.html"><code>HandlerMapping</code></a>, but that&rsquo;s way too low level for what we need to do. By default Spring uses <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerMapping.html"><code>RequestMappingInfoHandlerMapping</code></a> which works with <code>RequestMappingInfo</code>. I got bored reading through half of RequestMappingInfos' properties and it&rsquo;s obvious that it&rsquo;s not a data class we need for our use case. Let&rsquo;s create our own instead!</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-style:italic">// LegacyMapping.java
+</span><span style="font-style:italic"></span>@Value <span style="font-style:italic">// I use Lombok, you may get rid of those two annotations and generate constructors, getters and setters instead
+</span><span style="font-style:italic"></span>@AllArgsConstructor
+<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyMapping</span> {
+  String action;
+  String controller;
+}
+
+</code></pre></div><p>Now, we need to implement class extending <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/handler/AbstractHandlerMethodMapping.html"><code>AbstractHandlerMethodMapping</code></a>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyHandlingMapper</span> <span style="font-weight:bold">extends</span> AbstractHandlerMethodMapping&lt;LegacyMapping&gt; {
+  <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> <span style="font-weight:bold">final</span> String DEFAULT_ACTION = <span style="font-style:italic">&#34;default&#34;</span>;
+  <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> <span style="font-weight:bold">final</span> String MODULE_PARAMETER = <span style="font-style:italic">&#34;moduleId&#34;</span>;
+
+
+  @Override
+  <span style="font-weight:bold">protected</span> <span style="">boolean</span> isHandler(Class&lt;?&gt; beanType) {
+    <span style="font-weight:bold">return</span> AnnotatedElementUtils.hasAnnotation(beanType, LegacyModule.class);
+  }
+
+  @Override
+  <span style="font-weight:bold">protected</span> LegacyMapping getMappingForMethod(Method method, Class&lt;?&gt; handlerType) {
+    <span style="font-weight:bold">if</span> (AnnotatedElementUtils.isAnnotated(method, LegacyAction.class)) {
+      LegacyModule module = AnnotatedElementUtils.findMergedAnnotation(method.getDeclaringClass(), LegacyModule.class);
+      LegacyAction action = AnnotatedElementUtils.getMergedAnnotation(method, LegacyAction.class);
+      <span style="font-weight:bold">if</span> (action != <span style="font-weight:bold">null</span> &amp;&amp; module != <span style="font-weight:bold">null</span>) {
+        var actionName = (action.value().isBlank()) ? method.getName() : action.value();
+        <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> LegacyMapping(actionName, module.moduleId());
+      }
+    }
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">null</span>;
+  }
+
+  @Override
+  <span style="font-weight:bold">protected</span> LegacyMapping getMatchingMapping(LegacyMapping mapping, HttpServletRequest request) {
+    <span style="font-style:italic">// Any magic you might want to have should go here
+</span><span style="font-style:italic"></span>    <span style="font-style:italic">// For now we&#39;ll just compare mapping with request parameters
+</span><span style="font-style:italic"></span>    <span style="font-weight:bold">if</span> (<span style="font-style:italic">&#34;POST&#34;</span>.equals(request.getMethod())) {
+      <span style="font-style:italic">// If it&#39;s a form submission
+</span><span style="font-style:italic"></span>      <span style="font-weight:bold">if</span> (mapping.getModule().equals(request.getParameter(MODULE_PARAMETER))) {
+        <span style="font-style:italic">// If mappings&#39; module matches provided in request parameter
+</span><span style="font-style:italic"></span>        var isDefault = DEFAULT_ACTION.equals(mapping.getAction());
+        var actionInParameters = request.getParameter(mapping.getAction()) != <span style="font-weight:bold">null</span>;
+        <span style="font-weight:bold">if</span> (isDefault || actionInParameters) {
+          <span style="font-weight:bold">return</span> mapping;
+        }
+      }
+    }
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">null</span>;
+  }
+
+  @Override
+  <span style="font-weight:bold">protected</span> Comparator&lt;LegacyMapping&gt; getMappingComparator(HttpServletRequest request) {
+    <span style="font-style:italic">// default actions have least priority, otherwise we just compare alphabetically  
+</span><span style="font-style:italic"></span>    <span style="font-weight:bold">return</span> (c1, c2) -&gt; {
+      <span style="font-weight:bold">if</span> (DEFAULT_ACTION.equals(c1.getAction())) {
+        <span style="font-weight:bold">return</span> -1;
+      } <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (DEFAULT_ACTION.equals(c2.getAction())) {
+        <span style="font-weight:bold">return</span> 1;
+      } <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span> c1.getAction().compareTo(c2.getAction());
+      }
+    };
+    
+  }
+}
+</code></pre></div><h1 id="delegatingwebmvcconfiguration">DelegatingWebMvcConfiguration</h1>
+<p>Finally, to make it all work - get rid of <code>@EnableWebMvc</code> annotation, and create a <code>@Configuration</code> class that would <code>extend DelegatingWebMvcConfiguration</code> (a class that is imported from <code>EnableWebMvc</code> annotation). In here we need to create a bean for <code>LegacyHandlingMapper</code> and make it&rsquo;s order lower than zero, because <code>RequestMappingHandlerMapping</code>s' order starts at 0. We can make it as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Configuration
+<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">WebConfig</span> <span style="font-weight:bold">extends</span> DelegatingWebMvcConfiguration {
+
+  @Bean
+  <span style="font-weight:bold">public</span> LegacyHandlingMapper legacyHandlingMapper() {
+    var mapper = <span style="font-weight:bold">new</span> LegacyHandlingMapper();
+    mapper.setOrder(-1);
+    <span style="font-weight:bold">return</span> mapper;
+  }
+}
+</code></pre></div><p>And, that&rsquo;s it! You&rsquo;ll need to create a controller, annotate it with <code>@LegacyModule</code> annotation, add <code>@LegacyAction</code> to controller methods. Spring will pick up the rest for you - and call those methods as normal <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-arguments">handler methods</a>.</p>
+<p>Hope this was helpful!</p>
+<h1 id="ps">P.S.</h1>
+<p>This article will be updated</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Simplifying stuff for business needs</p>
+    
+     © 2021
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

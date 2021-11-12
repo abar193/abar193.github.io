@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Sep 2021 09:30:25 +0300</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Oct 2021 21:10:13 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Legacy migration: custom request handling in Spring Web</title>
+      <link>https://mrabar.me/posts/legacy_handling/</link>
+      <pubDate>Sun, 31 Oct 2021 21:10:13 +0200</pubDate>
+      
+      <guid>https://mrabar.me/posts/legacy_handling/</guid>
+      <description>Intro If one day you woke up with the feeling, that the standard Spring Web handlers are lacking functionality and you want to extend it yourself, then look no further. This article is for you, and I hope it will be helpful.
+Example Consider the scenario: you have an old legacy project full of heavy domain logic and questionable technical solutions. Logic is grouped by so called modules, each module may have one or several action.</description>
+    </item>
+    
     <item>
       <title>IT_ONE: Java and Big Data Meet Up</title>
       <link>https://mrabar.me/posts/it_one_2021/</link>

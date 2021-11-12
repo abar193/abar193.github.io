@@ -2,14 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mrabar.me/tags/batches/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/tags/big-data/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-  </url><url>
     <loc>https://mrabar.me/categories/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -20,6 +14,83 @@
                 hreflang="en"
                 href="https://mrabar.me/categories/"
                 />
+  </url><url>
+    <loc>https://mrabar.me/categories/guides/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/tags/java/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/java/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/java/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/posts/legacy_handling/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/posts/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/spring/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/spring/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/spring/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/</loc>
+    <lastmod>2021-10-31T21:10:13+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/batches/</loc>
+    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/tags/big-data/</loc>
+    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
   </url><url>
     <loc>https://mrabar.me/categories/conferences/</loc>
     <lastmod>2021-09-04T09:30:25+03:00</lastmod>
@@ -36,58 +107,6 @@
   </url><url>
     <loc>https://mrabar.me/posts/it_one_2021/</loc>
     <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/tags/java/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/java/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/java/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/posts/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/posts/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/tags/</loc>
-    <lastmod>2021-09-04T09:30:25+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/"
-                />
   </url><url>
     <loc>https://mrabar.me/posts/microstream_hackaton/</loc>
     <lastmod>2021-05-06T21:43:51+03:00</lastmod>
@@ -118,19 +137,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://mrabar.me/tags/microservices/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/tags/spring/</loc>
-    <lastmod>2020-12-06T16:41:04+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/spring/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/spring/"
                 />
   </url><url>
     <loc>https://mrabar.me/posts/joker-2020-1/</loc>
@@ -218,9 +224,6 @@
     <lastmod>2019-06-10T12:32:37+03:00</lastmod>
   </url><url>
     <loc>https://mrabar.me/tags/cucumber/</loc>
-    <lastmod>2018-07-06T10:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/categories/guides/</loc>
     <lastmod>2018-07-06T10:00:00+03:00</lastmod>
   </url><url>
     <loc>https://mrabar.me/tags/manual/</loc>
