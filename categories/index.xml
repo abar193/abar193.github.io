@@ -6,22 +6,22 @@
     <description>Recent content in Categories on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 31 Oct 2021 21:10:13 +0200</lastBuildDate><atom:link href="https://mrabar.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 10:11:10 +0200</lastBuildDate><atom:link href="https://mrabar.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>conferences</title>
+      <link>https://mrabar.me/categories/conferences/</link>
+      <pubDate>Fri, 10 Dec 2021 10:11:10 +0200</pubDate>
+      
+      <guid>https://mrabar.me/categories/conferences/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>guides</title>
       <link>https://mrabar.me/categories/guides/</link>
       <pubDate>Sun, 31 Oct 2021 21:10:13 +0200</pubDate>
       
       <guid>https://mrabar.me/categories/guides/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>conferences</title>
-      <link>https://mrabar.me/categories/conferences/</link>
-      <pubDate>Sat, 04 Sep 2021 09:30:25 +0300</pubDate>
-      
-      <guid>https://mrabar.me/categories/conferences/</guid>
       <description></description>
     </item>
     

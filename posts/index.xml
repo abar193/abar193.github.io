@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 31 Oct 2021 21:10:13 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 10:11:10 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devternity 2021</title>
+      <link>https://mrabar.me/posts/devternity2021/</link>
+      <pubDate>Fri, 10 Dec 2021 10:11:10 +0200</pubDate>
+      
+      <guid>https://mrabar.me/posts/devternity2021/</guid>
+      <description>Intro Before going to DevTernity 2021 I had no expectations of what might be in there. It was just another conference that was forwarded to me by my manager, and I was just bored enough to decide to sign up for it. I haven&amp;rsquo;t checked the backgrounds of the presenters and wasn&amp;rsquo;t even aware that Uncle Bob himself will give a talk there.
+During the conference, I was amazed by the technical level of presenters and the potential usefulness of the reports.</description>
+    </item>
+    
     <item>
       <title>Legacy migration: custom request handling in Spring Web</title>
       <link>https://mrabar.me/posts/legacy_handling/</link>
