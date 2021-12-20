@@ -378,7 +378,7 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>Do not be afraid to split a module in two: high SLA / low change frequency process &amp; low SLA / high change frequency process</p>
 <p>Don&rsquo;t be afraid of eventual consistency: to scale infinitely we must avoid coordination. life beyond distributed transactions: an apostates' opinion, we need at-least-once delivery guarantees. Eventual consistency can be achieved even without a message bus, but even if you have a message bus, you have more options.</p>
 <h1 id="how-to-make-your-architecture-scream-with-functional-domain-modeling">How to make your architecture scream with functional domain modeling</h1>
-<p><em>By Bartlomej Slokta [@bartekslota][twitter.com/bartekslota]</em></p>
+<p><em>By Bartlomej Slokta <a href="twitter.com/bartekslota">@bartekslota</a></em></p>
 <p>( This talk - is not a comprehensive introduction to FP )</p>
 <p>Common way - fat service, large domain POJOs =&gt; results in the big ball of &hellip; something</p>
 <p>Problems:</p>
@@ -390,7 +390,7 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>Pure functions - do not change anything, do not rely on anything that can be changed.</p>
 <p>Can we create a viable application without a state? No, we can&rsquo;t.</p>
 <p>Function: &ldquo;String, String, Integer, Customer&rdquo; -&gt; Lending. This tells us nothing!</p>
-<p>Function: VehicleId, StationId, ReservationDuration, Customre -&gt; Lending. Now, that&rsquo;s better!</p>
+<p>Function: VehicleId, StationId, ReservationDuration, Customer -&gt; Lending. Now, that&rsquo;s better!</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">record VehicleId(String value) {
   private static final String PATTERN = &#34;[0-9A-Z]{15}&#34;;
 
@@ -419,7 +419,7 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <h2 id="immutability">Immutability</h2>
 <p>DB state changes - is ok, Object value is immutable.</p>
 <h2 id="domain-and-codomain">Domain and codomain</h2>
-<p><code>sealed interface Lending permits PendingLending. FinishedLending</code></p>
+<p><code>sealed interface Lending permits PendingLending, FinishedLending</code></p>
 <p>Function PendingLending -&gt; FinishedLending</p>
 <p>PendingLending - only information about ongoing lending. FinishedLending - information about finalized lending. Way better!</p>
 <p>Workflow: (see diagram)</p>
