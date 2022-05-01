@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.97.3" />
   </head>
 
   <body class=" ">
@@ -185,7 +185,7 @@
       </ul>
     </li>
     <li><a href="#domain-driven-refactoring">Domain Driven Refactoring</a></li>
-    <li><a href="#the-craftsmans-oath">The Craftsmans' Oath</a></li>
+    <li><a href="#the-craftsmans-oath">The Craftsmans&rsquo; Oath</a></li>
     <li><a href="#war-is-peace-freedom-is-slavery-ignorance-is-strength-scrum-is-agile">War is Peace, Freedom is Slavery, Ignorance is Strength, Scrum is Agile</a></li>
     <li><a href="#outro">Outro</a>
       <ul>
@@ -200,7 +200,7 @@
 <p>Before going to DevTernity 2021 I had no expectations of what might be in there. It was just another conference that was forwarded to me by my manager, and I was just bored enough to decide to sign up for it. I haven&rsquo;t checked the backgrounds of the presenters and wasn&rsquo;t even aware that Uncle Bob himself will give a talk there.</p>
 <p>During the conference, I was amazed by the technical level of presenters and the potential usefulness of the reports.</p>
 <p>While I myself do not fully agree with, say, turning Java into a Haskell-like language as per Bartlomej presentation <em>(just throw an exception, dude, why would we want to reinvent monads if even the majority of Haskell developers can&rsquo;t properly explain what they are?)</em>, I still found his presentation most useful. At least now I see why sealed classes or records were introduced in Java 17, maybe we&rsquo;ll even migrate there one day, who knows?</p>
-<p>Jakubs' presentation wasn&rsquo;t just yet another talk on &ldquo;monoliths bad/good, microservices good/bad&rdquo;, instead he did an interesting comparison between those two approaches, and introduced an often overlooked Event Driven model. This is something to look at, and this is something that reminded me, that I still haven&rsquo;t finished reading that Elixir textbook.</p>
+<p>Jakubs&rsquo; presentation wasn&rsquo;t just yet another talk on &ldquo;monoliths bad/good, microservices good/bad&rdquo;, instead he did an interesting comparison between those two approaches, and introduced an often overlooked Event Driven model. This is something to look at, and this is something that reminded me, that I still haven&rsquo;t finished reading that Elixir textbook.</p>
 <p>Last but not least was Allen Holub, with his much-needed reminder on what Agile was supposed to be, instead of whatever most of us are doing in large corporations. This talk actually reminded me of what I was trying to do, while signing as a Scrum Master for our team, and what I probably couldn&rsquo;t deliver, because I was too stuck behind the &ldquo;I need a certificate first&rdquo; mentality.</p>
 <hr>
 <p>I will post my synopsis from the presentation below. These are the notes I wrote down while listening to the conference. I do not own anything from there. I may have misheard or misunderstood something, and feel free to hit me up on Twitter or Linkedin if you have any comments, suggestions, or copyright holder requests.</p>
@@ -266,7 +266,7 @@ A project launched to replace the commercial product with open source solution</
 <li>Don&rsquo;t be afraid of architecture</li>
 <li>Choose the simplest things that will work</li>
 <li>Create evolvable structures</li>
-<li>Manage your systems' architectural evolution</li>
+<li>Manage your systems&rsquo; architectural evolution</li>
 <li>Don&rsquo;t build roadblocks - create value and get out of the way</li>
 </ol>
 <h1 id="what-i-wish-i-knew-when-started-designing-systems">What I wish I knew when started designing systems</h1>
@@ -329,13 +329,12 @@ Usually microservices</p>
 <p>Event storming event - business event</p>
 <p>=&gt; May sometimes look identical but doesn&rsquo;t have to</p>
 <h2 id="how-modulesmicroservices-communicate">How modules/microservices communicate</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  Module A                               
-  -&gt; Query (question)
-  -&gt; Command (intention: do something)
-  -&gt; Event (information)
-                                      -&gt;  Module B
-
-</code></pre></div><p>Query with microservices: N+1 problem
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  Module A                               
+</span></span><span style="display:flex;"><span>  -&gt; Query (question)
+</span></span><span style="display:flex;"><span>  -&gt; Command (intention: do something)
+</span></span><span style="display:flex;"><span>  -&gt; Event (information)
+</span></span><span style="display:flex;"><span>                                      -&gt;  Module B
+</span></span></code></pre></div><p>Query with microservices: N+1 problem
 Monolith - two very inefficient queries, microservices - ideally 0 external calls</p>
 <p>Read model based on events:
 Services notify you of parameters, you keep the ones that are relevant to you in your database</p>
@@ -368,7 +367,7 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>Nurses getting patient data: fixed RPS, high SLA.</p>
 </blockquote>
 <blockquote>
-<p>Nurses' data can&rsquo;t crash if there&rsquo;s an overload of registering patients!</p>
+<p>Nurses&rsquo; data can&rsquo;t crash if there&rsquo;s an overload of registering patients!</p>
 </blockquote>
 <p>=&gt; Solution:  Split functions with different quality requirements into separate apps</p>
 <h2 id="availability-recommendation">Availability recommendation</h2>
@@ -376,7 +375,7 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>High availability is much easier when devs do not introduce new bugs</p>
 <p>Even old shitty monoliths can become stable (if you don&rsquo;t touch them)</p>
 <p>Do not be afraid to split a module in two: high SLA / low change frequency process &amp; low SLA / high change frequency process</p>
-<p>Don&rsquo;t be afraid of eventual consistency: to scale infinitely we must avoid coordination. life beyond distributed transactions: an apostates' opinion, we need at-least-once delivery guarantees. Eventual consistency can be achieved even without a message bus, but even if you have a message bus, you have more options.</p>
+<p>Don&rsquo;t be afraid of eventual consistency: to scale infinitely we must avoid coordination. life beyond distributed transactions: an apostates&rsquo; opinion, we need at-least-once delivery guarantees. Eventual consistency can be achieved even without a message bus, but even if you have a message bus, you have more options.</p>
 <h1 id="how-to-make-your-architecture-scream-with-functional-domain-modeling">How to make your architecture scream with functional domain modeling</h1>
 <p><em>By Bartlomej Slokta <a href="twitter.com/bartekslota">@bartekslota</a></em></p>
 <p>( This talk - is not a comprehensive introduction to FP )</p>
@@ -391,16 +390,16 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>Can we create a viable application without a state? No, we can&rsquo;t.</p>
 <p>Function: &ldquo;String, String, Integer, Customer&rdquo; -&gt; Lending. This tells us nothing!</p>
 <p>Function: VehicleId, StationId, ReservationDuration, Customer -&gt; Lending. Now, that&rsquo;s better!</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">record VehicleId(String value) {
-  private static final String PATTERN = &#34;[0-9A-Z]{15}&#34;;
-
-  VehicleId {
-    if(value == null || !value,matches(pattern)) {
-      throw IllegalArgumentExceltion();
-    }
-  }
-}
-</code></pre></div><p>VehicleId, StationId, ReservationDuration, Customer =&gt; MakeReservationCommand.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>record VehicleId(String value) {
+</span></span><span style="display:flex;"><span>  private static final String PATTERN = &#34;[0-9A-Z]{15}&#34;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  VehicleId {
+</span></span><span style="display:flex;"><span>    if(value == null || !value,matches(pattern)) {
+</span></span><span style="display:flex;"><span>      throw IllegalArgumentExceltion();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>VehicleId, StationId, ReservationDuration, Customer =&gt; MakeReservationCommand.</p>
 <p>FP: Algebraic types - types composed of different types. In Java it&rsquo;s painful, but still.</p>
 <p>Testability - UUID.randomUUID(), Instant.now() - will change, may affect our tests.</p>
 <p>Supplier<!-- raw HTML omitted -->, Supplier<!-- raw HTML omitted --> - extract as dependencies.</p>
@@ -411,11 +410,11 @@ Services notify you of parameters, you keep the ones that are relevant to you in
 <p>MakeReservationCommand -&gt; Result&lt;MaleReservationFailure, Lending&gt;</p>
 <p>Exceptions affect readability, think of wrapping exceptions into the result type.</p>
 <p>Chaining Results: in FP we would create an adapter that could take two parameters and return two parameters.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">default &lt;S&gt; Result&lt;L, S&gt; bind(Function&lt;R, S&gt; bindedFunction) {
-  if(success()) return Result.success(bindedFunction.apply(getSuccess));
-  return Result.failure(...);
-}
-</code></pre></div><p>Java result class described (capable of mapping both result or failure) - FP monad.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>default &lt;S&gt; Result&lt;L, S&gt; bind(Function&lt;R, S&gt; bindedFunction) {
+</span></span><span style="display:flex;"><span>  if(success()) return Result.success(bindedFunction.apply(getSuccess));
+</span></span><span style="display:flex;"><span>  return Result.failure(...);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Java result class described (capable of mapping both result or failure) - FP monad.</p>
 <h2 id="immutability">Immutability</h2>
 <p>DB state changes - is ok, Object value is immutable.</p>
 <h2 id="domain-and-codomain">Domain and codomain</h2>
@@ -457,7 +456,7 @@ Logic closure - many variants, many changes, more permissions, less descriptive<
 <p>Model: Entity, ExpirationType, Member, Offer, Offer type.</p>
 <p>Services: AssignOfferHandler, ExploreOfferHandler</p>
 <p>(I decided to skip this presentation, as C# is not my language, and previous presentations were already too interesting)</p>
-<h1 id="the-craftsmans-oath">The Craftsmans' Oath</h1>
+<h1 id="the-craftsmans-oath">The Craftsmans&rsquo; Oath</h1>
 <p><em>By Robert Martin himself O_O</em></p>
 <p>&ldquo;On computable numbers, with an application to the Entscheidungsproblem&rdquo; - by Alan Turing - this is where &ldquo;modern&rdquo; CS started.</p>
 <p>&ldquo;If you have never written in binary - this is something you should try one day&rdquo;</p>

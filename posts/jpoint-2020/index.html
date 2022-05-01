@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.97.3" />
   </head>
 
   <body class=" ">
@@ -164,20 +164,20 @@
 <p><a href="https://start.microprofile.io/">MicroProfile Starter</a>.</p>
 <p>Markdown Renderer?</p>
 <p>Demo 1:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@MicroShedTest <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">X</span> {
-
-  @Container
-  <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> ApplicationContainer app = <span style="font-weight:bold">new</span> ApplicationContainer().withAppContextRoot(<span style="font-style:italic">&#34;/&#34;</span>).withReadinessPath(<span style="font-style:italic">&#34;/health/ready&#34;</span>);
-
-  @RESTClient <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span>  PersonService personService;
-
-  @Test
-  <span style="font-weight:bold">public</span> <span style="">void</span> test() {
-    assertNotNull(personService.createPerson(<span style="font-style:italic">&#34;A&#34;</span>, 1));
-  }  
-
-}
-</code></pre></div><p>OpenLiberty - application server, focus on code, easy to make fast and iterative changes, easy to write tests, true-to-production testing (as much as possible), ready for containers, not-in-your-way tools and flexibility.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>@MicroShedTest <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">X</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  @Container
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> ApplicationContainer app = <span style="font-weight:bold">new</span> ApplicationContainer().withAppContextRoot(<span style="font-style:italic">&#34;/&#34;</span>).withReadinessPath(<span style="font-style:italic">&#34;/health/ready&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  @RESTClient <span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span>  PersonService personService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  @Test
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="">void</span> test() {
+</span></span><span style="display:flex;"><span>    assertNotNull(personService.createPerson(<span style="font-style:italic">&#34;A&#34;</span>, 1));
+</span></span><span style="display:flex;"><span>  }  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>OpenLiberty - application server, focus on code, easy to make fast and iterative changes, easy to write tests, true-to-production testing (as much as possible), ready for containers, not-in-your-way tools and flexibility.</p>
 <p>Jakarta EE - Jakarta EE is emerging as the second place cloud native framework, with Spring loosing its positions.</p>
 <p>Open Libertty suits best on a range [Macroservice &hellip; Microservice]. Not monolyth, not functions.</p>
 <p>OpenLiberty starts faster than onther services, J9 starts faster than Hotspot.</p>
@@ -215,19 +215,18 @@
 <li>How GC should perform?</li>
 </ol>
 <p>JNI - Java Native Interface - unified interface for all native interfaces.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
-<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">JavaToNative</span> {
-  <span style="font-weight:bold">static</span> <span style="font-weight:bold">native</span> <span style="">void</span> goThere(Callback andBackAgain);
-}
-
-</code></pre></div><p><code>javac JavaToNative.java -h .</code> =&gt; <code>JavaToNative.h</code> =&gt; <code>JNIEXPORT void JNICALL Java_JavaToNative_goThere(JNIEnv *, jclass, jobject);</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">JavaToNative</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">static</span> <span style="font-weight:bold">native</span> <span style="">void</span> goThere(Callback andBackAgain);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>javac JavaToNative.java -h .</code> =&gt; <code>JavaToNative.h</code> =&gt; <code>JNIEXPORT void JNICALL Java_JavaToNative_goThere(JNIEnv *, jclass, jobject);</code></p>
 <p>JNIEnv - pointer towards JNINativeInterface(214 functions). Useful include: NewObject, GetObjectClass, CallObjectMethod, CallStaticObjectMethod, GetObjectField, SetObjectField, Call<!-- raw HTML omitted -->Method, CallStatic<!-- raw HTML omitted -->Method, Get<!-- raw HTML omitted -->Field, Throw, ThrowNew.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> method() {
-  printf(<span style="font-style:italic">&#34;Ok</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>);
-  jclass cls = (*env)-&gt;GetObjectClass(env, andBackAgain);
-  jmethodId method = (*env) -&gt; GetMethodID(env, cls, <span style="font-style:italic">&#34;call&#34;</span>, <span style="font-style:italic">&#34;()V&#34;</span>);
- }
-</code></pre></div><p>nokee plugins - used with Gradle, cross-platform building?</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> method() {
+</span></span><span style="display:flex;"><span>  printf(<span style="font-style:italic">&#34;Ok</span><span style="font-weight:bold;font-style:italic">\n</span><span style="font-style:italic">&#34;</span>);
+</span></span><span style="display:flex;"><span>  jclass cls = (*env)-&gt;GetObjectClass(env, andBackAgain);
+</span></span><span style="display:flex;"><span>  jmethodId method = (*env) -&gt; GetMethodID(env, cls, <span style="font-style:italic">&#34;call&#34;</span>, <span style="font-style:italic">&#34;()V&#34;</span>);
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><p>nokee plugins - used with Gradle, cross-platform building?</p>
 <p>-Xcheck=jni =&gt; more verbosity with failures + warnings.</p>
 <p>Garbage collector: no safe-points, native code keeps working. jobject is safe for GC time, won&rsquo;t be cleaaned up, will work even if GC moves file.</p>
 <p>DeleteLocalRef - to delete object, be careful with references.</p>

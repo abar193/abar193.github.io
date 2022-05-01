@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.97.3" />
   </head>
 
   <body class=" ">
@@ -194,11 +194,11 @@
 <p><strong>Spring simple.</strong></p>
 <p>&ldquo;Easy&rdquo; = Spring &ldquo;magic&rdquo;, &ldquo;Simple&rdquo; = transparent.</p>
 <p>You can &ldquo;simplify&rdquo; spring boot, but it might get harder in work.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Component scanning -&gt; Functional beans
-Route mapping -&gt; Functional routing
-Generated queries -&gt; @Query / go away from JPA
-Autoconfigurations -&gt; Manual import
-</code></pre></div><p>&ldquo;I don&rsquo;t need DI, I can describe everything in the main&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Component scanning -&gt; Functional beans
+</span></span><span style="display:flex;"><span>Route mapping -&gt; Functional routing
+</span></span><span style="display:flex;"><span>Generated queries -&gt; @Query / go away from JPA
+</span></span><span style="display:flex;"><span>Autoconfigurations -&gt; Manual import
+</span></span></code></pre></div><p>&ldquo;I don&rsquo;t need DI, I can describe everything in the main&rdquo;</p>
 <p>Functional Beans Registration</p>
 <ol>
 <li>In the beginning there was XML for context configuration</li>
@@ -264,8 +264,8 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <li>Internal audit, reduce number of licenses, pay the bills.</li>
 </ol>
 <p>Server license for commercial use: $25 per processor (1-99 instances), might be lower, depending on the amount.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&#34;Usage&#34; = fact of installed JDK/JRE on your production servers.
-</code></pre></div><p>(Even if you don&rsquo;t run a single Java app on it yet)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&#34;Usage&#34; = fact of installed JDK/JRE on your production servers.
+</span></span></code></pre></div><p>(Even if you don&rsquo;t run a single Java app on it yet)</p>
 <p><strong>Given:</strong> You have a server with 2 processor sockets, with x2 Intel Xeon E5-2680 v4 installed. Each processor has 14 physical cores, hyper-threading is on - for each physical core you have 2 logical cores.</p>
 <p><strong>Question:</strong> How many licenses &ldquo;per processor&rdquo; do you need?</p>
 <p><strong>Answer:</strong> consult lawyers, but here it&rsquo;s <code>14</code> licenses: <code>28</code> per physical cores, multiplied by processor coefficient from a table (<code>0.5</code>) and rounded up.</p>
@@ -277,13 +277,13 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <p>First &ldquo;fat&rdquo; JARs: <a href="https://en.wikipedia.org/wiki/Matryoshka_doll">1890, Moscow by Vasily Zvyozdochkin</a>.</p>
 <p>In Spring Boot since v1.0.</p>
 <p>&ldquo;Fat&rdquo; JAR:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">JVM: call `java -jar fat.jar` 
-  ↳ JarLauncher: `org.springframework.boot.loader`, in Manifest as Main-Class, &#34;marks&#34; whole archive by entry positions (1)
-    ↳ Entry point - class with main(), in Manifest as Start-Class 
-      ↳ LaunchedUrl-ClassLoader (subclass of URLClassLoader, attached to main thread, called for every class (2)) 
-        ↳ delegates to JarUrlConnection (subclass of URLStreamHandler), for URL&#39;s with prefix &#34;jar&#34; 
-          ↳ RandomAccessFile (from java.io)
-</code></pre></div><p>(1) &ldquo;<strong>Marking external archive</strong>&quot;:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>JVM: call `java -jar fat.jar` 
+</span></span><span style="display:flex;"><span>  ↳ JarLauncher: `org.springframework.boot.loader`, in Manifest as Main-Class, &#34;marks&#34; whole archive by entry positions (1)
+</span></span><span style="display:flex;"><span>    ↳ Entry point - class with main(), in Manifest as Start-Class 
+</span></span><span style="display:flex;"><span>      ↳ LaunchedUrl-ClassLoader (subclass of URLClassLoader, attached to main thread, called for every class (2)) 
+</span></span><span style="display:flex;"><span>        ↳ delegates to JarUrlConnection (subclass of URLStreamHandler), for URL&#39;s with prefix &#34;jar&#34; 
+</span></span><span style="display:flex;"><span>          ↳ RandomAccessFile (from java.io)
+</span></span></code></pre></div><p>(1) &ldquo;<strong>Marking external archive</strong>&rdquo;:
 <img src="https://mrabar.me/img/joker2020/joker2020-fat-jar-1.png" alt="">
 (Image from Vladimir Plizga&rsquo;s <a href="https://live.jugru.org/en/online/100071r10005111/?t=2">presentation</a>)</p>
 <dl>
@@ -324,39 +324,39 @@ Optimize queries based on Apache Calcite; have a protocol for distributed query 
 <p>Docker builds images from ordered layers - each next layer is a diff from the previous one, is described by hash, hashes match =&gt; do nothing.
 Hashes not match - rebuild this and every next layer. Spring Boot from v2.3 offers new mode <code>-Djarmode=layertools</code> =&gt; allows writing &ldquo;fat&rdquo; archive as <em>thin</em> layers, works with Maven/Gradle plugins. Reads created file in <code>/BOOT-INF/layers.idx</code>.</p>
 <p>Running <code>java -Djarmode=layertools -jar fat.jar list</code> displays list of layers. By default (?) they go in such order: dependencies, spring-boot-loader, snapshot-dependencies, generated, application. Gradle DSL (in Spring Boot 2.3 - have to turn it on, in 2.4 - on by default):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">bootJar {
-  archiveFileName = <span style="font-style:italic">&#39;fat.jar&#39;</span>
-  manifest { ... }
-  layered {
-    application { 
-      ...
-      intoLayer(<span style="font-style:italic">&#34;spring-boot-loader&#34;</span>) {
-        include <span style="font-style:italic">&#34;org/springbootloader/**&#34;</span> <span style="font-style:italic">//everything from this package
-</span><span style="font-style:italic"></span>      }
-      ...
-      intoLayer(<span style="font-style:italic">&#34;application&#34;</span>) <span style="font-style:italic">// everything else
-</span><span style="font-style:italic"></span>    }
-    dependencies { 
-      ...
-    }
-    layerOrder = [<span style="font-style:italic">&#39;dependencies&#39;</span>, <span style="font-style:italic">&#39;spring-boot-loader&#39;</span>, ...]
-  }
-}
-</code></pre></div><p>↳ creates layers.idx file</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>bootJar {
+</span></span><span style="display:flex;"><span>  archiveFileName = <span style="font-style:italic">&#39;fat.jar&#39;</span>
+</span></span><span style="display:flex;"><span>  manifest { ... }
+</span></span><span style="display:flex;"><span>  layered {
+</span></span><span style="display:flex;"><span>    application { 
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      intoLayer(<span style="font-style:italic">&#34;spring-boot-loader&#34;</span>) {
+</span></span><span style="display:flex;"><span>        include <span style="font-style:italic">&#34;org/springbootloader/**&#34;</span> <span style="font-style:italic">//everything from this package
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>      }
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>      intoLayer(<span style="font-style:italic">&#34;application&#34;</span>) <span style="font-style:italic">// everything else
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>    dependencies { 
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    layerOrder = [<span style="font-style:italic">&#39;dependencies&#39;</span>, <span style="font-style:italic">&#39;spring-boot-loader&#39;</span>, ...]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>↳ creates layers.idx file</p>
 <p>Dockerfile-layers:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="font-weight:bold">FROM</span><span style="font-style:italic"> .../openjdk-alpine:11 as builder</span><span style="">
-</span><span style=""></span><span style="font-weight:bold">WORKDIR</span><span style="font-style:italic"> application</span><span style="">
-</span><span style=""></span><span style="font-weight:bold">COPY</span> fat.jar fat.jar<span style="">
-</span><span style=""></span><span style="font-weight:bold">RUN</span> java -Djarmode=layertools -jar fat.jar extract<span style="">
-</span><span style=""></span>...<span style="">
-</span><span style=""></span><span style="font-weight:bold">FROM</span><span style="font-style:italic"> ...openjdk-alpine:11</span><span style="">
-</span><span style=""></span><span style="font-weight:bold">WORKDIR</span><span style="font-style:italic"> application</span><span style="">
-</span><span style=""></span><span style="font-weight:bold">COPY</span> --from=builder application/dependencies/ ./<span style="">
-</span><span style=""></span><span style="font-weight:bold">COPY</span> --from=builder application/spring-boot-loader/ ./<span style="">
-</span><span style=""></span>...<span style="">
-</span><span style="">
-</span><span style=""></span><span style="font-weight:bold">ENTRYPOINT</span> [<span style="font-style:italic">&#34;java&#34;</span>, <span style="font-style:italic">&#34;org.springframework.boot.loader.JarLauncher&#34;</span>]<span style="">
-</span></code></pre></div><p>Why JarLauncher? Even with already extracted artifact, it still figures manifest version from the JAR, does some more &ldquo;magic&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="font-weight:bold">FROM</span><span style="font-style:italic"> .../openjdk-alpine:11 as builder</span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">WORKDIR</span><span style="font-style:italic"> application</span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">COPY</span> fat.jar fat.jar<span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">RUN</span> java -Djarmode=layertools -jar fat.jar extract<span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span>...<span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">FROM</span><span style="font-style:italic"> ...openjdk-alpine:11</span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">WORKDIR</span><span style="font-style:italic"> application</span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">COPY</span> --from=builder application/dependencies/ ./<span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">COPY</span> --from=builder application/spring-boot-loader/ ./<span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span>...<span style="">
+</span></span></span><span style="display:flex;"><span><span style="">
+</span></span></span><span style="display:flex;"><span><span style=""></span><span style="font-weight:bold">ENTRYPOINT</span> [<span style="font-style:italic">&#34;java&#34;</span>, <span style="font-style:italic">&#34;org.springframework.boot.loader.JarLauncher&#34;</span>]<span style="">
+</span></span></span></code></pre></div><p>Why JarLauncher? Even with already extracted artifact, it still figures manifest version from the JAR, does some more &ldquo;magic&rdquo;.</p>
 <p><code>dive</code> utility for analyzing layers.</p>
 <p>Layertools: full control over the build, small image size. Cons: complicated Dockerfile, too many manual actions.</p>
 <p>Question from an expert: how do we get a &ldquo;make it good&rdquo; button, to remove manual actions from the previous approach?</p>
@@ -371,7 +371,7 @@ Hashes not match - rebuild this and every next layer. Spring Boot from v2.3 offe
 <p>Both Jib and Buildpacs use everything to make artifacts reproducable, for example, build dates are set to the start of the Unix epoch.</p>
 <p>Jib. Pros: no need for docker daemon / Dockerfile, works for any Java app; Cons: does not regards Spring Boot specifics, hard to manage layers.</p>
 <p>Other solutions include fabric8io, Spotify, Palantir, bmuschko, Google Jib, Cloud Foundry, Spring Boot OCI Plugins&hellip;</p>
-<p>Presenters' recommendations: if you need maximal control and simplicity of an image - go Layertools; if you need to &ldquo;just make it magically work&rdquo; - go Buildpacks, can&rsquo;t use Docker, or Spring Boot 2.3+ - go Jib.</p>
+<p>Presenters&rsquo; recommendations: if you need maximal control and simplicity of an image - go Layertools; if you need to &ldquo;just make it magically work&rdquo; - go Buildpacks, can&rsquo;t use Docker, or Spring Boot 2.3+ - go Jib.</p>
 <p>Alternative solution: just unpack fat JAR, but it&rsquo;s easier to track manifest metadata.</p>
 <p>Mentioned Spring Boot Admin for tracking all the Spring Boot apps.</p>
 <dl>

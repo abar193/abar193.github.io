@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.97.3" />
   </head>
 
   <body class=" ">
@@ -172,77 +172,77 @@
 <h2 id="defining-feature">Defining feature</h2>
 <p>Let&rsquo;s take one of scenarios in feature file and add the desired functionality</p>
 <h6 id="srctestresourcesatmwithdrawfeature">src/test/resources/atm/withdraw.feature</h6>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">    @manual
-    Scenario: Manual test 1
-        Given I have 50 SEK on my account
-        When I withdraw -1 SEK
-        Then I get 0 SEK from the ATM
-        And error message about incorrect amount is displayed
-        And evaluate manually
-</code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users' final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>    @manual
+</span></span><span style="display:flex;"><span>    Scenario: Manual test 1
+</span></span><span style="display:flex;"><span>        Given I have 50 SEK on my account
+</span></span><span style="display:flex;"><span>        When I withdraw -1 SEK
+</span></span><span style="display:flex;"><span>        Then I get 0 SEK from the ATM
+</span></span><span style="display:flex;"><span>        And error message about incorrect amount is displayed
+</span></span><span style="display:flex;"><span>        And evaluate manually
+</span></span></code></pre></div><p>Step we want is the last one. Cucumber should run its tests, evaluate some of the results and then await for users&rsquo; final decision. Since we want to exclude manual tests from automated runs, we should also annotate those scenarios somehow. I went with &lsquo;@manual&rsquo; tag.</p>
 <p>Now to define this step</p>
 <h6 id="srctestjavaatmwithdrawstepsjava">src/test/java/atm/WithdrawSteps.java</h6>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
-    <span style="font-weight:bold">public</span> <span style="">void</span> evaluate_manually() <span style="font-weight:bold">throws</span> Throwable {
-        System.out.println(<span style="font-style:italic">&#34;Mark feature as [p]assed or [f]ailed?&#34;</span>);
-        Scanner sc = <span style="font-weight:bold">new</span> Scanner(System.in);
-        String s = sc.nextLine();
-        <span style="font-weight:bold">while</span> (!s.equals(<span style="font-style:italic">&#34;f&#34;</span>) &amp;&amp; !s.equals(<span style="font-style:italic">&#34;p&#34;</span>)) {
-            System.out.println(<span style="font-style:italic">&#34;Unknown input: &#34;</span> + s);
-            s = sc.nextLine();
-        }
-        assertThat(<span style="font-style:italic">&#34;User marked test as failed&#34;</span>, s, is(<span style="font-style:italic">&#34;p&#34;</span>));
-    }
-</code></pre></div><p>Keep asking user to provide his assessment until he finally gives up and gives us what we want — either &ldquo;p&rdquo; or &ldquo;f&rdquo;. Then throw an exception if input isn&rsquo;t &ldquo;p&rdquo;. With such simple code nothing can go wrong, right?</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    @Then(<span style="font-style:italic">&#34;^evaluate manually$&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">public</span> <span style="">void</span> evaluate_manually() <span style="font-weight:bold">throws</span> Throwable {
+</span></span><span style="display:flex;"><span>        System.out.println(<span style="font-style:italic">&#34;Mark feature as [p]assed or [f]ailed?&#34;</span>);
+</span></span><span style="display:flex;"><span>        Scanner sc = <span style="font-weight:bold">new</span> Scanner(System.in);
+</span></span><span style="display:flex;"><span>        String s = sc.nextLine();
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> (!s.equals(<span style="font-style:italic">&#34;f&#34;</span>) &amp;&amp; !s.equals(<span style="font-style:italic">&#34;p&#34;</span>)) {
+</span></span><span style="display:flex;"><span>            System.out.println(<span style="font-style:italic">&#34;Unknown input: &#34;</span> + s);
+</span></span><span style="display:flex;"><span>            s = sc.nextLine();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        assertThat(<span style="font-style:italic">&#34;User marked test as failed&#34;</span>, s, is(<span style="font-style:italic">&#34;p&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Keep asking user to provide his assessment until he finally gives up and gives us what we want — either &ldquo;p&rdquo; or &ldquo;f&rdquo;. Then throw an exception if input isn&rsquo;t &ldquo;p&rdquo;. With such simple code nothing can go wrong, right?</p>
 <p>Wrong.</p>
 <h2 id="problem-with-maven">Problem with Maven</h2>
 <p>If you run your Cucumber tests with &lsquo;mvn clean test&rsquo; (the way every Cucumber tutorial suggests) then you get but one problem.
 Maven blocks System input, preventing our Scanner from giving us any input &ndash; no matter how hard user smashes his &ldquo;enter&rdquo; key, our app just won&rsquo;t receive a single line of input and will stay soft locked.</p>
-<p>To work around this problem and get an easy-to-use solution we need 2 components. One is &lsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &lsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
+<p>To work around this problem and get an easy-to-use solution we need 2 components. One is &rsquo;exec-maven-plugin&rsquo;, which allows us to execute custom java code bypassing mvn test restrictions, and second is <a href="https://github.com/cucumber/cucumber-jvm/blob/master/core/src/main/resources/cucumber/api/cli/USAGE.txt">cucumber.api.cli.Main usage info</a>. All we need to do is add exec-maven-plugin, specify &lsquo;mainClass&rsquo; as &lsquo;cucumber.api.cli.Main&rsquo;, define &lsquo;classpathScope&rsquo; as &rsquo;test&rsquo; and provide in arguments path to our feature and glue code files, and Cucumber plugins.</p>
 <h2 id="result">Result</h2>
 <h6 id="pomxml">pom.xml</h6>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="font-weight:bold">&lt;plugin&gt;</span>
-        <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
-        <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
-        <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
-        <span style="font-weight:bold">&lt;executions&gt;</span>
-            <span style="font-weight:bold">&lt;execution&gt;</span>
-                <span style="font-weight:bold">&lt;goals&gt;</span>
-                    <span style="font-weight:bold">&lt;goal&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
-                <span style="font-weight:bold">&lt;/goals&gt;</span>
-                <span style="font-style:italic">&lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&gt;</span>
-                <span style="font-style:italic">&lt;!--&lt;phase&gt;test&lt;/phase&gt;--&gt;</span>
-            <span style="font-weight:bold">&lt;/execution&gt;</span>
-        <span style="font-weight:bold">&lt;/executions&gt;</span>
-        <span style="font-weight:bold">&lt;configuration&gt;</span>
-            <span style="font-weight:bold">&lt;mainClass&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
-            <span style="font-weight:bold">&lt;classpathScope&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
-            <span style="font-weight:bold">&lt;arguments&gt;</span>
-                <span style="font-style:italic">&lt;!-- Specify the location of .feature files --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Specify the location of gluecode classes - in our case that&#39;s WithdrawSteps --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Define plugins - first one ensures that console output is colorful,
-</span><span style="font-style:italic">                    second one gives location for report file --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-style:italic">&lt;!-- Cucumber Tag expression.  --&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
-                <span style="font-weight:bold">&lt;argument&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
-            <span style="font-weight:bold">&lt;/arguments&gt;</span>
-        <span style="font-weight:bold">&lt;/configuration&gt;</span>
-    <span style="font-weight:bold">&lt;/plugin&gt;</span> 
-</code></pre></div><p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="font-weight:bold">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;groupId&gt;</span>org.codehaus.mojo<span style="font-weight:bold">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;artifactId&gt;</span>exec-maven-plugin<span style="font-weight:bold">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;version&gt;</span>1.6.0<span style="font-weight:bold">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;executions&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;execution&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;goals&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">&lt;goal&gt;</span>java<span style="font-weight:bold">&lt;/goal&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;/goals&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!-- Uncomment the following line if you want to run manual tests with mvn test command --&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!--&lt;phase&gt;test&lt;/phase&gt;--&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;/execution&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;/executions&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;mainClass&gt;</span>cucumber.api.cli.Main<span style="font-weight:bold">&lt;/mainClass&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;classpathScope&gt;</span>test<span style="font-weight:bold">&lt;/classpathScope&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;arguments&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!-- Specify the location of .feature files --&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!-- Specify the location of gluecode classes - in our case that&#39;s WithdrawSteps --&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>--glue<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>classpath:atm<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!-- Define plugins - first one ensures that console output is colorful,
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic">                    second one gives location for report file --&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>--plugin<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>pretty<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>-p<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>json:target/cucumber/manual.json<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-style:italic">&lt;!-- Cucumber Tag expression.  --&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>--tags<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="font-weight:bold">&lt;argument&gt;</span>@manual<span style="font-weight:bold">&lt;/argument&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">&lt;/arguments&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">&lt;/configuration&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">&lt;/plugin&gt;</span> 
+</span></span></code></pre></div><p>I find it best to annotate Runner class to prevent manual tests from being executed with automated:</p>
 <h6 id="srctestjavaatmruncukestestjava">src/test/java/atm/RunCukesTest.java</h6>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@RunWith(Cucumber.class)
-@CucumberOptions(plugin = {<span style="font-style:italic">&#34;pretty&#34;</span>, <span style="font-style:italic">&#34;json:target/cucumber/cucumber.json&#34;</span>},
-        tags = {<span style="font-style:italic">&#34;not @manual&#34;</span>})
-<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">RunCukesTest</span> {
-}
-</code></pre></div><h2 id="running">Running</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>@RunWith(Cucumber.class)
+</span></span><span style="display:flex;"><span>@CucumberOptions(plugin = {<span style="font-style:italic">&#34;pretty&#34;</span>, <span style="font-style:italic">&#34;json:target/cucumber/cucumber.json&#34;</span>},
+</span></span><span style="display:flex;"><span>        tags = {<span style="font-style:italic">&#34;not @manual&#34;</span>})
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">RunCukesTest</span> {
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="running">Running</h2>
 <p>Now we can run automated tests with <code>mvn test</code> and manual with <code>mvn test-compile exec:java</code>.
 With current configuration it will provide 2 json report files which can be merged in several ways, depending on how you store your results.</p>
 <p>If you prefer to have results in html format, you can merge reports by copying one report.js file starting from second line and excluding last into penultimate line of another report.js.</p>

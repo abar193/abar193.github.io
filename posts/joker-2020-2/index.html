@@ -54,7 +54,7 @@
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.97.3" />
   </head>
 
   <body class=" ">
@@ -171,7 +171,7 @@
 <p><strong>JOOQ</strong>: a tool for mapping SQL to Java DSL - SQL style, generated from the DB schema.
 Allows doing <code>create.select(BOOK.title).from(BOOK).where(...).orderBy(...)</code>. Lifecycle: generate Java classes based on SQL schema, can work with it from there.</p>
 <p><img src="https://mrabar.me/img/joker2020/joker-2020-hidden-pearls.png" alt="">
-<em>Image from Sven Rupperts' <a href="https://live.jugru.org/en/online/100071r10004878/?t=3">presentation</a></em></p>
+<em>Image from Sven Rupperts&rsquo; <a href="https://live.jugru.org/en/online/100071r10004878/?t=3">presentation</a></em></p>
 <p><strong>Speedment</strong>: streams over JDBC, generated from the DB schema, generating Java classes with streaming API.</p>
 <p>(Another tool: Querry DSL)</p>
 <p><strong>JPA streamer</strong> built on top of hibernate, same stream API.</p>
@@ -205,7 +205,7 @@ The easier it is to start running tests, the more pleasurable development will b
 <p>(The more manual steps you need to take to run tests - the fewer chances they will be run!)</p>
 <p>&lt;Demo - test with lots of actions, the speaker asked what&rsquo;s wrong with it; experts: too many actions?; speaker: unclear what is being tested, may fail in a lot of different ways, unclear behavior of external api&gt;</p>
 <p><strong>What is unit</strong> [in Spring app] test? Component? Component + Controller? Several communicating components? Typically it should be a logically isolated block.</p>
-<p>Acceptance/E2E: from users' perspective, no internal system knowledge, typically - happy paths, slow and unstable. &lt;- BDD lives here.</p>
+<p>Acceptance/E2E: from users&rsquo; perspective, no internal system knowledge, typically - happy paths, slow and unstable. &lt;- BDD lives here.</p>
 <p>Forget about coverage - it&rsquo;s useless. If all tests being green is enough for you to go to production - assume coverage to be 100%.</p>
 <p>Workshop starts: test example - pet store, need to add functionality to display some animals on a front page.</p>
 <p>Presenter starts with setting up sample db with just id and name for animal table, writes test &ldquo;Send request, it returns OK&rdquo;. This forces us to create a controller, add some sort of get mapping.</p>
@@ -227,37 +227,37 @@ Was tested in Java 14</p>
 <p>Custom <code>IllegalStateException</code> - By adding it into a classpath before system libraries - the compiler now thinks they are checked exceptions. Could be substituted with code analyser.</p>
 <p>Lambda friendly ClassValue - associate a piece of data with a class =&gt; that data is retired when class is unloaded.</p>
 <p>Treating checked exceptions as unchecked:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException retrow(Throwable throwable) <span style="font-weight:bold">throws</span> T { <span style="font-weight:bold">throw</span> (T) throwable;} (Jvm.rethrow());
-
-<span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException rethrow(Throwable t) <span style="font-weight:bold">throws</span> T {
-    <span style="font-weight:bold">throw</span> (T) t;
-  }
-
-  @FunctionalInterface
-  <span style="font-weight:bold">public</span> <span style="font-weight:bold">interface</span> <span style="font-weight:bold">ThrowingConsumer</span>&lt;I, T <span style="font-weight:bold">extends</span> Throwable&gt; {
-    <span style="">void</span> accept(I in) <span style="font-weight:bold">throws</span> T;
-  }
-
-  <span style="font-weight:bold">static</span> &lt;I, T <span style="font-weight:bold">extends</span> Throwable&gt; Consumer&lt;I&gt; asConsumer(ThrowingConsumer&lt;I, T&gt; function) {
-    <span style="font-weight:bold">return</span> in -&gt; {
-      <span style="font-weight:bold">try</span> {
-        function.accept(in);
-      } <span style="font-weight:bold">catch</span> (Throwable t) {
-        rethrow(t);
-      }
-    };
-  }
-
-  <span style="font-weight:bold">public</span> <span style="">void</span> a() {
-    asConsumer(v -&gt; scoringOverduesComponent.loadAndSaveOverdues(userProfile, userProfile.getLoginCountry(), subSurveyNbr, LicenseType.BANK))
-      .accept(<span style="font-weight:bold">null</span>);
-  }
-</code></pre></div><p>Safepoints Java?</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException retrow(Throwable throwable) <span style="font-weight:bold">throws</span> T { <span style="font-weight:bold">throw</span> (T) throwable;} (Jvm.rethrow());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">static</span> &lt;T <span style="font-weight:bold">extends</span> Throwable&gt; RuntimeException rethrow(Throwable t) <span style="font-weight:bold">throws</span> T {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">throw</span> (T) t;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  @FunctionalInterface
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="font-weight:bold">interface</span> <span style="font-weight:bold">ThrowingConsumer</span>&lt;I, T <span style="font-weight:bold">extends</span> Throwable&gt; {
+</span></span><span style="display:flex;"><span>    <span style="">void</span> accept(I in) <span style="font-weight:bold">throws</span> T;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">static</span> &lt;I, T <span style="font-weight:bold">extends</span> Throwable&gt; Consumer&lt;I&gt; asConsumer(ThrowingConsumer&lt;I, T&gt; function) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> in -&gt; {
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">try</span> {
+</span></span><span style="display:flex;"><span>        function.accept(in);
+</span></span><span style="display:flex;"><span>      } <span style="font-weight:bold">catch</span> (Throwable t) {
+</span></span><span style="display:flex;"><span>        rethrow(t);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="">void</span> a() {
+</span></span><span style="display:flex;"><span>    asConsumer(v -&gt; scoringOverduesComponent.loadAndSaveOverdues(userProfile, userProfile.getLoginCountry(), subSurveyNbr, LicenseType.BANK))
+</span></span><span style="display:flex;"><span>      .accept(<span style="font-weight:bold">null</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>Safepoints Java?</p>
 <h1 id="spring-patterns-for-adults">Spring Patterns for adults</h1>
 <p>Energetically presented by <a href="https://twitter.com/jekaborisov">Evgeny Borisov</a>, experts: <a href="https://twitter.com/andrei_kogun">Andrei Kogun</a>, <a href="https://twitter.com/tolkv">Kirill Tolkachev</a>.</p>
 <p>Practical presentation, not some esoteric stuff. No BeanPostProcessros!</p>
 <p><strong>Singletons</strong> - great as conception, terrible as a pattern. Latest Java-supported solution - write Singleton as enum, can also in static block.</p>
-<p>Singleton is an anti-pattern because it forces tight coupling, encourages writing ugly code, can&rsquo;t be tested without PowerMock, defies Single Responsibility principle (it manages itself and it&rsquo;s its' own container).</p>
+<p>Singleton is an anti-pattern because it forces tight coupling, encourages writing ugly code, can&rsquo;t be tested without PowerMock, defies Single Responsibility principle (it manages itself and it&rsquo;s its&rsquo; own container).</p>
 <p>Declaring singleton: use Spring.</p>
 <p><code>@ComponentScan</code> =&gt; starts scouting defined <code>@Component</code>s (including <code>@Service</code>/<code>@Repository</code>/<code>@Controller</code>/<code>@RestController</code>. <code>@Configuration</code> - is a component too!) This works because most Spring mechanisms don&rsquo;t just search for a specific annotation, but rather analyze each found annotation - what&rsquo;s a superclass for it, if it&rsquo;s something that Spring supports?</p>
 <p><code>@Bean</code> - ?</p>
@@ -273,27 +273,27 @@ Was tested in Java 14</p>
 <p>&ldquo;<strong>Constructor injection</strong> encourages developers to minimal classes?&rdquo; Uh-huh, sure, <code>@RequiredArgsConstructor</code> laughs in your face. Secondly - Idea supports field injection better.</p>
 <p>@Primary usages - don&rsquo;t use it for defining mock beans. Can be used for qualifying what you inject, e.g. <code>@Bean @Primary public RestTemplate restTemplate()</code> -&gt; <code>@Autowired RestTemplate restTemplate</code> (when you have several <code>RestTemplate</code>&rsquo;s).</p>
 <p><img src="https://mrabar.me/img/joker2020/joker2020-Spring-Patterns-For-Adults.png" alt="">
-<em>Image from Evgeny Borisovs' <a href="https://live.jugru.org/en/online/100071r10005182/?t=1">presentation</a></em></p>
+<em>Image from Evgeny Borisovs&rsquo; <a href="https://live.jugru.org/en/online/100071r10005182/?t=1">presentation</a></em></p>
 <p>Implementing <strong>Chain of responsibility</strong>: Spring knows how to autowire lists of something <code>@Autowired List&lt;Handler&gt; handlers</code> -&gt; <code>Handler1.java, Handler2.java, ...</code>.</p>
 <p>Injecting custom lists (only this and that, or ensure order)? Use <code>BeanPostProcessor</code> (whoops!), to make a list out of <code>ApplicationContext</code></p>
 <p><code>Introspector.decapitalize()</code> - used for making bean names.</p>
 <p>Learn more about <code>spring.factories</code>.</p>
 <h2 id="reusing-oldlegacy-beans-in-a-new-spring-boot-application">Reusing old/legacy &ldquo;beans&rdquo; in a new Spring Boot application</h2>
 <p>(using Reflections library that extends java.reflection)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar 
-
-registerBeanDefinition() {
-      Reflections scanner = <span style="font-weight:bold">new</span> Reflections(<span style="font-style:italic">&#34;com.legacy.package&#34;</span>);
-      Set&lt;Class&lt;?&gt;&gt; classes = scanner.getTypesAnnotatedWith(LegacySingleton.class);
-      <span style="font-weight:bold">for</span>(Class&lt;?&gt; aClass : classes) {
-        GenericBeanDefinition bd = <span style="font-weight:bold">new</span> G...();
-        bd.setBeanClass(aClass);
-        beanDefinition.setScope(beanDefinition.SCOPE_SINGLETON);
-
-        registry.registerBeanDefinition(Introspector.decapitalize(aClass.getSimpleName()), bd);
-      }
-}
-</code></pre></div><p>To add some other qualifier: <code>bd.addQualifier(new AutowireCandidateQualifier(Legacy.class));</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">LegacyBeanDefinitionRegistrar</span> <span style="font-weight:bold">implements</span> ImportBeanDefinitionRegistrar 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>registerBeanDefinition() {
+</span></span><span style="display:flex;"><span>      Reflections scanner = <span style="font-weight:bold">new</span> Reflections(<span style="font-style:italic">&#34;com.legacy.package&#34;</span>);
+</span></span><span style="display:flex;"><span>      Set&lt;Class&lt;?&gt;&gt; classes = scanner.getTypesAnnotatedWith(LegacySingleton.class);
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">for</span>(Class&lt;?&gt; aClass : classes) {
+</span></span><span style="display:flex;"><span>        GenericBeanDefinition bd = <span style="font-weight:bold">new</span> G...();
+</span></span><span style="display:flex;"><span>        bd.setBeanClass(aClass);
+</span></span><span style="display:flex;"><span>        beanDefinition.setScope(beanDefinition.SCOPE_SINGLETON);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        registry.registerBeanDefinition(Introspector.decapitalize(aClass.getSimpleName()), bd);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To add some other qualifier: <code>bd.addQualifier(new AutowireCandidateQualifier(Legacy.class));</code></p>
 <p>Start using: <code>@Configuration @Import(LegacyBeanDefinitionRegistrar.class)</code> in Configuration class.</p>
 <dl>
 <dt><strong>More patterns</strong>:</dt>
@@ -301,22 +301,21 @@ registerBeanDefinition() {
 <dd>Never use switch! &ldquo;What&rsquo;s 235 switch cases, when you already had 234 cases?&rdquo; -&gt; &ldquo;Instead of digging shitty code, write as if you are already a senior dev!&rdquo;</dd>
 </dl>
 <p>Option 1: Rename bean ids (bad example)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map; <span style="font-style:italic">// String = bean id
-</span></code></pre></div><p>Option 2: add some key information to interface</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">interface</span> <span style="font-weight:bold">SomethingInterface</span> { String myType(); <span style="">void</span> doWork(); }
-
-
-<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">Controller</span> {
-  <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map;
-
-  <span style="font-weight:bold">public</span> Controller()(List&lt;SomethingInterface&gt; somethings) {
-    map = somethings.stream.collect(toMap(SomethingInterface::myType), Function.identity());
-  }
-
-  ...
-}
-
-</code></pre></div><p>Option 3 define Map&lt;&hellip;&gt; as bean, group it as in Option 2.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  @Autowired <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map; <span style="font-style:italic">// String = bean id
+</span></span></span></code></pre></div><p>Option 2: add some key information to interface</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">interface</span> <span style="font-weight:bold">SomethingInterface</span> { String myType(); <span style="">void</span> doWork(); }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">Controller</span> {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">private</span> Map&lt;String, Something&gt; map;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> Controller()(List&lt;SomethingInterface&gt; somethings) {
+</span></span><span style="display:flex;"><span>    map = somethings.stream.collect(toMap(SomethingInterface::myType), Function.identity());
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Option 3 define Map&lt;&hellip;&gt; as bean, group it as in Option 2.</p>
 <hr>
 <p>Registering beans on the fly:</p>
 <ol>
@@ -328,40 +327,39 @@ registerBeanDefinition() {
 <hr>
 <p>Don&rsquo;t use AspectJ for business logic - you will be hated by everyone! You can still use AspectJ on a framework level, for example - to send warning notifications, every time ClassCastException happens.</p>
 <p>Static approach:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Aspect <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> {
-  @AfterThrowing(pointcut = <span style="font-style:italic">&#34;execution(*..*.*(..))&#34;</span>, throwing = <span style="font-style:italic">&#34;ex&#34;</span>)
-  <span style="font-weight:bold">public</span> <span style="">void</span> handleException(ClassCastException ex) {
-    System.out.println(<span style="font-style:italic">&#34;Something broke again!&#34;</span>);
-  }
-}
-</code></pre></div><p>Dynamic approach:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> <span style="font-weight:bold">implements</span> MethodInterceptor {
-  <span style="font-weight:bold">public</span> Object invoke(MethodInvocation methodInvocation) <span style="font-weight:bold">throws</span> Throwable {
-    <span style="font-weight:bold">try</span> {
-      <span style="font-weight:bold">return</span> methodInvocation.proceed()
-    } <span style="font-weight:bold">catch</span> (ClassCastException ex) {
-      System.out.println(<span style="font-style:italic">&#34;Something broke again!&#34;</span>);
-    }
-  }
-}
-
-<span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">CustomPointcut</span> <span style="font-weight:bold">extends</span> DynamicMethodMatcherPointcut {
-  <span style="font-weight:bold">private</span> String packagesToHandle = <span style="font-style:italic">&#34;...&#34;</span>;
-
-  <span style="font-weight:bold">public</span> <span style="">boolean</span> matches(...) {
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold">true</span>;
-  }
-
-  <span style="font-weight:bold">public</span> ClassFilter getClassFilter() {
-    <span style="font-weight:bold">return</span> .getPackage().getName().contains(packagesToHandle);
-  }
-}
-
-... 
-@Bean <span style="font-weight:bold">public</span> DefaultPointcutAdvisor dfa() { <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> DefaultPointcutAdvisor(customPointcut(), exceptionHandlerAspect()); }
-...
-
-</code></pre></div><dl>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>@Aspect <span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> {
+</span></span><span style="display:flex;"><span>  @AfterThrowing(pointcut = <span style="font-style:italic">&#34;execution(*..*.*(..))&#34;</span>, throwing = <span style="font-style:italic">&#34;ex&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="">void</span> handleException(ClassCastException ex) {
+</span></span><span style="display:flex;"><span>    System.out.println(<span style="font-style:italic">&#34;Something broke again!&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Dynamic approach:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">ExceptionHandlerAspect</span> <span style="font-weight:bold">implements</span> MethodInterceptor {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> Object invoke(MethodInvocation methodInvocation) <span style="font-weight:bold">throws</span> Throwable {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="font-weight:bold">return</span> methodInvocation.proceed()
+</span></span><span style="display:flex;"><span>    } <span style="font-weight:bold">catch</span> (ClassCastException ex) {
+</span></span><span style="display:flex;"><span>      System.out.println(<span style="font-style:italic">&#34;Something broke again!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">public</span> <span style="font-weight:bold">class</span> <span style="font-weight:bold">CustomPointcut</span> <span style="font-weight:bold">extends</span> DynamicMethodMatcherPointcut {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">private</span> String packagesToHandle = <span style="font-style:italic">&#34;...&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> <span style="">boolean</span> matches(...) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">public</span> ClassFilter getClassFilter() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> .getPackage().getName().contains(packagesToHandle);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... 
+</span></span><span style="display:flex;"><span>@Bean <span style="font-weight:bold">public</span> DefaultPointcutAdvisor dfa() { <span style="font-weight:bold">return</span> <span style="font-weight:bold">new</span> DefaultPointcutAdvisor(customPointcut(), exceptionHandlerAspect()); }
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><dl>
 <dt><strong>Morale.</strong> Patterns which are <del>simple</del> easy with Spring:</dt>
 <dd>Singleton (Lazy/Eager)</dd>
 <dd>Chain of responsibility</dd>
