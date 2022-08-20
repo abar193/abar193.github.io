@@ -16,8 +16,8 @@
       <description>My synopsis + English translation for IT_One Meet Up - a free online meetup for Java and Big Data.
 Overview of big data storage tech. Pros-, Cons-, how to use. By Maksim Stacenko
 Topics:
- Describing technologies, highlighting how to save date engineer time by choosing not the most popular solutions Share experience from PoC works on big data Saving on hardware
- Your data storage is a product: do you store test data only, do you use it in production, does it working 24/7 (especially with the new remote work approach), do you remember the legal consequences of neglecting data safety and consistency?</description>
+Describing technologies, highlighting how to save date engineer time by choosing not the most popular solutions Share experience from PoC works on big data Saving on hardware
+Your data storage is a product: do you store test data only, do you use it in production, does it working 24/7 (especially with the new remote work approach), do you remember the legal consequences of neglecting data safety and consistency?</description>
     </item>
     
   </channel>

@@ -36,8 +36,8 @@ Example Consider the scenario: you have an old legacy project full of heavy doma
       <description>My synopsis + English translation for IT_One Meet Up - a free online meetup for Java and Big Data.
 Overview of big data storage tech. Pros-, Cons-, how to use. By Maksim Stacenko
 Topics:
- Describing technologies, highlighting how to save date engineer time by choosing not the most popular solutions Share experience from PoC works on big data Saving on hardware
- Your data storage is a product: do you store test data only, do you use it in production, does it working 24/7 (especially with the new remote work approach), do you remember the legal consequences of neglecting data safety and consistency?</description>
+Describing technologies, highlighting how to save date engineer time by choosing not the most popular solutions Share experience from PoC works on big data Saving on hardware
+Your data storage is a product: do you store test data only, do you use it in production, does it working 24/7 (especially with the new remote work approach), do you remember the legal consequences of neglecting data safety and consistency?</description>
     </item>
     
     <item>
@@ -94,7 +94,7 @@ Autoconfigs, profiles, etc. No Livereload? There is livereload for Spring! Sprin
       <pubDate>Wed, 04 Nov 2020 22:48:46 +0200</pubDate>
       
       <guid>https://mrabar.me/posts/certifications/</guid>
-      <description>This is a stub, on a Russian version of this blog you may read a post in which I analyze the following certifications: 1Z0-808 1Z0-819 1Z0-909 1Z0-071 RHCSA  If you are interested in what I&amp;rsquo;m thinking about those certifications and their requirements - feel free to go there. If you are interested in learning more about said certifications - then I can only advise you to follow the links and read info from the original sources.</description>
+      <description>This is a stub, on a Russian version of this blog you may read a post in which I analyze the following certifications: 1Z0-808 1Z0-819 1Z0-909 1Z0-071 RHCSA If you are interested in what I&amp;rsquo;m thinking about those certifications and their requirements - feel free to go there. If you are interested in learning more about said certifications - then I can only advise you to follow the links and read info from the original sources.</description>
     </item>
     
     <item>
