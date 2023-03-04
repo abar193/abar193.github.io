@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Anton B.">
+    <meta name="description" content="Simplifying stuff for business needs">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="In reply to: Clean Code Horrible Performance"/>
+<meta name="twitter:description" content="Sometimes &#39;good enough&#39; is good enough"/>
+
+    <meta property="og:title" content="In reply to: Clean Code Horrible Performance" />
+<meta property="og:description" content="Sometimes &#39;good enough&#39; is good enough" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mrabar.me/posts/clean-code-good-enough-performance/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-04T16:13:00+00:00" />
+<meta property="article:modified_time" content="2023-03-04T16:13:00+00:00" />
+
+
+    
+      <base href="https://mrabar.me/posts/clean-code-good-enough-performance/">
+    
+    <title>
+  In reply to: Clean Code Horrible Performance · Mr. Abar
+</title>
+
+    
+      <link rel="canonical" href="https://mrabar.me/posts/clean-code-good-enough-performance/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mrabar.me/css/coder.min.9a2d333aad4567e8ef8e306e20158ba9df502e8e10a001367c1a6375cd20eb5f.css" integrity="sha256-mi0zOq1FZ&#43;jvjjBuIBWLqd9QLo4QoAE2fBpjdc0g618=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mrabar.me/css/custom.css">
+    
+
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.110.0">
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mrabar.me/">
+      Mr. Abar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/pdf/anton_bardishev_cv.pdf">CV</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/bachelor">Bachelor</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/winter">Pet</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/posts/">Blog</a>
+          </li>
+        
+      
+      
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="https://mrabar.me/ru/">RU</a>
+            </li>
+          
+        
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">In reply to: Clean Code Horrible Performance</h1>
+          <h4 style="margin: 1rem 0;">Sometimes &#39;good enough&#39; is good enough</h4>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2023-03-04T16:13:00Z'>
+                4 March, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              13 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a class="categories" href="https://mrabar.me/categories/thoughts/">thoughts</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a class="tags" href="https://mrabar.me/tags/clean-code/">clean code</a>
+      <span class="separator">•</span>
+    <a class="tags" href="https://mrabar.me/tags/performance/">performance</a></div>
+
+
+          
+
+        </div>
+      </header>
+      <aside>
+        <h1 class="title">Table of Contents</h1>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#preparations">Preparations</a></li>
+    <li><a href="#the-case-of-a-triangle">The case of a triangle</a></li>
+    <li><a href="#the-point">The point</a></li>
+    <li><a href="#outro">Outro</a></li>
+  </ul>
+</nav>
+      </aside>
+      <div>
+        <h1 id="intro">Intro</h1>
+<p>I recently stumbled across a talk <a href="https://www.computerenhance.com/p/clean-code-horrible-performance">&ldquo;Clean&rdquo; Code, Horrible Performance</a> by Casey Muratori. He makes a great point, and I invite my readers <del>like crawler or searchbot, because no one else visits me</del> to give him a visit and at least glance over the transcript.</p>
+<p>In his talk, mr. Muratori implements a classic example of &ldquo;find the area of a various geometric shapes&rdquo; in C++ using all the best practices from Clean Code recommendations, measures the performance, and then demonstrates how to improve benchmarks by violating one or several principles.</p>
+<p>It all went well; I was reading and noding, like &ldquo;wow, what a cool thought,&rdquo; until&hellip;</p>
+<blockquote>
+<p>To exploit this pattern, we can introduce a simple table that says what the coefficient is that we need to use for each type.</p>
+</blockquote>
+<p>Oh no. This is not good.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>f32 const CTable[Shape_Count] = {1.0f, 1.0f, 0.5f, Pi32};
+</span></span><span style="display:flex;"><span>f32 GetAreaUnion(shape_union Shape)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    f32 Result = CTable[Shape.Type]*Shape.Width*Shape.Height;
+</span></span><span style="display:flex;"><span>    return Result;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is not good at all.</p>
+<p>While the first two examples were <em>calculating the area</em> of various shapes (circle, square, rectangle, triangle - by base and height), this one only multiplies two numbers with a third one. And while it happens to return shape area - in this concreete circumstances, I would like to illustrate why doing that is a bad idea.</p>
+<h1 id="preparations">Preparations</h1>
+<p>To begin with, I copy-pasted the code provided in listings, wrote a bit of my own to set up random generation/destruction of objects, and wrote a main procedure to re-calculate areas.</p>
+<p>Before we go any further, I would like to emphasize the fact that while I started, and spent a few good years with Pascal and C programming languages, later I found myself writing Java code at the enterprises, and I could never move on past that. So, today I wrote C++ code for the first time in my life, and for all I know - I could have had a bunch of memory leaks, Undefined Behaviors, and whatnot. I also do not know at which point would compiler start breaking or throwing my code away, so I didn&rsquo;t touch any options and just launched debug version of the build with the &ldquo;Run&rdquo; button in my IntelliJ Idea (because what other IDE could Java dev have?)</p>
+<p>Anyway, with running my tests somehow like that:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  for(int i = 0; i &lt; ITERATIONS; i++) {
+</span></span><span style="display:flex;"><span>    start = clock();
+</span></span><span style="display:flex;"><span>    TotalAreaVTBL(SHAPES, base);
+</span></span><span style="display:flex;"><span>    end = clock();
+</span></span><span style="display:flex;"><span>    double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+</span></span><span style="display:flex;"><span>    timeClean[i] = time_taken;
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>I got the following output:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Hello, World!
+</span></span><span style="display:flex;"><span>Clean approach: 0.00179
+</span></span><span style="display:flex;"><span>Switch approach: 0.00175 (1.02037)
+</span></span><span style="display:flex;"><span>Table/Union approach: 0.00058 (3.10546)
+</span></span></code></pre></div><p>I have no idea how to count cycles, so I simply compare execution times against the &ldquo;Clean&rdquo; solution. I also only run normal loops, not those hand-unrolled <code>V4</code> versions. And since I only know how to write a <code>for</code> loop, the fine nuance of <code>give “clean” code the benefit of the doubt and not add any kind of abstracted iterator that might confuse the compiler and lead to worse performance</code> is kinda lost on me.</p>
+<p>With 100500 shapes and 1000 iterations, I didn&rsquo;t get an x6 performance boost for the table version, but even an x3 boost is cool enough - no arguments about that.</p>
+<h1 id="the-case-of-a-triangle">The case of a triangle</h1>
+<p>Now, imagine this - we implemented our shape area calculator, tested it, shipped it, and had it deployed. Then, one day, the analyst runs into our floor (or schedules an emergency meeting in Teams with you and team-lead), and brings up the issue - the triangle area isn&rsquo;t calculating properly. -What do you mean, not properly? -It does not work for our customers&rsquo; triangles! -Wha&hellip; -Why do you ask for height? It counts only for right triangles! -But it worked in the test cases you provided&hellip; -You should have thought of it! <strong>We calculate the area of a square by a side, and the area of a rectangle by two sides, so it only makes sense that we should calculate the area for a triangle by three sides</strong>! -But the requirements you provided, they said&hellip; -Look, that doesn&rsquo;t matter now! Can you just fix this really quick?</p>
+<blockquote>
+<p>How hard could it even be to calculate the area for all kinds of triangles?</p>
+</blockquote>
+<p>Well, let&rsquo;s figure it out. We could not let down all those customers that count on us to calculate the areas of their triangles now, can we? After all, the calculation formula is pretty much straightforward.</p>
+<p><img src="https://mrabar.me/img/goodenough/triangle.png" alt="Triangle from www.learntocalculate.com"></p>
+<p><strong>Clean code case.</strong> Triangle is a class that stores its&rsquo; own sides and calculates its area. So, I just go there and fix the formula, and a git diff looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span> class triangle : public shape_base
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span> public:
+</span></span><span style="display:flex;"><span>-    triangle(f32 BaseInit, f32 HeightInit) : Base(BaseInit), Height(HeightInit) {}
+</span></span><span style="display:flex;"><span>-    virtual f32 Area() {return 0.5f*Base*Height;}
+</span></span><span style="display:flex;"><span>+    triangle(f32 sideA, f32 sideB, f32 sideC) : sideA(sideA), sideB(sideB), sideC(sideC) {}
+</span></span><span style="display:flex;"><span>+    virtual f32 Area() {
+</span></span><span style="display:flex;"><span>+      f32 p = (sideA + sideB + sideC) / 2;
+</span></span><span style="display:flex;"><span>+      return sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
+</span></span><span style="display:flex;"><span>+    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> private:
+</span></span><span style="display:flex;"><span>-    f32 Base, Height;
+</span></span><span style="display:flex;"><span>+    f32 sideA, sideB, sideC;
+</span></span><span style="display:flex;"><span> };
+</span></span></code></pre></div><p>Replace 3 lines with 6 inside one isolated class, and that&rsquo;s it. No changes to any other methods or procedures are needed (apart from generation), and I&rsquo;m about 55% sure that even I could not have broken it - even in C++.</p>
+<p><strong>Switch approach.</strong> All our shapes share the same data structure. Since we now store all 3 triangle sides inside the structure, we now need a new data item. One could argue, that it is better to rename two previous items too, to something like <code>A</code> and <code>B</code>, or <code>Side1</code> and <code>Side2</code>, but doing so would affect square and rectangle code, you&rsquo;d have to fix tests, inputs&hellip; Better to just add one new row and be done with it, right?</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>struct shape_union
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    shape_type Type;
+</span></span><span style="display:flex;"><span>    f32 Width;
+</span></span><span style="display:flex;"><span>    f32 Height;
+</span></span><span style="display:flex;"><span>    f32 Side; // triangle only!
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f32 GetAreaSwitch(shape_union Shape)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  f32 Result = 0.0f;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  switch(Shape.Type)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    case Shape_Square: {Result = Shape.Width*Shape.Width;} break;
+</span></span><span style="display:flex;"><span>    case Shape_Rectangle: {Result = Shape.Width*Shape.Height;} break;
+</span></span><span style="display:flex;"><span>    case Shape_Triangle: {
+</span></span><span style="display:flex;"><span>      f32 p = (Shape.Width + Shape.Height + Shape.Side) / 2;
+</span></span><span style="display:flex;"><span>      Result = sqrt(p * (p-Shape.Width) * (p - Shape.Height) * (p - Shape.Side));
+</span></span><span style="display:flex;"><span>    } break;
+</span></span><span style="display:flex;"><span>    case Shape_Circle: {Result = Pi32*Shape.Width*Shape.Width;} break;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    case Shape_Count: {} break;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  return Result;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here I give the full code for the struct and the method, so it could be seen as a whole. We now have one struct for circle, square, rectangle, and triangle, <code>Width</code> is the radius for a circle, the side for a square, one of the two sides (the latter one being <code>Height</code>) of a rectangle, and one of three sides of a triangle. We just have to remember now that a triangle consists of three sides - <code>Width</code>, <code>Height</code>, and <code>Side</code>.</p>
+<p><img src="https://mrabar.me/img/goodenough/whs-triangle.png" alt="Triangle whose sides are named Width, Height and Side"></p>
+<p>It&rsquo;s ok, I&rsquo;ve seen worse. One could debate if we need to extract triangle calculation in another procedure or not, but still, it works, it&rsquo;s in one place, and it&rsquo;s pretty much straightforward - triangle side naming issues aside, that is.</p>
+<p>Let&rsquo;s move on to the <strong>Table approach</strong>. The assumption was that we can always calculate the area of a shape by multiplying its sides with some sort of coefficient. And boy, were we wrong. The only way I could think of that would work is to complicate our <code>GetAreaUnion</code> procedure by adding in there another branch to check if the shape is a triangle first.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>f32 const CTable[Shape_Count] = {1.0f, 1.0f, 0.5f, Pi32};
+</span></span><span style="display:flex;"><span>f32 GetAreaUnion(shape_union Shape)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  if(Shape.Type == Shape_Triangle) {
+</span></span><span style="display:flex;"><span>    f32 p = (Shape.Width + Shape.Height + Shape.Side) / 2;
+</span></span><span style="display:flex;"><span>    return sqrt(p * (p - Shape.Width) * (p - Shape.Height) * (p - Shape.Side));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  return CTable[Shape.Type]*Shape.Width*Shape.Height;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>What once was a oneliner function, now needs three more lines just to handle that damn triangle. If there is any better way to do it - I could not find it. Running code now gave me such results:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Clean approach: 0.00238
+</span></span><span style="display:flex;"><span>Switch approach: 0.00253 (0.93850)
+</span></span><span style="display:flex;"><span>Union approach: 0.00190 (1.25066)
+</span></span></code></pre></div><p>&ldquo;Clean&rdquo; code version and &ldquo;Switch&rdquo; have pretty much interchangeable execution times (sometimes Switch is faster, sometimes - not), but the Union is now only 1.25 times faster, down from 3. Having promised such a great performance boost before, what will you do when it turns out that it was a mistake?</p>
+<p>Do not get me wrong, I may be a Java dev who sacrificed the remains of his human dignity the first time I launched the Spring Boot application in Docker, but I still remember the days when programming brought me joy. Spending time and tuning my algorithms, finding what seems to be the best solution - just to realize that it must be thrown away because requirements changed - that may be soul-crushing. That is why I mainly try to follow the following principle that I read somewhere:</p>
+<blockquote>
+<p>A good code is like a good taxi driver. It drives you to your destination, does not bother you with its internals [internal problems], and when the goal is reached - you are not sorry to part ways.</p>
+</blockquote>
+<p>Another, more popular saying is &ldquo;premature optimization is the root of all evil&rdquo;. You may find my version of code <a href="https://gist.github.com/abar193/14479b8683cf46fed2c0a1958e6e1d14">here</a>, but before you try to salvage that table solution - I would like to remind you that trapezoids exist. Still, it would work well with hexagons, but let me present to you this beauty:</p>
+<p><img src="https://mrabar.me/img/goodenough/orthat.png" alt="Really weird irregular shape"></p>
+<p>And if anyone complains - that&rsquo;s the shape of the CEO&rsquo;s new mansion he was able to buy thanks to your hard work and dedication. Since the purchase, he was dying to learn its area, so you&rsquo;d better get your solution working fast - even if it itself does not run as fast.</p>
+<h1 id="the-point">The point</h1>
+<p>The point that I&rsquo;m trying to make, is that the &ldquo;optimized&rdquo; solution would only work with some subset of regular shapes, and would stop working as soon as we get to anything more advanced. Which we should expect, from a software that is supposed to calculate billions of shapes within seconds.</p>
+<p><img src="https://www.researchgate.net/profile/Kristian-Bankov/publication/337061598/figure/fig1/AS:839178661163009@1577087192923/The-evolution-of-education-edugogcom.png" alt="The classic comic"></p>
+<p>I&rsquo;m in no way trying to bash on mr. Muratori for his talk. We live surrounded by a slow and crappy software, and anyone advocating for improved performance deserves nothing but the praise.</p>
+<p>However, I disagree with the notion that &ldquo;Clean Code&rdquo; equals &ldquo;OOP with midnless polymorphism and, oh, you can&rsquo;t also use data objects to store data.&rdquo; In fact, I oppose using OOP inside business logic, because this is a sure way towards creation of a mess. In my understanding, data should be treated as data - that is, stored inside data records or objects (<code>POJO</code> or <code>record</code> in Java, can&rsquo;t say much for other languages), and that&rsquo;s it.</p>
+<p>If you need to calculate area of a shape - write a function inside your service (or module, of whatever your language has) to calculate it for all the cases you have. Switch example works just fine! If you happen to need to calculate perimeter - just add another function! You do not need to create <code>ShapeProcessor</code> abstract class with <code>BigDecimal doCalculation()</code> method and <code>AreaProcessor</code> &amp; <code>PerimeterProcessor</code> implementations - copying a loop is just fine, so keep KISS above DRY!</p>
+<p>And yes, you should know about internals of the data clasees that you use - opposing this would be dumb. It&rsquo;s services, controllers, and factories, that should only be exposed on their public methods with clear return statements and no internal state that the consumers should know about.</p>
+<p>That &ldquo;shape of an area&rdquo; example is flawed, because it teaches you to use polymorphism where it does not belong. A Shape is a Shape, and it should only represent itself. If you want to find its&rsquo; area, perimeter, volume, try to stuff as many of them inside confined square, or run a quirky quiz on &ldquo;Which kind of shape are you?&rdquo; - that&rsquo;s on you to provide implementation for that somewhare else, not to bloat your Shape classes.</p>
+<p>My favorite example on why &ldquo;OOP is bad&rdquo; is <a href="https://www.archimatetool.com/">Archimate</a> - a software modelling tool; made by software architects, for software architects. Inside you can drop various components, re-arrange them, assign various connection types to one another, assign some properties, group them inside all sort of rectangles, write some validating code. The problem is, that if you create an element, and then spend some time modelling it into something, before realizing that it was a wrong type of element - <a href="https://github.com/archimatetool/archi/issues/265">you can no longer change its&rsquo; type</a>. That&rsquo;s it. Your only option is to delete that element, loose all of it&rsquo;s connection info that you&rsquo;ve spent your time adjusting, then create a correct one and try to remember all the details that you had before. If you read the attached issue above, you&rsquo;ll understand that it&rsquo;s because each element is a Java class, that has its own validation rules, adopted and extended via inheritance tree. While it all seemed great in theory, author failed to consider that there is no easy way to change Java class on the fly. Needless to say, is that had it been done in a procedural style - with components only storing &ldquo;location, size, element type, element properties&rdquo;, and all other logic grouped elsewhere, this would not have been the case.</p>
+<p>I hope that you can spot the irony of all those Java architects not being able to fix architectural issue inside of Java application for architects. It really goes to show why overzealous attachment to some kind of &ldquo;OOP is Clean Code&rdquo; ideas can be your downfall.</p>
+<h1 id="outro">Outro</h1>
+<p>If you&rsquo;ve managed to read this far, I thank you. <strong>TL;DR</strong> version is that you need to learn when to stop. Both when you are trying to &ldquo;clean up&rdquo; your code following &ldquo;Clean Code&rdquo; practices (which were written by the guys who are proficient - above everything else - in writing and selling Clean Code books), and when you are trying to speed it up using performance-aware programming.</p>
+<p>If you can gain an x6 performance boost, by winning precious nanoseconds on a function that is already fast - that&rsquo;s great. But just look at the system as a whole first. From my experience, there is a great chance that the issue with billions of shapes would not be a loop that is iterating over them once. I&rsquo;d go first to check if there are any bottlenecks in how the data is loaded into memory, and how it&rsquo;s being handled. Because while you, a senior engineer, were saving precious CPU cycles on area calculation methods, your junior colleague could have written an N+1 query for loading of the shapes and then added O(N^2) bubble sort to order figures, because he heard something about branch prediction, but didn&rsquo;t understand it very well.</p>
+<p>With that being said, you still need to know how your language works &ldquo;under the hood&rdquo;, and how to perform well with it. And since I do not offer any courses on my own, I can only recommend you <a href="https://www.computerenhance.com/s/programming-courses">purchase some of Mr. Muratoris&rsquo;</a>. As I said, I&rsquo;m not against him, with cycles counting, <code>V4</code> hand-unrolled optimizations, and other tricks (not to mention the other courses he has) he seems like a knowledgeable guy, who makes some great talking points. I&rsquo;m just against going too far and sacrificing practical code extensibility - BEFORE identifying WHAT is a bottleneck on your system. I find it to be a bad idea, and I hope I could express my thoughts clearly enough.</p>
+<p>Speaking of performance - I&rsquo;ve recently got tired of not knowing who visits my blog, if any. GitHub Pages do not share such metrics (or I could not have found them). So, I&rsquo;ve designed a feedback collection service that is currently being hosted on the free tier on <a href="https://fly.io/">fly.io</a>. Limited RAM, limited disk volume, and limited bandwidth all make a great use case for practical optimization that I&rsquo;m preaching - of a system as a whole. So, to help me test my system, you could just leave me feedback in the form you see below! <em>(If you don&rsquo;t see a form below - it means that my service overloaded and crashed. In this case you have my permission to mock me on <a href="https://twitter.com/mrabar_me">Twitter</a> for that.)</em> And what the hell, why settle with just one reply when you can reload a page several times and leave many? I do not store anything in your cookies, so each time it would be counted as brand new. You can even invite your friends here, to help me test my system even better, but that&rsquo;s just what I&rsquo;m saying&hellip;</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Doing hard things the easy way</p>
+    
+     © 2023
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

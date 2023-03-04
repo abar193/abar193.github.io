@@ -2,14 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mrabar.me/tags/agile/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
-  </url><url>
-    <loc>https://mrabar.me/tags/architecture/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
-  </url><url>
     <loc>https://mrabar.me/categories/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -20,6 +14,83 @@
                 hreflang="en"
                 href="https://mrabar.me/categories/"
                 />
+  </url><url>
+    <loc>https://mrabar.me/tags/clean-code/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/posts/clean-code-good-enough-performance/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/performance/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/performance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/performance/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/posts/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/tags/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/categories/thoughts/</loc>
+    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/categories/thoughts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/categories/thoughts/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/tags/agile/</loc>
+    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/tags/architecture/</loc>
+    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
   </url><url>
     <loc>https://mrabar.me/categories/conferences/</loc>
     <lastmod>2021-12-10T10:11:10+02:00</lastmod>
@@ -54,45 +125,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://mrabar.me/tags/java/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/posts/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/posts/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/tags/</loc>
-    <lastmod>2021-12-10T10:11:10+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/tags/"
                 />
   </url><url>
     <loc>https://mrabar.me/categories/guides/</loc>
@@ -220,19 +252,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://mrabar.me/tags/linux/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/categories/thoughts/</loc>
-    <lastmod>2020-11-04T22:48:46+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/categories/thoughts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/categories/thoughts/"
                 />
   </url><url>
     <loc>https://mrabar.me/posts/ntd19/</loc>

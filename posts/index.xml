@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Dec 2021 10:11:10 +0200</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Mar 2023 16:13:00 +0000</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>In reply to: Clean Code Horrible Performance</title>
+      <link>https://mrabar.me/posts/clean-code-good-enough-performance/</link>
+      <pubDate>Sat, 04 Mar 2023 16:13:00 +0000</pubDate>
+      
+      <guid>https://mrabar.me/posts/clean-code-good-enough-performance/</guid>
+      <description>Intro I recently stumbled across a talk &amp;ldquo;Clean&amp;rdquo; Code, Horrible Performance by Casey Muratori. He makes a great point, and I invite my readers like crawler or searchbot, because no one else visits me to give him a visit and at least glance over the transcript.
+In his talk, mr. Muratori implements a classic example of &amp;ldquo;find the area of a various geometric shapes&amp;rdquo; in C++ using all the best practices from Clean Code recommendations, measures the performance, and then demonstrates how to improve benchmarks by violating one or several principles.</description>
+    </item>
+    
     <item>
       <title>Devternity 2021</title>
       <link>https://mrabar.me/posts/devternity2021/</link>
