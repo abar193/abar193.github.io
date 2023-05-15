@@ -2,6 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mrabar.me/posts/zip/</loc>
+    <lastmod>2023-05-14T23:37:42+03:00</lastmod>
+  </url><url>
+    <loc>https://mrabar.me/</loc>
+    <lastmod>2023-05-14T23:37:42+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/"
+                />
+  </url><url>
+    <loc>https://mrabar.me/posts/</loc>
+    <lastmod>2023-05-14T23:37:42+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://mrabar.me/ru/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://mrabar.me/posts/"
+                />
+  </url><url>
     <loc>https://mrabar.me/categories/</loc>
     <lastmod>2023-03-04T16:13:00+00:00</lastmod>
     <xhtml:link
@@ -21,19 +50,6 @@
     <loc>https://mrabar.me/posts/clean-code-good-enough-performance/</loc>
     <lastmod>2023-03-04T16:13:00+00:00</lastmod>
   </url><url>
-    <loc>https://mrabar.me/</loc>
-    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/"
-                />
-  </url><url>
     <loc>https://mrabar.me/tags/performance/</loc>
     <lastmod>2023-03-04T16:13:00+00:00</lastmod>
     <xhtml:link
@@ -45,19 +61,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://mrabar.me/tags/performance/"
-                />
-  </url><url>
-    <loc>https://mrabar.me/posts/</loc>
-    <lastmod>2023-03-04T16:13:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://mrabar.me/ru/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://mrabar.me/posts/"
                 />
   </url><url>
     <loc>https://mrabar.me/tags/</loc>
