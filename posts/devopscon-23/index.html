@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Anton B.">
+    <meta name="description" content="Simplifying stuff for business needs">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DevOpsCon 2023"/>
+<meta name="twitter:description" content="Presentations and outtakes"/>
+
+    <meta property="og:title" content="DevOpsCon 2023" />
+<meta property="og:description" content="Presentations and outtakes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mrabar.me/posts/devopscon-23/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-17T15:36:13+03:00" />
+<meta property="article:modified_time" content="2023-06-17T15:36:13+03:00" />
+
+
+    
+      <base href="https://mrabar.me/posts/devopscon-23/">
+    
+    <title>
+  DevOpsCon 2023 · Mr. Abar
+</title>
+
+    
+      <link rel="canonical" href="https://mrabar.me/posts/devopscon-23/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mrabar.me/css/coder.min.9a2d333aad4567e8ef8e306e20158ba9df502e8e10a001367c1a6375cd20eb5f.css" integrity="sha256-mi0zOq1FZ&#43;jvjjBuIBWLqd9QLo4QoAE2fBpjdc0g618=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://mrabar.me/css/custom.css">
+    
+
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mrabar.me/img/favicon.ico" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.112.3">
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mrabar.me/">
+      Mr. Abar
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/pdf/anton_bardishev_cv.pdf">CV</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/bachelor">Bachelor</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/winter">Pet</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://abar.lv">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://mrabar.me/posts/">Blog</a>
+          </li>
+        
+      
+      
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="https://mrabar.me/ru/">RU</a>
+            </li>
+          
+        
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">DevOpsCon 2023</h1>
+          <h4 style="margin: 1rem 0;">Presentations and outtakes</h4>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2023-06-17T15:36:13&#43;03:00'>
+                17 June, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              6 minutes read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a class="categories" href="https://mrabar.me/categories/conferences/">conferences</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a class="tags" href="https://mrabar.me/tags/devops/">DevOps</a></div>
+
+
+          
+
+        </div>
+      </header>
+      <aside>
+        <h1 class="title">Table of Contents</h1>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#expo">Expo</a></li>
+    <li><a href="#talks-in-no-particular-order">Talks (in no particular order)</a>
+      <ul>
+        <li><a href="#kubernetes-operators">Kubernetes Operators</a></li>
+        <li><a href="#tackling-challenges-in-istio-and-kafka">Tackling challenges in Istio and Kafka</a></li>
+        <li><a href="#mistakes-we-made-in-our-cloud-journey">Mistakes we made in our cloud journey</a></li>
+        <li><a href="#advanced-observability--security">Advanced Observability &amp; Security</a></li>
+        <li><a href="#more-talks-pending">More talks pending&hellip;</a></li>
+      </ul>
+    </li>
+    <li><a href="#books-recommendations">Books recommendations</a></li>
+  </ul>
+</nav>
+      </aside>
+      <div>
+        <h1 id="intro">Intro</h1>
+<p>I have attended a DevOps Conference in Berlin and here I will try to summarize my experience and outtakes from it.</p>
+<p>This hybrid conference was located &ndash; physically &ndash; in the heart of Berlin, at Martim Hotel near Friedrichstraße S-Bahn station.
+That location was very well known to me, because it was a changing station from when I went from my university to my work.
+So, visiting it again after several years was pleasant and nostalgic, and I&rsquo;m, glad that not much has changed there - not for the worst, at least.</p>
+<p>For those, who didn&rsquo;t want to fly to Germany (in the middle of a massive military air training, may I add), there was an option
+to watch it online.
+Every presentation had a live stream, both slides and presenters were visible, and a dedicated moderator would read your question from the chat out loud.
+By the way, here&rsquo;s how it looked like (with me accidentally photobombing the presenter):</p>
+<p><img src="https://mrabar.me/img/devopscon23/me-photobombing.png" alt="">
+<em>Advanced Observability &amp; Security for your Kubernetes with a modern Service Mesh by Fabian Hardt</em></p>
+<p>Unfortunately, my tier of ticket permitted me to re-watch presentation videos for only a week after the conference, so some footage that I wanted to re-watch is now lost to me.
+For just ~200EUR per month you can buy a &ldquo;<a href="https://entwickler.de/fullstack-abo/">Fullstack Experience</a>&rdquo;, I believe, and have those videos available for the next 6 months.</p>
+<h1 id="expo">Expo</h1>
+<p>Expo was located in the main hall of the hotel.
+It wasn&rsquo;t great that most of the fridges had only sparkling water, and to find a bottle of still one you&rsquo;d have to go on a quest.
+Can&rsquo;t say anything about lunch offers, because I went to eat out on my own.</p>
+<p>Across the hall there were several stands. Non-exhaustive list includes:</p>
+<ul>
+<li><a href="https://www.airlock.com/en/">Airlock Microgateway</a> - lightweight security gateway for use in container-based applications; features protection against known OWASP Top 10 threats, access management with Airlock IAM, authentication check (+JWT token validation), load balancing via Airlock Gateway;</li>
+<li><a href="https://www.contrastsecurity.com/">Contrast Security</a> - devops- (and developer) -friendly application scanner for vulnerabilities;</li>
+<li><a href="https://gradle.com/">Gradle Enterprise</a> - a tool for managing all building tools (including Maven, Bazel and Gradle) that can speed build and test time and provide better visibility for improved developer performance;</li>
+<li><a href="https://sofy.ai/">Sofy</a> - no-code testing for mobile tools.</li>
+<li><a href="https://www.splunk.com/">Splunk</a> - security and observability analytics platform for large scale enterprises that can do anything you need;</li>
+<li><a href="https://www.zeiss.com/corporate/en/home.html">Zeiss</a> - turns out those guys also require software engineers and are hiring.</li>
+</ul>
+<h1 id="talks-in-no-particular-order">Talks (in no particular order)</h1>
+<h2 id="kubernetes-operators">Kubernetes Operators</h2>
+<p>By <a href="https://linkedin.com/in/muraduiurie">Iurie Muradu</a>.</p>
+<p>In this talk we were introduced to <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">Kubernetes Operators</a>, a concept, which I haven&rsquo;t even worked before <em>(but the same goes for a lot of topics from this conference, to be honest)</em>.</p>
+<p>Operator pattern allows us to extend the cluster&rsquo;s behavior without modifying the code of Kubernetes itself, by linking controllers to one or more custom resources.</p>
+<p>An example of what k8s operator can do includes deploying applications on demand, taking and restoring backups of the applications&rsquo; state, handling upgrades of the application code, publishing a service to applications that don&rsquo;t support K8s API to discover them, simulating failures in app or parts of cluster for resilience testing, choosing a leader for a distributed application without an internal member election process.</p>
+<p>In his talk, Iurie demonstrated how to create an Operator using operator-sdk.
+The goal is to create an operator that would accept</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="font-weight:bold">apiVersion</span>: web.phys.app/v1alpha1
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">kind</span>: WebServer
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">metadata</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">name</span>: webserver-sample
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">spec</span>:
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">webServerImage</span>: nginx
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">ingress</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">host</span>: phys.app
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">ingressClass</span>: nginx
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">name</span>: web
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">storageClass</span>: root-efs
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">mountPath</span>: /usr/share/nginx/html
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">createIfNotExists</span>: <span style="font-weight:bold">true</span>
+</span></span></code></pre></div><p>to achieve this he had defined a type <code>WebServer</code>, and implemented control loop in go. In the end <code>make generate</code> and <code>make manifests</code>. We got a demo on how it all works, and book recommendations for further research.</p>
+<h2 id="tackling-challenges-in-istio-and-kafka">Tackling challenges in Istio and Kafka</h2>
+<p>By <a href="https://www.linkedin.com/in/kristofgyuracz/">Kristof Gyuracz</a>.</p>
+<p>Did someone mention Kubernetes Operators? Because Kristof has some!</p>
+<p>In his talk Kristof discusses pros and cons of running Kafka on Kubernetes, as well as the challenges with operating Kafka and Istio there.</p>
+<p>He then presents the following:</p>
+<p>• <a href="https://github.com/banzaicloud/koperator">Koperator</a> - operator for Kafka, with full lifecycle management, network and storage handling, alert based scaling and graceful rebalancing;
+• <a href="https://github.com/banzaicloud/istio-operator">istio-operator</a> - operator for Istio with lifecycle management, complex deployments and multi-cluster support;
+• <a href="https://github.com/cisco-open/cluster-registry-controller">Cluster registry controller</a> - controller to help forming a group of Kubernetes clusters and synchronize any K8s resources across those clusters.</p>
+<p>The talk is concluded with a <a href="https://www.calisti.app/">Calisti</a> demo - an app that handles Kafka and Istio related tasks, has integrated observability, SLO based alerting and has integrated UI for Istio and Kafka.</p>
+<h2 id="mistakes-we-made-in-our-cloud-journey">Mistakes we made in our cloud journey</h2>
+<p>By <a href="https://www.linkedin.com/in/manoj-bhagwat-73045082">Manoj Bhagwat</a>.</p>
+<p>A presentation outlying a typical mistakes one can make in their cloud (or any?) journey. A list of mistakes includes:</p>
+<ul>
+<li>Using a single AWS account, with no AWS organizations and no SSO;</li>
+<li>Not sticking to one automation process / workflow and practices across the organization;</li>
+<li>Neglecting IAM (no audit updates, not using roles);</li>
+<li>Neglecting security (not using code scanners, not requesting pentesting, not shifting left with security);</li>
+<li>Not creating a documentation;</li>
+<li>No risk assessment, no failure scenarios, no process in place;</li>
+<li>No clear separation on what is internal/external resource, VPN not configured;</li>
+<li>Not using managed solutions, sticking to OpenSource and wasting time and money;</li>
+<li>No clear vision, no Defined Could Roadmap.</li>
+</ul>
+<h2 id="advanced-observability--security">Advanced Observability &amp; Security</h2>
+<p>By Philipp Kürsten, Fabian Hardt on behalf of <a href="https://www.opitz-consulting.com/">Opiz Consulting</a>.</p>
+<p>This was a rather advanced talk, will do my best to write it as I understood it.</p>
+<p>With the growing number of applications / services and clusters we face the problem of managing security, logging, metrics gathering, routing, rate-limiting and caching between services.</p>
+<p>Service mesh is a dedicated infrastructure layer that makes service-to-service communication more reliable, secure and observable.</p>
+<p>There exist several service-mesh implementations, like <a href="https://kuma.io/">Kuma</a>, <a href="https://istio.io/">Istio</a>, <a href="https://developer.hashicorp.com/consul/docs/connect">Consul</a>, <a href="https://linkerd.io/">Linkerd</a>, and <a href="https://www.solo.io/products/gloo-mesh/">GlooMesh</a>. This talk focused on Kuma.</p>
+<p>Kuma provides a distributed, platform agnostic open-source Control Plane for service mesh. It comes with a bundled <a href="https://www.envoyproxy.io/">Envoy Proxy</a> integration.</p>
+<p>Presentation highlighted various modes for Kuma. With a single cluster Data Plane Proxies are attached to pods, and are coordinated via a Zone Control Plane. With multiple clusters, all traffic enters cluster ove zone ingress (setup with Kuma), with one remote zone control plane in each cluster and a global control plane for coordination.</p>
+<p>Kuma proxies route traffic through ingress or out of egress instances. A service mesh DNS resolves &ldquo;.mesh&rdquo; addresses to pre-defined IP addresses. This all may work even if you need to integrate legacy VMs or bare metal services with modern clusters.</p>
+<p>We then got a demo on how it all works. For analyzing and monitoring the data presenters used Grafana Stack, with:</p>
+<ul>
+<li>Grafana for visualization;</li>
+<li>Loki for logging (log shipping by FluentD / FluentBit / Promtail);</li>
+<li>Prometheus for metrics;</li>
+<li>Jaeger / Tempo for tracing;</li>
+<li>Prometheus Alert Manager for alerting.</li>
+</ul>
+<p>Keys takeaways is that Service Mesh is essential to build and managing multi-cloud apps efficiently, and Kuma as a service mesh provides flexible agnistic approach, seamless CI / CD integration, intuitive design and can be easily spanned over multiple clusters and clouds.</p>
+<h2 id="more-talks-pending">More talks pending&hellip;</h2>
+<h1 id="books-recommendations">Books recommendations</h1>
+<ul>
+<li><a href="https://www.amazon.com/Kubernetes-Operator-Framework-Book-management/dp/1803232854/">The Kubernetes Operator Framework Book</a> by Michael Dame</li>
+<li><a href="https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440/">The Go Programming Language</a> by Alan A. A. Donovan and Brian W. Kernighan</li>
+<li><a href="https://www.amazon.com/Kubernetes-Programming-Go-Clients-Operators/dp/1484290259">Kubernetes Programming with Go</a> by Philippe Martin</li>
+<li><a href="https://www.amazon.com/Accelerate-DevOps-GitHub-software-performance/dp/1801813353">Accelerate DevOps with GitHub</a> by Michael Kaufmann (I got a chance to talk with him!)</li>
+</ul>
+
+      </div>
+
+      <footer>
+        
+
+
+        <iframe style="border:none; margin: 3px auto; display: block;" width="100%" height="400" 
+  src="https://r.abar.lv/f/main?page=DevOpsCon%2b2023" 
+  title="Feedback"></iframe>
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Doing hard things the easy way</p>
+    
+     © 2023
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

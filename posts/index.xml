@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Mr. Abar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 May 2023 23:37:42 +0300</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jun 2023 15:36:13 +0300</lastBuildDate><atom:link href="https://mrabar.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DevOpsCon 2023</title>
+      <link>https://mrabar.me/posts/devopscon-23/</link>
+      <pubDate>Sat, 17 Jun 2023 15:36:13 +0300</pubDate>
+      
+      <guid>https://mrabar.me/posts/devopscon-23/</guid>
+      <description>Intro I have attended a DevOps Conference in Berlin and here I will try to summarize my experience and outtakes from it.
+This hybrid conference was located &amp;ndash; physically &amp;ndash; in the heart of Berlin, at Martim Hotel near Friedrichstraße S-Bahn station. That location was very well known to me, because it was a changing station from when I went from my university to my work. So, visiting it again after several years was pleasant and nostalgic, and I&amp;rsquo;m, glad that not much has changed there - not for the worst, at least.</description>
+    </item>
+    
     <item>
       <title>I have a strong opinion about new .zip domains!</title>
       <link>https://mrabar.me/posts/zip/</link>
@@ -24,7 +34,7 @@ Let&amp;rsquo;s review new top-level domains that Google announced. Just to know
       <pubDate>Sat, 04 Mar 2023 16:13:00 +0000</pubDate>
       
       <guid>https://mrabar.me/posts/clean-code-good-enough-performance/</guid>
-      <description>Intro I recently stumbled across a talk &amp;ldquo;Clean&amp;rdquo; Code, Horrible Performance by Casey Muratori. He makes a great point, and I invite my readers like crawler or searchbot, because no one else visits me to give him a visit and at least glance over the transcript.
+      <description>Intro I recently stumbled across a talk &amp;ldquo;Clean&amp;rdquo; Code, Horrible Performance by Casey Muratori. He makes a great point, and I invite my readers like crawlers or searchbots, because no one else visits me to give him a visit and at least glance over the transcript.
 In his talk, mr. Muratori implements a classic example of &amp;ldquo;find the area of a various geometric shapes&amp;rdquo; in C++ using all the best practices from Clean Code recommendations, measures the performance, and then demonstrates how to improve benchmarks by violating one or several principles.</description>
     </item>
     

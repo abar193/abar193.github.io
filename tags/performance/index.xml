@@ -13,7 +13,7 @@
       <pubDate>Sat, 04 Mar 2023 16:13:00 +0000</pubDate>
       
       <guid>https://mrabar.me/posts/clean-code-good-enough-performance/</guid>
-      <description>Intro I recently stumbled across a talk &amp;ldquo;Clean&amp;rdquo; Code, Horrible Performance by Casey Muratori. He makes a great point, and I invite my readers like crawler or searchbot, because no one else visits me to give him a visit and at least glance over the transcript.
+      <description>Intro I recently stumbled across a talk &amp;ldquo;Clean&amp;rdquo; Code, Horrible Performance by Casey Muratori. He makes a great point, and I invite my readers like crawlers or searchbots, because no one else visits me to give him a visit and at least glance over the transcript.
 In his talk, mr. Muratori implements a classic example of &amp;ldquo;find the area of a various geometric shapes&amp;rdquo; in C++ using all the best practices from Clean Code recommendations, measures the performance, and then demonstrates how to improve benchmarks by violating one or several principles.</description>
     </item>
     
