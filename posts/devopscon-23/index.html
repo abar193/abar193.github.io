@@ -11,10 +11,10 @@
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DevOpsCon 2023"/>
-<meta name="twitter:description" content="Presentations and outtakes"/>
+<meta name="twitter:description" content="My synopsis and outtakes"/>
 
     <meta property="og:title" content="DevOpsCon 2023" />
-<meta property="og:description" content="Presentations and outtakes" />
+<meta property="og:description" content="My synopsis and outtakes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mrabar.me/posts/devopscon-23/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-06-17T15:36:13+03:00" />
@@ -121,7 +121,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">DevOpsCon 2023</h1>
-          <h4 style="margin: 1rem 0;">Presentations and outtakes</h4>
+          <h4 style="margin: 1rem 0;">My synopsis and outtakes</h4>
         </div>
         <div class="post-meta">
           <div class="date">
@@ -133,7 +133,7 @@
             </span>
             <span class="reading-time">
               <i class="fas fa-clock"></i>
-              6 minutes read
+              12 minutes read
             </span>
           </div>
           <div class="categories">
@@ -142,7 +142,9 @@
 
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a class="tags" href="https://mrabar.me/tags/devops/">DevOps</a></div>
+    <a class="tags" href="https://mrabar.me/tags/devops/">DevOps</a>
+      <span class="separator">•</span>
+    <a class="tags" href="https://mrabar.me/tags/kubernetes/">kubernetes</a></div>
 
 
           
@@ -161,7 +163,11 @@
         <li><a href="#tackling-challenges-in-istio-and-kafka">Tackling challenges in Istio and Kafka</a></li>
         <li><a href="#mistakes-we-made-in-our-cloud-journey">Mistakes we made in our cloud journey</a></li>
         <li><a href="#advanced-observability--security">Advanced Observability &amp; Security</a></li>
-        <li><a href="#more-talks-pending">More talks pending&hellip;</a></li>
+        <li><a href="#16-artifacts-to-capture-when-your-container-application-is-in-trouble">‘16 artifacts’ to capture when your container application is in trouble</a></li>
+        <li><a href="#how-to-prevent-your-kubernetes-cluster-from-being-hacked">How to Prevent Your Kubernetes Cluster From Being Hacked</a></li>
+        <li><a href="#profiling-in-the-cloud-native-era">Profiling in the Cloud Native Era</a></li>
+        <li><a href="#speeding-up-maven-gradle-and-jenkins-with-a-build-cache">Speeding up Maven, Gradle, and Jenkins With a Build Cache</a></li>
+        <li><a href="#scaling-from-0-to-20-million-users">Scaling: From 0 to 20 Million Users</a></li>
       </ul>
     </li>
     <li><a href="#books-recommendations">Books recommendations</a></li>
@@ -250,6 +256,8 @@ The goal is to create an operator that would accept</p>
 <p>Kuma provides a distributed, platform agnostic open-source Control Plane for service mesh. It comes with a bundled <a href="https://www.envoyproxy.io/">Envoy Proxy</a> integration.</p>
 <p>Presentation highlighted various modes for Kuma. With a single cluster Data Plane Proxies are attached to pods, and are coordinated via a Zone Control Plane. With multiple clusters, all traffic enters cluster ove zone ingress (setup with Kuma), with one remote zone control plane in each cluster and a global control plane for coordination.</p>
 <p>Kuma proxies route traffic through ingress or out of egress instances. A service mesh DNS resolves &ldquo;.mesh&rdquo; addresses to pre-defined IP addresses. This all may work even if you need to integrate legacy VMs or bare metal services with modern clusters.</p>
+<p><img src="https://mrabar.me/img/devopscon23/adv-obs.png" alt="">
+<em>A slide from <a href="https://www.opitz-consulting.com/">Opiz Consulting</a></em></p>
 <p>We then got a demo on how it all works. For analyzing and monitoring the data presenters used Grafana Stack, with:</p>
 <ul>
 <li>Grafana for visualization;</li>
@@ -259,7 +267,80 @@ The goal is to create an operator that would accept</p>
 <li>Prometheus Alert Manager for alerting.</li>
 </ul>
 <p>Keys takeaways is that Service Mesh is essential to build and managing multi-cloud apps efficiently, and Kuma as a service mesh provides flexible agnistic approach, seamless CI / CD integration, intuitive design and can be easily spanned over multiple clusters and clouds.</p>
-<h2 id="more-talks-pending">More talks pending&hellip;</h2>
+<h2 id="16-artifacts-to-capture-when-your-container-application-is-in-trouble">‘16 artifacts’ to capture when your container application is in trouble</h2>
+<p>By Ram Lakshmanan from <a href="https://ycrash.io/">ycrash.io</a></p>
+<p>I didn&rsquo;t personally attend this talk, however its slides were interesting enough.</p>
+<p>16 artifacts to collect. The idea is that you don&rsquo;t need to collect each and every artifact all the time, but it is a good idea to remember which tools can help you potentially debug which situation.</p>
+<p>Linux utils:</p>
+<ul>
+<li><code>top</code> - processes CPU &amp; Memory, Load average, CPU utilization</li>
+<li><code>ps</code> - snapshot of specific processes, works well with <code>top</code></li>
+<li><code>top -h -p &lt;pid&gt;</code> - thread information withing process, works well with thread dump</li>
+<li><code>df -h</code> - disk usage, what is mounted where</li>
+<li><code>dmesg</code> - examine kernel ring buffer, may help with high load investigations</li>
+<li><code>netstat</code> (or it&rsquo;s more modern replacement <code>ss</code>) - info on network subsystem</li>
+<li><code>ping</code> - ping</li>
+<li><code>vmstat</code> - report virtual memory statistics</li>
+<li><code>sysctl -a</code> - kernel params</li>
+</ul>
+<p>Java specific:</p>
+<p>Garbage Collection (GC) Log - can be analyzed with a number of tools</p>
+<ol>
+<li><a href="https://ycrash.io/">YCrash</a> - as a suite</li>
+<li><a href="https://gceasy.io/">GCeasy</a> - a tool from YCrash guys</li>
+<li><a href="https://www.ibm.com/support/pages/java-sdk-monitoring-and-post-mortem">IBM Garbage Collection and Memory Visualizer</a></li>
+<li><a href="https://myenterpriselicense.hpe.com/cwp-ui/product-details/HPJMETER/4.8.00/sw_free">HPJMETER</a> - outdated tool for old JVMs</li>
+<li><a href="https://github.com/mgm3746/garbagecat">garbagecat</a> - a log analyzer tool by Google</li>
+</ol>
+<p>Thread dump - can be analyzed with</p>
+<ol>
+<li><a href="https://ycrash.io/">YCrash</a> - those guys are serious about selling</li>
+<li><a href="https://fastthread.io/">FastThread</a> - a tool from YCrash</li>
+<li><a href="https://www.ibm.com/support/pages/ibm-thread-and-monitor-dump-analyzer-java-tmda">IBM TMDA</a> - a tool from IBM</li>
+</ol>
+<p>Heap dump -</p>
+<ol>
+<li><a href="https://heaphero.io">HeapHero</a> - YCrash again</li>
+<li><a href="https://eclipse.dev/mat/">Eclipse MAT</a> - Eclipse project tool</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jhat.html">Jhat</a> - unsupported experimental tool by Oracle</li>
+</ol>
+<h2 id="how-to-prevent-your-kubernetes-cluster-from-being-hacked">How to Prevent Your Kubernetes Cluster From Being Hacked</h2>
+<p>Talk by <a href="www.linkedin.com/in/nicomeisenzahl">Nico Meisenzah</a>. He also has a <a href="https://www.youtube.com/channel/UCUUYDoY8qYgbofTBAg9qz7A">YouTube</a> channel with a lots of different talks he gave. That includes <a href="https://www.youtube.com/watch?v=XXvVtfZUC0k">this very talk</a>.</p>
+<p>In his earlier talk Nico demonstrated how an attacker might compromise your K8s cluster with a flawed docker image, and in this talk he focuses on building secure and verifiable images in order to prevent that.</p>
+<p><a href="https://edu.chainguard.dev/open-source/wolfi">Wolfi</a> (<a href="https://github.com/wolfi-dev">GitHub</a>), is a Linux OS built for conianer-native era and with focus on security in mind.</p>
+<p>Wolfi features includes Software Bill Of Materials - a &ldquo;list of ingredients&rdquo; for all software dependencies (that support hierarchy). It uses apk packages that are designed to be granular and independent. It has a fully declarative and reproducible build system that can be easily analyzed by vulnerability scanners.</p>
+<p>For image verification there is <a href="https://github.com/sigstore/cosign">Cosign</a> and <a href="https://www.sigstore.dev/">Sigstore</a></p>
+<p>Cosign signs containers using sigstore. With help of <a href="https://kyverno.io/">Kyverno</a> policies are integrated with the cluster to validate source of images - if it is a third-party image, or your own.</p>
+<p><img src="https://mrabar.me/img/devopscon23/cosign_sigstore.png" alt="">
+<em>Slide from Nico Meisenzah and White Duck</em></p>
+<p>Last there is a <a href="https://github.com/cilium/tetragon">Tetragon</a> - a component for runtime, eBPF-based (extended Berkeley Packet Filter) security observability and runtime enforcement. It is able to detect and react to security-significant events, such as process execution events, system call activity, I/O activity including network &amp; file access.</p>
+<h2 id="profiling-in-the-cloud-native-era">Profiling in the Cloud Native Era</h2>
+<p>Talk by <a href="https://www.linkedin.com/in/metalmatze/">Matthias Loibl</a>.</p>
+<p>Profiling is a form of dynamic program analysis that measures resource consumption, for example: space (memory), time complexity, usage of instructions, frequency and duration of function calls.</p>
+<p>There are two modes. Tracing - record everything, has high costs; and sampling - sample for certain duration or periodically observe some state, for example function call stack - which has lower costs.</p>
+<p><em>Unfortunately, the talk was for go and advertised <a href="https://github.com/google/pprof">pprof</a> which has extremely limited functionality for Java. As Java guys we could look into different java profilers such as Java Flight Recorder or <a href="https://www.baeldung.com/java-profilers">others</a>, - comment by me.</em></p>
+<p>At Google they use continuous profiling to save costs, to be able to compare differences between versions, and to understand root causes leading to incidents.</p>
+<p>Another tool mentioned in this talk is <a href="https://github.com/parca-dev/parca">Parca</a> - a continuous profiling tool for measuring CPU, memory usage over time, and obtaining stack traces down to the line number.</p>
+<p>Its&rsquo; features include eBPF profiler, that can automatically integrate and discover targets from Kubernetes, working with low overhead. It is a single statically linked binary, that has a built-in storage.</p>
+<p>A <a href="https://github.com/parca-dev/parca-agent">Parca Agent</a> is an always-on sampling agent.</p>
+<p>Parcas&rsquo; Storage is inspired by Prometheus; it is a separate meta data store; handles stack traces in the storage; and is called a FrostDB - an embeddable column database.</p>
+<h2 id="speeding-up-maven-gradle-and-jenkins-with-a-build-cache">Speeding up Maven, Gradle, and Jenkins With a Build Cache</h2>
+<p>A talk and a self-promotion by <a href="https://gradle.com/">Gradle Enterprise</a>, where they advertise, well, Gradle Enterprise, and it&rsquo;s build cache model that allows you to re-compite and re-test only the changed parts of your projects, instead of everything. It works in your local environment, and it can be integrated with CI/CD system, speeding up your development cycle.</p>
+<h2 id="scaling-from-0-to-20-million-users">Scaling: From 0 to 20 Million Users</h2>
+<p>Last, but not least, I would like to highlight a talk by <a href="https://www.linkedin.com/in/jstuhli">Josip Stuhli</a> from Sofascore. This presentation does not have any slides uploaded, however, I was able to find a <a href="https://www.youtube.com/watch?v=d22iKaVHfdg">YouTube recording</a> from UK conference, not sure if it&rsquo;s the same one. Anyway, I&rsquo;ll go in from the notes that I took at the time of listening.</p>
+<p>This wasn&rsquo;t a technical how-to talk, more of a life story of a product, from the perspective of a CTO who worked on it for 10 years.</p>
+<p>Main points were that the growth in user base required them to use caching, and for that they picked a Varnish, that has <a href="https://info.varnish-software.com/blog/request-coalescing-and-other-reasons-to-use-varnish-as-an-origin-shield">requests coalescing</a> feature among others.</p>
+<p>At one point they gave in to the hype and switched to MongoDB from MySQL. &ldquo;Everything worked great, until it didn&rsquo;t&rdquo; - later they stumbled with replication issues, locking, foreign keys, data type errors, and difficulties to analyze data. In the end, they migrated back to the world of relational databases and picked PostgreSQL.</p>
+<p>As the user count grew, caching got less and less efficient (several cache servers knocking on one machine, which, in turn, becomes a single point of failure. The solution to that became sharding. 1 layer cache, url-based rules deciding to which machine to forward requests.</p>
+<p>Then, AWS became the issue. &ldquo;Cache doesn&rsquo;t need to be in the cloud&rdquo;, - decided Josip and moved the cache layer to a number of dedicated VPS servers. Monthly, predictable fee, 10x price reduction compared to Amazon.</p>
+<p>Another problems were with countries - while in Europe internet is fast, in some places of India it might be a problem &ldquo;I didn&rsquo;t even know that we have a spinning loader in our applicaiton&rdquo;.</p>
+<blockquote>
+<p>Do you know that buildings can catch fire? Because I didn&rsquo;t. Anyway, here&rsquo;s a photo of our HQ burning with all the servers we had in it.</p>
+</blockquote>
+<p><em>A quote by Josip</em></p>
+<p>Then, for collecting all sorts of events and data, they got ClickHouse - a column based data storage, developed by Yandex. (&ldquo;Yandex is like Russian Google&rdquo;).</p>
+<p>Outtakes - for scalability you need to be stateless wherever it is possible, know how your users interact with your app, &ldquo;I assure you - you can always use cache&rdquo;.</p>
+<p>A company product is maintained by under 10 developers.</p>
 <h1 id="books-recommendations">Books recommendations</h1>
 <ul>
 <li><a href="https://www.amazon.com/Kubernetes-Operator-Framework-Book-management/dp/1803232854/">The Kubernetes Operator Framework Book</a> by Michael Dame</li>
